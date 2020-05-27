@@ -1,14 +1,16 @@
 class Game {
     private unicorn: Unicorn
     private unicorn2: Unicorn2
+    private leftarrow!: Leftarrow
+    private rightarrow!: Rightarrow
     private frog: Frog
 
     constructor() {
         console.log("Game was created!")
         this.unicorn = new Unicorn()
         this.unicorn2 = new Unicorn2()
-        new Leftarrow ()
-        new Rightarrow ()
+        this.leftarrow = new Leftarrow ()
+        this.rightarrow = new Rightarrow ()
         this.frog = new Frog()
         this.gameloop()
     }

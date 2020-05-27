@@ -16,12 +16,12 @@ game * {
 
 
 unicorn {
-    background-image: url(../img/clipart13093.png);
+    background-image: url(/img/clipart13093.png);
     width:500px; height: 500px;
     background-size:contain;
 }
 unicorn2 {
-    background-image: url(../img/clipart13094.png);
+    background-image: url(/img/clipart13094.png);
     width:500px; height: 500px;
     background-size:contain;
 }
@@ -33,35 +33,35 @@ leftarrow{
     width:200px; height: 200px;
 }
 .left{
-    background-image: url(../images/left.png);
+    background-image: url(/img/left.png);
     width:200px; height: 200px;
 }
 .right{
-    background-image: url(../images/right.png);
+    background-image: url(/img/right.png);
     width:200px; height: 200px;
 }
 .up{
-    background-image: url(../images/up.png);
+    background-image: url(/img/up.png);
     width:200px; height: 200px;
 }
 .down{
-    background-image: url(../images/down.png);
+    background-image: url(/img/down.png);
     width:200px; height: 200px;
 }
 
 frog {
-    background-image: url(../img/froggi.png);
+    background-image: url(/img/froggi.png);
     width:500px; height: 400px;
     cursor: pointer;
 }
 
 .talk {
-    background-image: url(../img/jumpsalot.gif);
+    background-image: url(/img/jumpsalot.gif);
     
 }
 
 background {
-    background-image: url(../img/RainbowForest.jpg);
+    background-image: url(/img/RainbowForest.jpg);
     width:100%; height: 100%;
     background-size: cover;
 }
