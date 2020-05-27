@@ -26,6 +26,29 @@ unicorn2 {
     background-size:contain;
 }
 
+rightarrow{
+    width:200px; height: 200px;
+}
+leftarrow{
+    width:200px; height: 200px;
+}
+.left{
+    background-image: url(../images/left.png);
+    width:200px; height: 200px;
+}
+.right{
+    background-image: url(../images/right.png);
+    width:200px; height: 200px;
+}
+.up{
+    background-image: url(../images/up.png);
+    width:200px; height: 200px;
+}
+.down{
+    background-image: url(../images/down.png);
+    width:200px; height: 200px;
+}
+
 frog {
     background-image: url(../img/froggi.png);
     width:500px; height: 400px;
