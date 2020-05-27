@@ -7,6 +7,8 @@ class Game {
         console.log("Game was created!")
         this.unicorn = new Unicorn()
         this.unicorn2 = new Unicorn2()
+        new Leftarrow ()
+        new Rightarrow ()
         this.frog = new Frog()
         this.gameloop()
     }
