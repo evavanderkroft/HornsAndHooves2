@@ -16,12 +16,12 @@ game * {
 
 
 unicorn {
-    background-image: url(../img/clipart13093.png);
+    background-image: url(../img/horsewhite.png);
     width:500px; height: 500px;
     background-size:contain;
 }
-unicorn2 {
-    background-image: url(../img/clipart13094.png);
+.player2 {
+    background-image: url(../img/horsegreen.png);
     width:500px; height: 500px;
     background-size:contain;
 }
@@ -35,6 +35,12 @@ frog {
 .talk {
     background-image: url(../img/jumpsalot.gif);
     
+}
+.run{
+    background-image: url(../img/white.gif);
+}
+.run2{
+    background-image: url(../img/green.gif);
 }
 
 background {
