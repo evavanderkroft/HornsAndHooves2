@@ -64,7 +64,16 @@ class Unicorn {
     running(){
         this.unicorn.classList.remove("run")
     }
-
+    public getRectangle() {
+        return this.unicorn.getBoundingClientRect()
+    }
+    public bounceX(){
+        this.rightSpeed =-1
+        this.running()
+        setTimeout(() => {
+            this.rightSpeed = 0
+        }, 300);
+    }
 }
 
 
