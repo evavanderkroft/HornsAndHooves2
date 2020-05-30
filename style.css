@@ -16,52 +16,64 @@ game * {
 
 
 unicorn {
-    background-image: url(/img/clipart13093.png);
+    background-image: url(../img/horsewhite.png);
     width:500px; height: 500px;
     background-size:contain;
 }
-unicorn2 {
-    background-image: url(/img/clipart13094.png);
+.player2 {
+    background-image: url(../img/horsegreen.png);
     width:500px; height: 500px;
     background-size:contain;
-}
-
-rightarrow{
-    width:200px; height: 200px;
-}
-leftarrow{
-    width:200px; height: 200px;
-}
-.left{
-    background-image: url(/img/left.png);
-    width:200px; height: 200px;
-}
-.right{
-    background-image: url(/img/right.png);
-    width:200px; height: 200px;
-}
-.up{
-    background-image: url(/img/up.png);
-    width:200px; height: 200px;
-}
-.down{
-    background-image: url(/img/down.png);
-    width:200px; height: 200px;
 }
 
 frog {
-    background-image: url(/img/froggi.png);
+    background-image: url(../img/froggi.png);
     width:500px; height: 400px;
     cursor: pointer;
 }
 
 .talk {
-    background-image: url(/img/jumpsalot.gif);
+    background-image: url(../img/jumpsalot.gif);
     
+}
+.run{
+    background-image: url(../img/white.gif);
+}
+.run2{
+    background-image: url(../img/green.gif);
+}
+
+.leftup{
+    background-image: url(../img/left_up.png);
+    width:180px; height: 180px;
+}
+.up{
+    background-image: url(../img/up.png);
+    width:180px; height: 180px;
+
+}
+.rightup{
+    background-image: url(../img/right_up.png);
+    width:180px; height: 180px;
+
+}
+.leftdown{
+    background-image: url(../img/left_down.png);
+    width:180px; height: 180px;
+
+}
+.down{
+    background-image: url(../img/down.png);
+    width:180px; height: 180px;
+
+}
+.rightdown{
+    background-image: url(../img/right_down.png);
+    width:180px; height: 180px;
 }
 
 background {
-    background-image: url(/img/RainbowForest.jpg);
+    background-image: url(../img/RainbowForest.jpg);
     width:100%; height: 100%;
     background-size: cover;
 }

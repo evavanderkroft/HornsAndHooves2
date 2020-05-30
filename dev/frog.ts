@@ -14,7 +14,8 @@ class Frog {
     }
 
     public updateFrog() {
-        this.frog.style.transform = `translate(500px, 10px) scale(0.3)`;
+
+        this.frog.style.transform = `translate(500px, 0px) scale(0.3)`;
 
 
     }
