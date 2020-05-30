@@ -18,7 +18,12 @@ class Leftarrows {
     private _scale: number = 0
     public get scale() : number {return this._scale}
 
-    constructor() {
+    constructor(_x_1:number, _x_2:number, _x_3:number, _x_4:number) {
+        console.log("de nummers zijn", _x_1, _x_2, _x_3, _x_4)
+        this._x_1 = _x_1
+        this._x_2 = _x_2
+        this._x_3 = _x_3
+        this._x_4 = _x_4
         this._scale = 0.7
         this.game = document.getElementsByTagName("game")[0] as HTMLElement
         this.createleftarrow_1()
@@ -34,8 +39,7 @@ class Leftarrows {
         this.leftarrow_1 = document.createElement("leftarrow_1")
         this.game.appendChild(this.leftarrow_1)
 
-        this._x_1 = Math.floor(Math.random() * 6)
-        console.log(this._x_1)
+        
         if (this._x_1==0){
             this.leftarrow_1.classList.add("leftup")
         }
@@ -68,8 +72,6 @@ class Leftarrows {
         this.leftarrow_2 = document.createElement("leftarrow_2")
         this.game.appendChild(this.leftarrow_2)
 
-        this._x_2 = Math.floor(Math.random() * 6)
-        console.log(this._x_2)
         if (this._x_2==0){
             this.leftarrow_2.classList.add("leftup")
         }
@@ -101,8 +103,6 @@ class Leftarrows {
         this.leftarrow_3 = document.createElement("leftarrow_3")
         this.game.appendChild(this.leftarrow_3)
 
-        this._x_3 = Math.floor(Math.random() * 6)
-        console.log(this._x_3)
         if (this._x_3==0){
             this.leftarrow_3.classList.add("leftup")
         }
@@ -134,8 +134,6 @@ class Leftarrows {
         this.leftarrow_4 = document.createElement("leftarrow_4")
         this.game.appendChild(this.leftarrow_4)
 
-        this._x_4 = Math.floor(Math.random() * 6)
-        console.log(this._x_4)
         if (this._x_4==0){
             this.leftarrow_4.classList.add("leftup")
         }

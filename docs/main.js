@@ -28,10 +28,14 @@ class Frog {
 class Game {
     constructor() {
         console.log("Game was created!");
+        let first = Math.floor(Math.random() * 6);
+        let second = Math.floor(Math.random() * 6);
+        let third = Math.floor(Math.random() * 6);
+        let fourth = Math.floor(Math.random() * 6);
+        this.leftarrows = new Leftarrows(first, second, third, fourth);
+        this.rightarrows = new Rightarrows(first, second, third, fourth);
         this.unicorn = new Unicorn(0, 68, 65);
         this.unicorn2 = new Unicorn(2, 37, 39);
-        new Leftarrows();
-        new Rightarrows();
         this.frog = new Frog();
         this.gameloop();
     }
@@ -44,12 +48,17 @@ class Game {
 }
 window.addEventListener("load", () => new Game());
 class Leftarrows {
-    constructor() {
+    constructor(_x_1, _x_2, _x_3, _x_4) {
         this._x_1 = 0;
         this._x_2 = 0;
         this._x_3 = 0;
         this._x_4 = 0;
         this._scale = 0;
+        console.log("de nummers zijn", _x_1, _x_2, _x_3, _x_4);
+        this._x_1 = _x_1;
+        this._x_2 = _x_2;
+        this._x_3 = _x_3;
+        this._x_4 = _x_4;
         this._scale = 0.7;
         this.game = document.getElementsByTagName("game")[0];
         this.createleftarrow_1();
@@ -66,8 +75,6 @@ class Leftarrows {
     createleftarrow_1() {
         this.leftarrow_1 = document.createElement("leftarrow_1");
         this.game.appendChild(this.leftarrow_1);
-        this._x_1 = Math.floor(Math.random() * 6);
-        console.log(this._x_1);
         if (this._x_1 == 0) {
             this.leftarrow_1.classList.add("leftup");
         }
@@ -93,8 +100,6 @@ class Leftarrows {
     createleftarrow_2() {
         this.leftarrow_2 = document.createElement("leftarrow_2");
         this.game.appendChild(this.leftarrow_2);
-        this._x_2 = Math.floor(Math.random() * 6);
-        console.log(this._x_2);
         if (this._x_2 == 0) {
             this.leftarrow_2.classList.add("leftup");
         }
@@ -120,8 +125,6 @@ class Leftarrows {
     createleftarrow_3() {
         this.leftarrow_3 = document.createElement("leftarrow_3");
         this.game.appendChild(this.leftarrow_3);
-        this._x_3 = Math.floor(Math.random() * 6);
-        console.log(this._x_3);
         if (this._x_3 == 0) {
             this.leftarrow_3.classList.add("leftup");
         }
@@ -147,8 +150,6 @@ class Leftarrows {
     createleftarrow_4() {
         this.leftarrow_4 = document.createElement("leftarrow_4");
         this.game.appendChild(this.leftarrow_4);
-        this._x_4 = Math.floor(Math.random() * 6);
-        console.log(this._x_4);
         if (this._x_4 == 0) {
             this.leftarrow_4.classList.add("leftup");
         }
@@ -327,12 +328,17 @@ class Leftarrows {
     }
 }
 class Rightarrows {
-    constructor() {
+    constructor(_x_1, _x_2, _x_3, _x_4) {
         this._x_1 = 0;
         this._x_2 = 0;
         this._x_3 = 0;
         this._x_4 = 0;
         this._scale = 0;
+        console.log("de nummers zijn", _x_1, _x_2, _x_3, _x_4);
+        this._x_1 = _x_1;
+        this._x_2 = _x_2;
+        this._x_3 = _x_3;
+        this._x_4 = _x_4;
         this._scale = 0.7;
         this.game = document.getElementsByTagName("game")[0];
         this.createrightarrow_1();
@@ -349,8 +355,6 @@ class Rightarrows {
     createrightarrow_1() {
         this.rightarrow_1 = document.createElement("rightarrow_1");
         this.game.appendChild(this.rightarrow_1);
-        this._x_1 = Math.floor(Math.random() * 6);
-        console.log(this._x_1);
         if (this._x_1 == 0) {
             this.rightarrow_1.classList.add("leftup");
         }
@@ -376,8 +380,6 @@ class Rightarrows {
     createrightarrow_2() {
         this.rightarrow_2 = document.createElement("rightarrow_2");
         this.game.appendChild(this.rightarrow_2);
-        this._x_2 = Math.floor(Math.random() * 6);
-        console.log(this._x_2);
         if (this._x_2 == 0) {
             this.rightarrow_2.classList.add("leftup");
         }
@@ -403,8 +405,6 @@ class Rightarrows {
     createrightarrow_3() {
         this.rightarrow_3 = document.createElement("rightarrow_3");
         this.game.appendChild(this.rightarrow_3);
-        this._x_3 = Math.floor(Math.random() * 6);
-        console.log(this._x_3);
         if (this._x_3 == 0) {
             this.rightarrow_3.classList.add("leftup");
         }
@@ -430,8 +430,6 @@ class Rightarrows {
     createrightarrow_4() {
         this.rightarrow_4 = document.createElement("rightarrow_4");
         this.game.appendChild(this.rightarrow_4);
-        this._x_4 = Math.floor(Math.random() * 6);
-        console.log(this._x_4);
         if (this._x_4 == 0) {
             this.rightarrow_4.classList.add("leftup");
         }
