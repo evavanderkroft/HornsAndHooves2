@@ -94,7 +94,7 @@ class Unicorn {
             x = window.innerWidth - this.unicorn.clientWidth;
         }
         this.x = x;
-        this.y = 400;
+        this.y = 500;
         window.addEventListener("keydown", (e) => this.moveUnicorn(e));
     }
     moveUnicorn(e) {
