@@ -32,8 +32,8 @@ class Game {
         let second = Math.floor(Math.random() * 6);
         let third = Math.floor(Math.random() * 6);
         let fourth = Math.floor(Math.random() * 6);
-        this.leftarrows = new Leftarrows(first, second, third, fourth);
-        this.rightarrows = new Rightarrows(first, second, third, fourth);
+        new Leftarrows(first, second, third, fourth);
+        new Rightarrows(first, second, third, fourth);
         this.unicorn = new Unicorn(0, 68, 65);
         this.unicorn2 = new Unicorn(2, 37, 39);
         this.frog = new Frog();
@@ -454,37 +454,37 @@ class Rightarrows {
     }
     keypressright_1(event) {
         switch (event.keyCode) {
-            case 100:
+            case 74:
                 if (this._x_1 == 0) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
                 }
                 break;
-            case 101:
+            case 75:
                 if (this._x_1 == 1) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
                 }
                 break;
-            case 102:
+            case 76:
                 if (this._x_1 == 2) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
                 }
                 break;
-            case 97:
+            case 78:
                 if (this._x_1 == 3) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
                 }
                 break;
-            case 98:
+            case 77:
                 if (this._x_1 == 4) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
                 }
                 break;
-            case 99:
+            case 188:
                 if (this._x_1 == 5) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
@@ -494,37 +494,37 @@ class Rightarrows {
     }
     keypressright_2(event) {
         switch (event.keyCode) {
-            case 100:
+            case 74:
                 if (this._x_2 == 0) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
                 }
                 break;
-            case 101:
+            case 75:
                 if (this._x_2 == 1) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
                 }
                 break;
-            case 102:
+            case 76:
                 if (this._x_2 == 2) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
                 }
                 break;
-            case 97:
+            case 78:
                 if (this._x_2 == 3) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
                 }
                 break;
-            case 98:
+            case 77:
                 if (this._x_2 == 4) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
                 }
                 break;
-            case 99:
+            case 188:
                 if (this._x_2 == 5) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
@@ -534,37 +534,37 @@ class Rightarrows {
     }
     keypressright_3(event) {
         switch (event.keyCode) {
-            case 100:
+            case 74:
                 if (this._x_3 == 0) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
                 }
                 break;
-            case 101:
+            case 75:
                 if (this._x_3 == 1) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
                 }
                 break;
-            case 102:
+            case 76:
                 if (this._x_3 == 2) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
                 }
                 break;
-            case 97:
+            case 78:
                 if (this._x_3 == 3) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
                 }
                 break;
-            case 98:
+            case 77:
                 if (this._x_3 == 4) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
                 }
                 break;
-            case 99:
+            case 188:
                 if (this._x_3 == 5) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
@@ -574,32 +574,32 @@ class Rightarrows {
     }
     keypressright_4(event) {
         switch (event.keyCode) {
-            case 100:
+            case 74:
                 if (this._x_4 == 0) {
                     this.rightarrow_4.remove();
                 }
                 break;
-            case 101:
+            case 75:
                 if (this._x_4 == 1) {
                     this.rightarrow_4.remove();
                 }
                 break;
-            case 102:
+            case 76:
                 if (this._x_4 == 2) {
                     this.rightarrow_4.remove();
                 }
                 break;
-            case 97:
+            case 78:
                 if (this._x_4 == 3) {
                     this.rightarrow_4.remove();
                 }
                 break;
-            case 98:
+            case 77:
                 if (this._x_4 == 4) {
                     this.rightarrow_4.remove();
                 }
                 break;
-            case 99:
+            case 188:
                 if (this._x_4 == 5) {
                     this.rightarrow_4.remove();
                 }
