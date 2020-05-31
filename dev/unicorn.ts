@@ -21,7 +21,7 @@ class Unicorn {
 
         if(x != 0) {x = window.innerWidth-this.unicorn.clientWidth}
         this.x = x
-        this.y = 400
+        this.y = 500
         window.addEventListener("keydown", (e: KeyboardEvent) => this.moveUnicorn(e))
     }
    
@@ -64,7 +64,16 @@ class Unicorn {
     running(){
         this.unicorn.classList.remove("run")
     }
-
+    public getRectangle() {
+        return this.unicorn.getBoundingClientRect()
+    }
+    public bounceX(){
+        this.rightSpeed =-1
+        this.running()
+        setTimeout(() => {
+            this.rightSpeed = 0
+        }, 300);
+    }
 }
 
 

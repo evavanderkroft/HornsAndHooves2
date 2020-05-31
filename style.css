@@ -43,8 +43,61 @@ frog {
     background-image: url(../img/green.gif);
 }
 
-background {
+.gamebg {
     background-image: url(../img/RainbowForest.jpg);
     width:100%; height: 100%;
     background-size: cover;
+}
+
+score {
+    margin:15px;
+    color: blue;
+    font-size: 50px;
+}
+score:nth-of-type(2) {
+    right: 15px;
+    color: blue;
+    font-size: 50px;
+}
+.tutorial {
+    background-image: url(../img/SkyClouds.jpg);
+    width:100%; height: 100%;
+    background-size: cover;
+}
+.tutbut{
+    display: flex;
+    justify-content: center;
+}
+.tuttext{
+    display: flex;
+    justify-content: center;
+    font-size:  7em;
+    color: white;
+    -webkit-text-stroke: plum 7px;
+    text-shadow: 10px 10px black;
+    text-align: center;
+    
+
+    
+}
+.tutbutfrog{
+    margin-top: 300px;
+}
+.linkje{
+    
+    font-size: 5em;
+    color:plum;
+    text-shadow: 7px 5px lightblue;
+    height: 200px;
+    width: 500px;
+    background: rgb(244,208,243);
+    background: -moz-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: -webkit-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f4d0f3",endColorstr="#d4ebed",GradientType=1);
+    border-color: white;
+    border-radius: 20px;
+    border-width: 10px;
+    border-style: outset;
+    text-align: center;
 }
