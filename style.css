@@ -43,6 +43,35 @@ frog {
     background-image: url(../img/green.gif);
 }
 
+.leftup{
+    background-image: url(../img/left_up.png);
+    width:180px; height: 180px;
+}
+.up{
+    background-image: url(../img/up.png);
+    width:180px; height: 180px;
+
+}
+.rightup{
+    background-image: url(../img/right_up.png);
+    width:180px; height: 180px;
+
+}
+.leftdown{
+    background-image: url(../img/left_down.png);
+    width:180px; height: 180px;
+
+}
+.down{
+    background-image: url(../img/down.png);
+    width:180px; height: 180px;
+
+}
+.rightdown{
+    background-image: url(../img/right_down.png);
+    width:180px; height: 180px;
+}
+
 .gamebg {
     background-image: url(../img/RainbowForest.jpg);
     width:100%; height: 100%;
