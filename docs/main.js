@@ -30,15 +30,12 @@ class Game {
         this.score = 10;
         this.score2 = 10;
         console.log("Game was created!");
-<<<<<<< HEAD
-=======
         let first = Math.floor(Math.random() * 6);
         let second = Math.floor(Math.random() * 6);
         let third = Math.floor(Math.random() * 6);
         let fourth = Math.floor(Math.random() * 6);
         new Leftarrows(first, second, third, fourth);
         new Rightarrows(first, second, third, fourth);
->>>>>>> Jasper
         this.unicorn = new Unicorn(0, 68, 65);
         this.unicorn2 = new Unicorn(2, 37, 39);
         this.frog = new Frog();
@@ -663,11 +660,7 @@ class Unicorn {
             x = window.innerWidth - this.unicorn.clientWidth;
         }
         this.x = x;
-<<<<<<< HEAD
         this.y = 500;
-=======
-        this.y = 400;
->>>>>>> Jasper
         window.addEventListener("keydown", (e) => this.moveUnicorn(e));
     }
     moveUnicorn(e) {
@@ -702,7 +695,6 @@ class Unicorn {
     }
     running() {
         this.unicorn.classList.remove("run");
-<<<<<<< HEAD
     }
     getRectangle() {
         return this.unicorn.getBoundingClientRect();
@@ -713,8 +705,6 @@ class Unicorn {
         setTimeout(() => {
             this.rightSpeed = 0;
         }, 300);
-=======
->>>>>>> Jasper
     }
 }
 //# sourceMappingURL=main.js.map
