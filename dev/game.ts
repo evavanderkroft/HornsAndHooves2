@@ -1,6 +1,4 @@
 class Game {
-    private rightarrows: Rightarrows
-    private leftarrows: Leftarrows
 
     private unicorn: Unicorn
     private unicorn2: Unicorn
@@ -13,8 +11,8 @@ class Game {
         let second = Math.floor(Math.random() * 6)
         let third = Math.floor(Math.random() * 6)
         let fourth = Math.floor(Math.random() * 6)
-        this.leftarrows = new Leftarrows(first, second, third, fourth)
-        this.rightarrows = new Rightarrows(first, second, third, fourth)
+        new Leftarrows(first, second, third, fourth)
+        new Rightarrows(first, second, third, fourth)
 
         this.unicorn = new Unicorn(0,68,65)
         this.unicorn2 = new Unicorn(2,37,39)
