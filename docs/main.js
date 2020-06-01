@@ -34,8 +34,8 @@ class Game {
         let second = Math.floor(Math.random() * 6);
         let third = Math.floor(Math.random() * 6);
         let fourth = Math.floor(Math.random() * 6);
-        new Leftarrows(first, second, third, fourth);
-        new Rightarrows(first, second, third, fourth);
+        this.leftArrows = new Leftarrows(first, second, third, fourth);
+        this.rightArrows = new Rightarrows(first, second, third, fourth);
         this.unicorn = new Unicorn(0, 68, 65);
         this.unicorn2 = new Unicorn(2, 37, 39);
         this.frog = new Frog();
@@ -65,6 +65,20 @@ class Game {
             this.score2 = 10;
             console.log("player 1 won!");
         }
+        if ((this.leftArrows._win == 1) || (this.rightArrows._win == 1)) {
+            if (this.leftArrows._win == 1) {
+                this.leftArrows._win = 0;
+                this.unicorn._win = 1;
+                console.log("winLeft");
+                this.rightArrows.delete();
+            }
+            if (this.rightArrows._win == 1) {
+                this.rightArrows._win = 0;
+                this.unicorn2._win2 = 1;
+                console.log("winRight");
+                this.leftArrows.delete();
+            }
+        }
         requestAnimationFrame(() => this.gameloop());
     }
     checkCollision(a, b) {
@@ -89,6 +103,7 @@ class Game {
 window.addEventListener("load", () => new Game());
 class Leftarrows {
     constructor(_x_1, _x_2, _x_3, _x_4) {
+        this.win = 0;
         this._x_1 = 0;
         this._x_2 = 0;
         this._x_3 = 0;
@@ -107,6 +122,8 @@ class Leftarrows {
         this.createleftarrow_4();
         window.addEventListener("keydown", (e) => this.keypressleft_1(e));
     }
+    get _win() { return this.win; }
+    set _win(A) { this.win = A; }
     get x_1() { return this._x_1; }
     get x_2() { return this._x_2; }
     get x_3() { return this._x_3; }
@@ -337,38 +354,51 @@ class Leftarrows {
             case 82:
                 if (this._x_4 == 0) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 84:
                 if (this._x_4 == 1) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 89:
                 if (this._x_4 == 2) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 70:
                 if (this._x_4 == 3) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 71:
                 if (this._x_4 == 4) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 72:
                 if (this._x_4 == 5) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
         }
     }
+    delete() {
+        this.leftarrow_1.remove();
+        this.leftarrow_2.remove();
+        this.leftarrow_3.remove();
+        this.leftarrow_4.remove();
+    }
 }
 class Rightarrows {
     constructor(_x_1, _x_2, _x_3, _x_4) {
+        this.win = 0;
         this._x_1 = 0;
         this._x_2 = 0;
         this._x_3 = 0;
@@ -387,6 +417,8 @@ class Rightarrows {
         this.createrightarrow_4();
         window.addEventListener("keydown", (e) => this.keypressright_1(e));
     }
+    get _win() { return this.win; }
+    set _win(A) { this.win = A; }
     get x_1() { return this._x_1; }
     get x_2() { return this._x_2; }
     get x_3() { return this._x_3; }
@@ -617,40 +649,55 @@ class Rightarrows {
             case 74:
                 if (this._x_4 == 0) {
                     this.rightarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 75:
                 if (this._x_4 == 1) {
                     this.rightarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 76:
                 if (this._x_4 == 2) {
                     this.rightarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 78:
                 if (this._x_4 == 3) {
                     this.rightarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 77:
                 if (this._x_4 == 4) {
                     this.rightarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 188:
                 if (this._x_4 == 5) {
                     this.rightarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
         }
     }
+    delete() {
+        this.rightarrow_1.remove();
+        this.rightarrow_2.remove();
+        this.rightarrow_3.remove();
+        this.rightarrow_4.remove();
+    }
 }
 class Unicorn {
     constructor(x, rightKey, leftKey) {
+        this.x = 0;
         this.rightSpeed = 0;
         this.leftSpeed = 0;
+        this.win = 0;
+        this.win2 = 0;
         this.unicorn = document.createElement("unicorn");
         let game = document.getElementsByTagName("game")[0];
         game.appendChild(this.unicorn);
@@ -663,6 +710,10 @@ class Unicorn {
         this.y = 500;
         window.addEventListener("keydown", (e) => this.moveUnicorn(e));
     }
+    get _win() { return this.win; }
+    set _win(A) { this.win = A; }
+    get _win2() { return this.win2; }
+    set _win2(A) { this.win2 = A; }
     moveUnicorn(e) {
         console.log(e.keyCode);
         switch (e.keyCode) {
@@ -671,7 +722,6 @@ class Unicorn {
                 this.rightSpeed = 5;
                 setTimeout(() => {
                     this.rightSpeed = 0;
-                    this.running();
                 }, 1000);
                 break;
             case this.leftkey:
@@ -679,29 +729,48 @@ class Unicorn {
                 this.leftSpeed = 5;
                 setTimeout(() => {
                     this.leftSpeed = 0;
-                    this.running();
                 }, 1000);
         }
     }
+    moveUnicorns() {
+    }
     update() {
-        this.x += this.rightSpeed;
-        this.x -= this.leftSpeed;
+        if ((this.x < 800) && (this.win == 1)) {
+            console.log("hij doet het update 1");
+            this.unicorn.classList.add("run");
+            this.x += 2;
+            if (this.x > 400) {
+                console.log("hij werkt nu wel");
+                this.unicorn.classList.remove("run");
+                this.win = 0;
+            }
+        }
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
     update2() {
-        this.x -= this.rightSpeed;
-        this.x += this.leftSpeed;
+        if ((this.x > 800) && (this.win2 == 1)) {
+            console.log("hij doet het update 2");
+            this.unicorn.classList.add("run");
+            this.x -= 2;
+            if (this.x < 800) {
+                this.win2 = 0;
+                this.unicorn.classList.remove("run");
+                setTimeout(() => {
+                    this.x += 2;
+                }, 1000);
+                if (this.x == window.innerWidth - this.unicorn.clientWidth) {
+                    this.x = 0;
+                }
+            }
+        }
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`;
-    }
-    running() {
-        this.unicorn.classList.remove("run");
     }
     getRectangle() {
         return this.unicorn.getBoundingClientRect();
     }
     bounceX() {
         this.rightSpeed = -1;
-        this.running();
+        this.unicorn.classList.remove("run");
         setTimeout(() => {
             this.rightSpeed = 0;
         }, 300);
