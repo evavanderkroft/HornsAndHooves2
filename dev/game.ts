@@ -7,7 +7,9 @@ class Game {
     private score2 : number = 10
 
 
-    constructor() {
+    constructor(player1:string, player2: string) {
+        console.log(player1,player2)
+
         console.log("Game was created!")
         let first =  Math.floor(Math.random() * 6)
         let second = Math.floor(Math.random() * 6)
@@ -76,5 +78,4 @@ class Game {
         }
 
 }
-
-window.addEventListener("load", () => new Game())
+window.addEventListener("load", () => new Game("white", "black"))

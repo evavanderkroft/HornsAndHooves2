@@ -14,7 +14,6 @@ game * {
     background-repeat: no-repeat;
 }
 
-
 unicorn {
     background-image: url(../img/horsewhite.png);
     width:500px; height: 500px;
@@ -129,4 +128,90 @@ score:nth-of-type(2) {
     border-width: 10px;
     border-style: outset;
     text-align: center;
+}
+
+/* -----character select ----------------------------------------------------------*/
+selectcharacter *{
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+background{
+    background-image: url(../img/background_select.jpg);
+    width:100%; height: 100%;
+    background-size: cover;
+}
+
+profile{
+    border: 8px solid black;
+    border-radius: 5px;
+    
+}
+profile:hover {
+    box-shadow: 0 0 10px black;
+}
+.pblack{
+    background-image: url(../img/profile_black.png);
+    background-size: cover;
+    left: 6.4%;
+    bottom: 15%;
+
+}
+.pgreen{
+    background-image: url(../img/profile_green.png);
+    background-size:cover;
+    left: 29.8%;
+    bottom: 10%;
+
+}
+.ppink{
+    background-image: url(../img/profile_pink.png);
+    background-size: cover;
+    left: 53.2%;
+    bottom: 10%;
+
+}
+.pwhite{
+    background-image: url(../img/profile_white.png);
+    background-size: cover;
+    left: 76.6%;
+    bottom: 15%;
+
+}
+.chosen{
+    filter: grayscale(1);
+}
+character_1{
+    bottom: 50%;
+    left: 10%;
+    height: 450px; width: 450px;
+}
+character_2{
+    bottom: 50%;
+    right: 10%;
+    transform: scalex(-1);
+    height: 450px; width: 450px;
+}
+plateau{
+    height: 100px; width: 500px;
+    background-color: #555;
+    border-radius: 50%;
+}
+.cblack{
+    background-image: url(../img/horseblack.png);
+    background-size: contain;
+}
+.cgreen{
+    background-image: url(../img/horsegreen.png);
+    background-size: contain;
+
+}
+.cpink{
+    background-image: url(../img/horsepink.png);
+    background-size: contain;
+}
+.cwhite{
+    background-image: url(../img/horsewhite.png);
+    background-size: contain;
 }
