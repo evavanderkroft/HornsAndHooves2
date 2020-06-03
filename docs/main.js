@@ -701,6 +701,8 @@ class Selectcharacter {
                 this._check = true;
                 this.character_2.classList.add(`c${colour}`);
                 horses.push(colour);
+                arguments;
+                MediaStreamTrackAudioSourceNode;
             }
         }
         if (this._check == false) {
