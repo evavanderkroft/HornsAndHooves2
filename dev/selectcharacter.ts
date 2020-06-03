@@ -1,6 +1,6 @@
 class Selectcharacter{
     
-    private selectcharacter!:HTMLElement
+    // private selectcharacter!:HTMLElement
 
     private character_1!: HTMLElement
     private character_2!: HTMLElement
@@ -34,7 +34,7 @@ class Selectcharacter{
         let selectcharacter = document.getElementsByTagName("selectcharacter")[0]
         selectcharacter.appendChild(this.profile)
 
-        this.profile.addEventListener("click", () => this.onProfileClick(colour))
+        this.profile.addEventListener("click", (e: Event) => this.onProfileClick(e, colour))
         this.profile.classList.add(`p${colour}`)
         let x= (window.innerWidth* 0.17)
         this.profile.style.height= `${x}px`
@@ -61,14 +61,15 @@ class Selectcharacter{
 
     }
 
-    public onProfileClick(colour: string){
+    public onProfileClick(e: Event, colour: string){
         let horses = []
+        console.log(e.srcElement);
+        (e.target as HTMLElement).style.filter= `grayscale(1)`;
         if (this._check== true){
             if(this._chosen != colour){
                 this._check= true
                 this.character_2.classList.add(`c${colour}`)
                 horses.push(colour)
-                new Game(horses[0],horses[1])
                 
             }
         }

@@ -87,7 +87,6 @@ class Game {
         }
     }
 }
-window.addEventListener("load", () => new Game("white", "black"));
 class Leftarrows {
     constructor(_x_1, _x_2, _x_3, _x_4) {
         this._x_1 = 0;
@@ -671,7 +670,7 @@ class Selectcharacter {
         this.profile = document.createElement("profile");
         let selectcharacter = document.getElementsByTagName("selectcharacter")[0];
         selectcharacter.appendChild(this.profile);
-        this.profile.addEventListener("click", () => this.onProfileClick(colour));
+        this.profile.addEventListener("click", (e) => this.onProfileClick(e, colour));
         this.profile.classList.add(`p${colour}`);
         let x = (window.innerWidth * 0.17);
         this.profile.style.height = `${x}px`;
@@ -693,14 +692,15 @@ class Selectcharacter {
         let selectcharacter = document.getElementsByTagName("selectcharacter")[0];
         selectcharacter.appendChild(this.character_2);
     }
-    onProfileClick(colour) {
+    onProfileClick(e, colour) {
         let horses = [];
+        console.log(e.srcElement);
+        e.target.style.filter = `grayscale(1)`;
         if (this._check == true) {
             if (this._chosen != colour) {
                 this._check = true;
                 this.character_2.classList.add(`c${colour}`);
                 horses.push(colour);
-                new Game(horses[0], horses[1]);
             }
         }
         if (this._check == false) {

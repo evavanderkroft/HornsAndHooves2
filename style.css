@@ -151,6 +151,7 @@ profile{
 profile:hover {
     box-shadow: 0 0 10px black;
 }
+
 .pblack{
     background-image: url(../img/profile_black.png);
     background-size: cover;

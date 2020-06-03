@@ -78,4 +78,4 @@ class Game {
         }
 
 }
-window.addEventListener("load", () => new Game("white", "black"))
+// window.addEventListener("load", () => new Game("white", "black"))
