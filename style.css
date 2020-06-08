@@ -129,6 +129,16 @@ score:nth-of-type(2) {
     border-style: outset;
     text-align: center;
 }
+fightknop {
+    height: 50px;
+    width: 150px;
+    border-color: white;
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: outset;
+    background-image: url(../img/knop2.png);
+    background-size: 100% 100%;
+}
 
 /* -----character select ----------------------------------------------------------*/
 selectcharacter *{
@@ -157,7 +167,6 @@ profile:hover {
     background-size: cover;
     left: 6.4%;
     bottom: 15%;
-
 }
 .pgreen{
     background-image: url(../img/profile_green.png);
@@ -215,4 +224,32 @@ plateau{
 .cwhite{
     background-image: url(../img/horsewhite.png);
     background-size: contain;
+}
+
+/* -----story ----------------------------------------------------------*/
+
+story *{
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+storybg{
+    width:100%; height: 100%;
+}
+.bg1{
+    background-image: url(../img/bg1.jpg);
+    background-size: 100% 100%;
+}
+.bg2{
+    background-image: url(../img/bg2.jpg);
+    background-size: 100% 100%;
+}
+.bg3{
+    background-image: url(../img/bg3.jpg);
+    background-size: 100% 100%;
+}
+.bg4{
+    background-image: url(../img/bg4.jpg);
+    background-size: 100% 100%;
 }

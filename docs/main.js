@@ -692,6 +692,15 @@ class Selectcharacter {
         let selectcharacter = document.getElementsByTagName("selectcharacter")[0];
         selectcharacter.appendChild(this.character_2);
     }
+    createknop() {
+        this.knop = document.createElement("fightknop");
+        let selectcharacter = document.getElementsByTagName(`selectcharacter`)[0];
+        selectcharacter.appendChild(this.knop);
+        this.knop.addEventListener("click", (e) => this.onknopClick(e));
+        let x = ((window.innerWidth / 2) - (this.knop.clientWidth / 2));
+        let y = ((window.innerHeight * 0.3));
+        this.knop.style.transform = `translate(${x}px, ${y}px) scale(1.5)`;
+    }
     onProfileClick(e, colour) {
         let horses = [];
         console.log(e.srcElement);
@@ -701,8 +710,7 @@ class Selectcharacter {
                 this._check = true;
                 this.character_2.classList.add(`c${colour}`);
                 horses.push(colour);
-                arguments;
-                MediaStreamTrackAudioSourceNode;
+                this.createknop();
             }
         }
         if (this._check == false) {
@@ -713,8 +721,58 @@ class Selectcharacter {
         this._chosen = colour;
         console.log(this._chosen);
     }
+    onknopClick(e) {
+        e.target.style.filter = `grayscale(1)`;
+    }
 }
 window.addEventListener("load", () => new Selectcharacter());
+class Story {
+    constructor(player_1, player_2) {
+        this.createbackground(player_1, player_2);
+        this.createstoryknop();
+    }
+    createbackground(player_1, player_2) {
+        this.storybg = document.createElement("storybg");
+        let story = document.getElementsByTagName(`story`)[0];
+        story.appendChild(this.storybg);
+        if (player_1 == "zwart" && player_2 == "wit" || player_1 == "wit" && player_2 == "zwart") {
+            this.storybg.classList.add(`bg1`);
+            console.log(`hallo`);
+        }
+        else if (player_1 == "zwart" && player_2 == "groen" || player_1 == "groen" && player_2 == "zwart") {
+            this.storybg.classList.add(`bg2`);
+            console.log(`hallo`);
+        }
+        else if (player_1 == "groen" && player_2 == "roze" || player_1 == "roze" && player_2 == "groen") {
+            this.storybg.classList.add(`bg3`);
+            console.log(`hallo`);
+        }
+        else if (player_1 == "groen" && player_2 == "wit" || player_1 == "wit" && player_2 == "groen") {
+            this.storybg.classList.add(`bg2`);
+            console.log(`hallo`);
+        }
+        else if (player_1 == "zwart" && player_2 == "roze" || player_1 == "roze" && player_2 == "zwart") {
+            this.storybg.classList.add(`bg4`);
+            console.log(`hallo`);
+        }
+        else if (player_1 == "wit" && player_2 == "roze" || player_1 == "roze" && player_2 == "wit") {
+            this.storybg.classList.add(`bg4`);
+            console.log(`hallo`);
+        }
+    }
+    createstoryknop() {
+        this.storyknop = document.createElement("fightknop");
+        let story = document.getElementsByTagName(`story`)[0];
+        story.appendChild(this.storyknop);
+        this.storyknop.addEventListener("click", (e) => this.onstoryknopClick(e));
+        let x = ((window.innerWidth / 2) - (this.storyknop.clientWidth / 2));
+        let y = ((window.innerHeight * 0.85));
+        this.storyknop.style.transform = `translate(${x}px, ${y}px)`;
+    }
+    onstoryknopClick(e) {
+        e.target.style.filter = `grayscale(1)`;
+    }
+}
 class Unicorn {
     constructor(x, rightKey, leftKey) {
         this.rightSpeed = 0;

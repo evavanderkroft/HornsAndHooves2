@@ -6,6 +6,7 @@ class Selectcharacter{
     private character_2!: HTMLElement
     private plateau!: HTMLElement
     private profile!: HTMLElement
+    private knop!: HTMLElement
     private _check: boolean = false
     public get check() : boolean {return this._check}
 
@@ -60,6 +61,18 @@ class Selectcharacter{
         selectcharacter.appendChild(this.character_2)
 
     }
+    createknop(){
+        this.knop= document.createElement("fightknop")
+        let selectcharacter= document.getElementsByTagName(`selectcharacter`)[0]
+        selectcharacter.appendChild(this.knop)
+
+        this.knop.addEventListener("click", (e:Event)=>this.onknopClick(e))
+
+        let x = ((window.innerWidth /2)- (this.knop.clientWidth /2))
+        let y = ((window.innerHeight * 0.3))
+    
+        this.knop.style.transform = `translate(${x}px, ${y}px) scale(1.5)`
+    }
 
     public onProfileClick(e: Event, colour: string){
         let horses = []
@@ -70,6 +83,7 @@ class Selectcharacter{
                 this._check= true
                 this.character_2.classList.add(`c${colour}`)
                 horses.push(colour)
+                this.createknop()
                 
             }
         }
@@ -83,6 +97,10 @@ class Selectcharacter{
 
 
     }
+    public onknopClick(e:Event){
+        (e.target as HTMLElement).style.filter= `grayscale(1)`;
+    }
+
 
 }
 window.addEventListener("load", () => new Selectcharacter())
