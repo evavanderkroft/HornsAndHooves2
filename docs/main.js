@@ -696,6 +696,7 @@ class Unicorn {
         this.x = 0;
         this.rightSpeed = 0;
         this.leftSpeed = 0;
+        this.toRight = true;
         this.win = 0;
         this.win2 = 0;
         this.unicorn = document.createElement("unicorn");
@@ -748,7 +749,7 @@ class Unicorn {
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
     update2() {
-        if ((this.x > 800) && (this.win2 == 1)) {
+        if ((this.x >= 800) && (this.win2 == 1)) {
             console.log("hij doet het update 2");
             this.unicorn.classList.add("run");
             this.x -= 2;

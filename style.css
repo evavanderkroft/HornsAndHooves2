@@ -20,7 +20,8 @@ unicorn {
     width:500px; height: 500px;
     background-size:contain;
 }
-.player2 {
+/* .player2  */
+unicorn2{
     background-image: url(../img/horsegreen.png);
     width:500px; height: 500px;
     background-size:contain;

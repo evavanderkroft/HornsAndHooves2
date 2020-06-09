@@ -9,6 +9,8 @@ class Unicorn {
     rightSpeed: number = 0
     leftSpeed: number = 0
 
+    toRight: boolean = true
+
     private win: number = 0
     public get _win(): number { return this.win }
     public set _win(A: number) { this.win = A }
@@ -62,7 +64,7 @@ class Unicorn {
 
     public update() {
 
-        // this.x += this.rightSpeed
+
 
 
         if ((this.x < 800) && (this.win == 1)) {
@@ -83,17 +85,16 @@ class Unicorn {
     }
     public update2() {
 
-        // this.x -= this.rightSpeed
+
         // this.x += this.leftSpeed
 
-        if ((this.x > 800) && (this.win2 == 1)) {
+        if ((this.x >= 800) && (this.win2 == 1)) {
             console.log("hij doet het update 2")
             this.unicorn.classList.add("run")
             this.x -= 2
+            // this.Bounceright()
 
             if (this.x < 800) {
-
-
                 this.win2 = 0
                 this.unicorn.classList.remove("run")
 
@@ -109,7 +110,9 @@ class Unicorn {
             }
 
         }
-
+        //     private Bounceright() {
+        //     this.toRight = false;
+        // }
 
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`
     }
