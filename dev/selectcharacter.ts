@@ -1,3 +1,4 @@
+/// <reference path="control.ts"/>
 class Selectcharacter{
     
     // private selectcharacter!:HTMLElement
@@ -103,4 +104,3 @@ class Selectcharacter{
 
 
 }
-window.addEventListener("load", () => new Selectcharacter())

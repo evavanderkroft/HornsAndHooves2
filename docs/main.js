@@ -1,4 +1,18 @@
 "use strict";
+class Control {
+    constructor() {
+        this.player1 = "";
+        this.player2 = "";
+        new Game(this.player1, this.player2);
+    }
+    startStory(character1, character2) {
+        this.player1 = character1;
+        this.player2 = character2;
+    }
+    startGame() {
+    }
+}
+window.addEventListener("load", () => new Control());
 class Frog {
     constructor() {
         this.frog = document.createElement("frog");
@@ -725,7 +739,6 @@ class Selectcharacter {
         e.target.style.filter = `grayscale(1)`;
     }
 }
-window.addEventListener("load", () => new Selectcharacter());
 class Story {
     constructor(player_1, player_2) {
         this.createbackground(player_1, player_2);
