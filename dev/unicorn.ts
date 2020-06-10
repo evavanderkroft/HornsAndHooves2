@@ -21,7 +21,7 @@ class Unicorn {
 
         if(x != 0) {x = window.innerWidth-this.unicorn.clientWidth}
         this.x = x
-        this.y = 500
+        this.y = 320
         window.addEventListener("keydown", (e: KeyboardEvent) => this.moveUnicorn(e))
     }
    

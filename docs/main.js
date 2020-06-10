@@ -9,20 +9,23 @@ class Frog {
         game.appendChild(this.frog);
     }
     updateFrog() {
-        this.frog.style.transform = `translate(500px, 0px) scale(0.3)`;
+        let x = ((window.innerWidth * 0.5) - (this.frog.clientWidth / 2));
+        let y = (window.innerHeight - 915);
+        this.frog.style.transform = `translate(${x}px, ${y}px) scale(0.3)`;
     }
     onFrogClick(e) {
         console.log(e.keyCode);
+        let tipnmr = Math.floor(Math.random() * 5);
         switch (e.keyCode) {
             case this.keyinfo:
-                this.frog.classList.add("talk");
+                this.frog.classList.add("talk" + tipnmr);
                 setTimeout(() => {
                     this.talking();
-                }, 3000);
+                }, 3500);
         }
     }
     talking() {
-        this.frog.classList.remove("talk");
+        this.frog.setAttribute("class", "");
     }
 }
 class Game {
@@ -660,7 +663,7 @@ class Unicorn {
             x = window.innerWidth - this.unicorn.clientWidth;
         }
         this.x = x;
-        this.y = 500;
+        this.y = 320;
         window.addEventListener("keydown", (e) => this.moveUnicorn(e));
     }
     moveUnicorn(e) {
