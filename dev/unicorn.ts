@@ -6,12 +6,14 @@ class Unicorn {
     private rightkey: number
     private leftkey: number
 
-    rightSpeed: number = 0
-    leftSpeed: number = 0
+    rightSpeed: number = 10
+    leftSpeed: number = 10
 
-    toRight: boolean = true
+    public attackBack: boolean = false;
+    explosion: Explosion = new Explosion
 
     private win: number = 0
+
     public get _win(): number { return this.win }
     public set _win(A: number) { this.win = A }
 
@@ -21,10 +23,9 @@ class Unicorn {
 
     constructor(x: number, rightKey: number, leftKey: number) {
         this.unicorn = document.createElement("unicorn")
-
-
         let game = document.getElementsByTagName("game")[0]
         game.appendChild(this.unicorn)
+
         this.rightkey = rightKey
         this.leftkey = leftKey
 
@@ -59,59 +60,19 @@ class Unicorn {
     }
 
     public moveUnicorns() {
-
+        // && (this.win == 1)
     }
 
     public update() {
-
-
-
-
-        if ((this.x < 800) && (this.win == 1)) {
-            console.log("hij doet het update 1")
-            this.unicorn.classList.add("run")
-            this.x += 2
-
-            if (this.x > 400) {
-                console.log("hij werkt nu wel")
-                this.unicorn.classList.remove("run")
-                this.win = 0
-
-            }
-
-        }
+        this.attackMove()
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px)`
 
     }
     public update2() {
+        this.attackMove2()
 
-
-        // this.x += this.leftSpeed
-
-        if ((this.x >= 800) && (this.win2 == 1)) {
-            console.log("hij doet het update 2")
-            this.unicorn.classList.add("run")
-            this.x -= 2
-            // this.Bounceright()
-
-            if (this.x < 800) {
-                this.win2 = 0
-                this.unicorn.classList.remove("run")
-
-
-                setTimeout(() => {
-                    this.x += 2
-                },
-                    1000);
-
-                if (this.x == window.innerWidth - this.unicorn.clientWidth) {
-                    this.x = 0
-                }
-            }
-
-        }
-        //     private Bounceright() {
-        //     this.toRight = false;
+        // private Bounceright() {
+        // this.toRight = false;
         // }
 
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`
@@ -128,6 +89,73 @@ class Unicorn {
         setTimeout(() => {
             this.rightSpeed = 0
         }, 300);
+    }
+
+
+
+    attackMove() {
+        if ((this.x <= 403) && (this.win == 1)) {
+            console.log("hij doet het update 1")
+            this.unicorn.classList.add("run")
+            this.x += 4
+        }
+
+        if ((this.x > 400) && (this.attackBack == false)) {
+            console.log("hij werkt nu wel")
+            this.unicorn.classList.remove("run")
+            this.win = 0
+            this.explosion.flippedBack()
+            this.attackAnimation()
+        }
+
+        if (this.attackBack == true) {
+            this.x -= 4
+        }
+        if ((this.x < 0) && (this.attackBack == true)) {
+            this.x = 0
+            this.unicorn.classList.remove("run")
+        }
+    }
+
+    attackMove2() {
+        if ((this.x >= 1000) && (this.win == 1)) {
+            console.log("hij doet het update 2")
+            this.unicorn.classList.add("run")
+            this.x -= 4
+        }
+
+        if ((this.x < 1000) && (this.attackBack == false)) {
+            console.log("hij werkt nu wel 2")
+            this.unicorn.classList.remove("run")
+            this.win = 0
+            this.explosion.flipped()
+            this.attackAnimation()
+        }
+
+        if (this.attackBack == true) {
+            this.x += 4
+        }
+        if ((this.x > window.innerWidth - this.unicorn.clientWidth) && (this.attackBack == true)) {
+            this.x = window.innerWidth - this.unicorn.clientWidth
+            this.unicorn.classList.remove("run")
+        }
+    }
+
+    attackAnimation() {
+        // doe attack move animation
+        console.log("doe attack animation")
+        this.explosion.explode()
+        // this.explosion.style.display = "block";
+
+
+
+        setTimeout(() => {
+            this.attackBack = true;
+            this.unicorn.classList.add("run")
+            this.explosion.stopExplode()
+            console.log("hoi = true")
+        }, 2000);
+
     }
 }
 

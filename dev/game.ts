@@ -24,7 +24,7 @@ class Game {
     }
 
 
-    private gameloop() {
+    public gameloop() {
         this.unicorn.update()
         this.unicorn2.update2()
         this.frog.updateFrog()
@@ -66,7 +66,7 @@ class Game {
             }
             if (this.rightArrows._win == 1) {
                 this.rightArrows._win = 0
-                this.unicorn2._win2 = 1
+                this.unicorn2._win = 1
                 console.log("winRight")
                 this.leftArrows.delete()
             }

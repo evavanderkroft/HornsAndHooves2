@@ -1,4 +1,25 @@
 "use strict";
+class Explosion {
+    constructor() {
+        this.explosion = document.createElement("bomb");
+        let game = document.getElementsByTagName("game")[0];
+        game.appendChild(this.explosion);
+    }
+    flipped() {
+        this.explosion.style.transform = `scaleX(-1)`;
+        this.explosion.style.left = `15%`;
+    }
+    flippedBack() {
+        this.explosion.style.transform = `scaleX(1)`;
+        this.explosion.style.left = `60%`;
+    }
+    explode() {
+        this.explosion.style.display = "block";
+    }
+    stopExplode() {
+        this.explosion.style.display = "none";
+    }
+}
 class Frog {
     constructor() {
         this.frog = document.createElement("frog");
@@ -74,7 +95,7 @@ class Game {
             }
             if (this.rightArrows._win == 1) {
                 this.rightArrows._win = 0;
-                this.unicorn2._win2 = 1;
+                this.unicorn2._win = 1;
                 console.log("winRight");
                 this.leftArrows.delete();
             }
@@ -694,9 +715,10 @@ class Rightarrows {
 class Unicorn {
     constructor(x, rightKey, leftKey) {
         this.x = 0;
-        this.rightSpeed = 0;
-        this.leftSpeed = 0;
-        this.toRight = true;
+        this.rightSpeed = 10;
+        this.leftSpeed = 10;
+        this.attackBack = false;
+        this.explosion = new Explosion;
         this.win = 0;
         this.win2 = 0;
         this.unicorn = document.createElement("unicorn");
@@ -736,34 +758,11 @@ class Unicorn {
     moveUnicorns() {
     }
     update() {
-        if ((this.x < 800) && (this.win == 1)) {
-            console.log("hij doet het update 1");
-            this.unicorn.classList.add("run");
-            this.x += 2;
-            if (this.x > 400) {
-                console.log("hij werkt nu wel");
-                this.unicorn.classList.remove("run");
-                this.win = 0;
-            }
-        }
+        this.attackMove();
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
     update2() {
-        if ((this.x >= 800) && (this.win2 == 1)) {
-            console.log("hij doet het update 2");
-            this.unicorn.classList.add("run");
-            this.x -= 2;
-            if (this.x < 800) {
-                this.win2 = 0;
-                this.unicorn.classList.remove("run");
-                setTimeout(() => {
-                    this.x += 2;
-                }, 1000);
-                if (this.x == window.innerWidth - this.unicorn.clientWidth) {
-                    this.x = 0;
-                }
-            }
-        }
+        this.attackMove2();
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`;
     }
     getRectangle() {
@@ -775,6 +774,58 @@ class Unicorn {
         setTimeout(() => {
             this.rightSpeed = 0;
         }, 300);
+    }
+    attackMove() {
+        if ((this.x <= 403) && (this.win == 1)) {
+            console.log("hij doet het update 1");
+            this.unicorn.classList.add("run");
+            this.x += 4;
+        }
+        if ((this.x > 400) && (this.attackBack == false)) {
+            console.log("hij werkt nu wel");
+            this.unicorn.classList.remove("run");
+            this.win = 0;
+            this.explosion.flippedBack();
+            this.attackAnimation();
+        }
+        if (this.attackBack == true) {
+            this.x -= 4;
+        }
+        if ((this.x < 0) && (this.attackBack == true)) {
+            this.x = 0;
+            this.unicorn.classList.remove("run");
+        }
+    }
+    attackMove2() {
+        if ((this.x >= 1000) && (this.win == 1)) {
+            console.log("hij doet het update 2");
+            this.unicorn.classList.add("run");
+            this.x -= 4;
+        }
+        if ((this.x < 1000) && (this.attackBack == false)) {
+            console.log("hij werkt nu wel 2");
+            this.unicorn.classList.remove("run");
+            this.win = 0;
+            this.explosion.flipped();
+            this.attackAnimation();
+        }
+        if (this.attackBack == true) {
+            this.x += 4;
+        }
+        if ((this.x > window.innerWidth - this.unicorn.clientWidth) && (this.attackBack == true)) {
+            this.x = window.innerWidth - this.unicorn.clientWidth;
+            this.unicorn.classList.remove("run");
+        }
+    }
+    attackAnimation() {
+        console.log("doe attack animation");
+        this.explosion.explode();
+        setTimeout(() => {
+            this.attackBack = true;
+            this.unicorn.classList.add("run");
+            this.explosion.stopExplode();
+            console.log("hoi = true");
+        }, 2000);
     }
 }
 //# sourceMappingURL=main.js.map

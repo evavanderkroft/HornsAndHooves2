@@ -138,7 +138,7 @@ score:nth-of-type(2) {
 }
 
 .homescreen{
-    background-image: url(../img/Startscherm.jpg);
+    background-image: url(../img/OptieStartscherm.jpg);
     width:100vw; 
     height: 100vh;
     background-size: cover;
@@ -224,4 +224,15 @@ img{
     top: 70%;
     right: 10%;
     transform: translate(0, -50%) scaleX(-1);
+}
+
+bomb{
+    background-image: url("../img/explosion_2.gif");
+    width: 480px;
+    height: 480px;
+    display: none;
+    top: 400px;
+    left: 60%;
+    transform: translate(-50%, 0 );
+    z-index: 10;
 }
