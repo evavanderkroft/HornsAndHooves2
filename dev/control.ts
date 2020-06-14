@@ -21,4 +21,4 @@ class Control{
     }
 
 }
-window.addEventListener("load", () => new Control())
+// window.addEventListener("load", () => new Control())

@@ -12,7 +12,6 @@ class Control {
     startGame() {
     }
 }
-window.addEventListener("load", () => new Control());
 class Frog {
     constructor() {
         this.frog = document.createElement("frog");
@@ -846,4 +845,27 @@ class Unicorn {
         }, 300);
     }
 }
+class Winner {
+    constructor(colour) {
+        this.creategif(colour);
+        this.createpressany();
+    }
+    creategif(colour) {
+        this.winnergif = document.createElement("winnergif");
+        let winner = document.getElementsByTagName("winner")[0];
+        winner.appendChild(this.winnergif);
+        this.winnergif.classList.add(`${colour}winner`);
+    }
+    createpressany() {
+        this.pressany = document.createElement("pressany");
+        let winner = document.getElementsByTagName("winner")[0];
+        winner.appendChild(this.pressany);
+        this.pressany.addEventListener("click", (e) => this.onKeyboard(e));
+    }
+    onKeyboard(e) {
+        console.log("hallo");
+        e.target.style.filter = `invert(100%)`;
+    }
+}
+window.addEventListener("load", () => new Winner("green"));
 //# sourceMappingURL=main.js.map

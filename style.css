@@ -259,3 +259,44 @@ storybg{
     background-image: url(../img/bg4.jpg);
     background-size: 100% 100%;
 }
+/* ---------------winner------------------------------------------ */
+winner *{
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background-repeat: no-repeat;  
+}
+pressany{
+    width: 60%; height: 10%;
+    left: 20%; top:70%;
+    background-image: url(../img/pressany.png);
+    background-size: contain;
+    background-position: center top;
+
+}
+winnergif{
+    left:10%; top: 10%;
+    width: 80%; height: 70%;
+}
+.greenwinner{
+    background-image: url(../img/greenwinner.gif);
+    background-size: contain;
+    background-position: center;
+}
+.blackwinner{
+    background-image: url(../img/blackwinner.gif);
+    background-size: contain;
+    background-position: center;
+}
+.whitewinner{
+    background-image: url(../img/whitewinner.gif);
+    background-size: contain;
+    background-position: center;
+
+}
+.pinkwinner{
+    background-image: url(../img/pinkwinner.gif);
+    background-size: contain;
+    background-position: center;
+
+}
