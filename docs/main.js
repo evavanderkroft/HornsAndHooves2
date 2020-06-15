@@ -53,6 +53,8 @@ class Game {
     constructor() {
         this.score = 10;
         this.score2 = 10;
+        this.lifehearts = [];
+        this.lifehearts2 = [];
         console.log("Game was created!");
         let first = Math.floor(Math.random() * 6);
         let second = Math.floor(Math.random() * 6);
@@ -63,12 +65,16 @@ class Game {
         this.unicorn = new Unicorn(0, 68, 65);
         this.unicorn2 = new Unicorn(2, 37, 39);
         this.frog = new Frog();
+        this.lifehearts.push(new Lifeheart(0));
         this.gameloop();
     }
     gameloop() {
         this.unicorn.update();
         this.unicorn2.update2();
         this.frog.updateFrog();
+        for (const heart of this.lifehearts) {
+            heart.lifeupdate();
+        }
         if (this.checkCollision(this.unicorn.getRectangle(), this.unicorn2.getRectangle())) {
             console.log("Attack p1");
             this.removePoint(1);
@@ -418,6 +424,17 @@ class Leftarrows {
         this.leftarrow_2.remove();
         this.leftarrow_3.remove();
         this.leftarrow_4.remove();
+    }
+}
+class Lifeheart {
+    constructor(x) {
+        this.lifeheart = document.createElement("lifeheart");
+        let game = document.getElementsByTagName("game")[0];
+        game.appendChild(this.lifeheart);
+        this.y = 40;
+    }
+    lifeupdate() {
+        this.lifeheart.style.transform = `scale(0.2)`;
     }
 }
 class Rightarrows {

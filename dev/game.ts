@@ -7,6 +7,8 @@ class Game {
     private score2: number = 10
     public leftArrows: Leftarrows
     public rightArrows: Rightarrows
+    private lifehearts : Lifeheart[] = []
+    private lifehearts2 : Lifeheart[] = []
 
     constructor() {
         console.log("Game was created!")
@@ -19,6 +21,8 @@ class Game {
         this.unicorn = new Unicorn(0, 68, 65)
         this.unicorn2 = new Unicorn(2, 37, 39)
         this.frog = new Frog()
+        this.lifehearts.push(new Lifeheart(0))
+
         this.gameloop()
 
     }
@@ -28,6 +32,9 @@ class Game {
         this.unicorn.update()
         this.unicorn2.update2()
         this.frog.updateFrog()
+
+        for (const heart of this.lifehearts) {
+            heart.lifeupdate()}
 
         if (this.checkCollision(this.unicorn.getRectangle(), this.unicorn2.getRectangle())) {
             console.log("Attack p1")
