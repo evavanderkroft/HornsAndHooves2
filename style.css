@@ -23,11 +23,17 @@ game * {
 unicorn {
     background-image: url(../img/horsewhite.png);
     width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
+
     background-size:contain;
 }
-.player2 {
+/* .player2  */
+unicorn2{
     background-image: url(../img/horsegreen.png);
     width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
     background-size:contain;
 }
 
@@ -144,6 +150,13 @@ score:nth-of-type(2) {
     width:1000px ;
     height: 400px;
 }
+
+img.tutbutarrows{
+    width:600px;
+    height:400px;
+} 
+
+
 .tuttext{
     display: flex;
     justify-content: center;
@@ -157,6 +170,11 @@ score:nth-of-type(2) {
 }
 .tutbutfrog{
     margin-bottom: 90px;
+}
+
+img.tutbutfrog{
+    width: 300px;
+    height: 250px;
 }
 .linkje{
     
@@ -178,4 +196,104 @@ score:nth-of-type(2) {
 }
 .buttoncenter{
     justify-content: center;
+}
+
+.homescreen{
+    background-image: url(../img/OptieStartscherm.jpg);
+    width:100vw; 
+    height: 100vh;
+    background-size: cover;
+    justify-content: center;
+    position: relative;
+}
+
+.homescreenTitle{
+    display: flex;
+    justify-content: center;
+    font-size:  100px;
+    color: white;
+    -webkit-text-stroke: plum 5px;
+    text-shadow: 10px 10px black;
+    text-align: center;
+    padding: -500px;
+}
+
+.buttonsHomescreen{
+    width:100%;
+    margin-top: 100px;
+    text-align: center;
+    justify-content: center;
+}
+
+.homeButtons{
+    display:flex;
+    justify-content: center;
+   
+}
+.homeButton{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    color:plum;
+    text-shadow: 7px 5px lightblue;
+    height: auto;
+    width: 500px;
+    background: rgb(244,208,243);
+    background: -moz-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: -webkit-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f4d0f3",endColorstr="#d4ebed",GradientType=1);
+    border-color: white;
+    border-radius: 20px;
+    border-width: 10px;
+    border-style: outset;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+    margin:20px;
+}
+
+img{
+    width:400px; 
+    height: auto;
+} 
+
+.greenUnicornHome{
+    position: absolute;
+    bottom: 10%;
+    left: 3%;
+    transform: translate(0, -50%);
+}
+
+.whiteUnicornHome{
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    transform: translate(0, -50%);
+}
+
+.blackUnicornHome{
+    position: absolute;
+   bottom: 10%;
+    right: 3%;
+    transform: translate(0, -50%) scaleX(-1);
+   
+}
+
+.pinkUnicornHome{
+    position: absolute;
+    top: 70%;
+    right: 10%;
+    transform: translate(0, -50%) scaleX(-1);
+}
+
+bomb{
+    background-image: url("../img/explosion_2.gif");
+    width: 480px;
+    height: 480px;
+    display: none;
+    top: 400px;
+    left: 60%;
+    transform: translate(-50%, 0 );
+    z-index: 10;
 }
