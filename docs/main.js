@@ -53,8 +53,8 @@ class Frog {
 }
 class Game {
     constructor() {
-        this.score = 10;
-        this.score2 = 10;
+        this.lifehearts = [];
+        this.lifehearts2 = [];
         console.log("Game was created!");
         let first = Math.floor(Math.random() * 6);
         let second = Math.floor(Math.random() * 6);
@@ -65,31 +65,15 @@ class Game {
         this.unicorn = new Unicorn(0, 68, 65);
         this.unicorn2 = new Unicorn(2, 37, 39);
         this.frog = new Frog();
+        this.lifehearts.push(new Lifeheart(0));
         this.gameloop();
     }
     gameloop() {
         this.unicorn.update();
         this.unicorn2.update2();
         this.frog.updateFrog();
-        if (this.checkCollision(this.unicorn.getRectangle(), this.unicorn2.getRectangle())) {
-            console.log("Attack p1");
-            this.removePoint(1);
-            this.unicorn2.bounceX();
-        }
-        if (this.checkCollision(this.unicorn.getRectangle(), this.unicorn2.getRectangle())) {
-            console.log("Attack p2");
-            this.removePoint(2);
-            this.unicorn.bounceX();
-        }
-        if (this.score <= 1) {
-            this.score = 10;
-            this.score2 = 10;
-            console.log("player 2 won!");
-        }
-        if (this.score2 <= 1) {
-            this.score = 10;
-            this.score2 = 10;
-            console.log("player 1 won!");
+        for (const heart of this.lifehearts) {
+            heart.lifeupdate();
         }
         if ((this.leftArrows._win == 1) || (this.rightArrows._win == 1)) {
             if (this.leftArrows._win == 1) {
@@ -106,24 +90,6 @@ class Game {
             }
         }
         requestAnimationFrame(() => this.gameloop());
-    }
-    checkCollision(a, b) {
-        return (a.left <= b.right &&
-            b.left <= a.right &&
-            a.top <= b.bottom &&
-            b.top <= a.bottom);
-    }
-    removePoint(player) {
-        if (player == 1) {
-            let score = document.getElementsByTagName("score")[0];
-            this.score--;
-            score.innerHTML = "Score: " + this.score;
-        }
-        else {
-            let score = document.getElementsByTagName("score")[1];
-            this.score2--;
-            score.innerHTML = "Score: " + this.score2;
-        }
     }
 }
 window.addEventListener("load", () => new Game());
@@ -420,6 +386,17 @@ class Leftarrows {
         this.leftarrow_2.remove();
         this.leftarrow_3.remove();
         this.leftarrow_4.remove();
+    }
+}
+class Lifeheart {
+    constructor(x) {
+        this.lifeheart = document.createElement("lifeheart");
+        let game = document.getElementsByTagName("game")[0];
+        game.appendChild(this.lifeheart);
+        this.y = 40;
+    }
+    lifeupdate() {
+        this.lifeheart.style.transform = `scale(0.2)`;
     }
 }
 class Rightarrows {
