@@ -15,9 +15,11 @@ class Explosion {
     }
     explode() {
         this.explosion.style.display = "block";
+        this.explosion.style.visibility = "visible";
     }
     stopExplode() {
         this.explosion.style.display = "none";
+        this.explosion.style.visibility = "hidden";
     }
 }
 class Frog {
@@ -51,8 +53,8 @@ class Frog {
 }
 class Game {
     constructor() {
-        this.score = 10;
-        this.score2 = 10;
+        this.lifehearts = [];
+        this.lifehearts2 = [];
         console.log("Game was created!");
         let first = Math.floor(Math.random() * 6);
         let second = Math.floor(Math.random() * 6);
@@ -60,34 +62,26 @@ class Game {
         let fourth = Math.floor(Math.random() * 6);
         this.leftArrows = new Leftarrows(first, second, third, fourth);
         this.rightArrows = new Rightarrows(first, second, third, fourth);
-        this.unicorn = new Unicorn(0, 68, 65);
-        this.unicorn2 = new Unicorn(2, 37, 39);
+        this.unicorn = new Unicorn(0);
+        this.unicorn2 = new Unicorn(2);
         this.frog = new Frog();
+        this.lifehearts.push(new Lifeheart(50));
+        this.lifehearts.push(new Lifeheart(150));
+        this.lifehearts.push(new Lifeheart(250));
+        this.lifehearts2.push(new Lifeheart(1200));
+        this.lifehearts2.push(new Lifeheart(1300));
+        this.lifehearts2.push(new Lifeheart(1400));
         this.gameloop();
     }
     gameloop() {
         this.unicorn.update();
         this.unicorn2.update2();
         this.frog.updateFrog();
-        if (this.checkCollision(this.unicorn.getRectangle(), this.unicorn2.getRectangle())) {
-            console.log("Attack p1");
-            this.removePoint(1);
-            this.unicorn2.bounceX();
+        for (const heart of this.lifehearts) {
+            heart.lifeupdate();
         }
-        if (this.checkCollision(this.unicorn.getRectangle(), this.unicorn2.getRectangle())) {
-            console.log("Attack p2");
-            this.removePoint(2);
-            this.unicorn.bounceX();
-        }
-        if (this.score <= 1) {
-            this.score = 10;
-            this.score2 = 10;
-            console.log("player 2 won!");
-        }
-        if (this.score2 <= 1) {
-            this.score = 10;
-            this.score2 = 10;
-            console.log("player 1 won!");
+        for (const heart2 of this.lifehearts2) {
+            heart2.lifeupdate();
         }
         if ((this.leftArrows._win == 1) || (this.rightArrows._win == 1)) {
             if (this.leftArrows._win == 1) {
@@ -95,6 +89,7 @@ class Game {
                 this.unicorn._win = 1;
                 console.log("winLeft");
                 this.rightArrows.delete();
+                this.lifehearts;
             }
             if (this.rightArrows._win == 1) {
                 this.rightArrows._win = 0;
@@ -104,24 +99,6 @@ class Game {
             }
         }
         requestAnimationFrame(() => this.gameloop());
-    }
-    checkCollision(a, b) {
-        return (a.left <= b.right &&
-            b.left <= a.right &&
-            a.top <= b.bottom &&
-            b.top <= a.bottom);
-    }
-    removePoint(player) {
-        if (player == 1) {
-            let score = document.getElementsByTagName("score")[0];
-            this.score--;
-            score.innerHTML = "Score: " + this.score;
-        }
-        else {
-            let score = document.getElementsByTagName("score")[1];
-            this.score2--;
-            score.innerHTML = "Score: " + this.score2;
-        }
     }
 }
 window.addEventListener("load", () => new Game());
@@ -420,6 +397,20 @@ class Leftarrows {
         this.leftarrow_4.remove();
     }
 }
+class Lifeheart {
+    constructor(x) {
+        this.lifeheart = document.createElement("lifeheart");
+        let game = document.getElementsByTagName("game")[0];
+        game.appendChild(this.lifeheart);
+        this.y = -60;
+        this.x = x;
+    }
+    lifeupdate() {
+        this.lifeheart.style.transform = `translate(${this.x}px, ${this.y}px) scale(0.3)`;
+        console.log(this.x);
+        console.log(this.y);
+    }
+}
 class Rightarrows {
     constructor(_x_1, _x_2, _x_3, _x_4) {
         this.win = 0;
@@ -716,7 +707,7 @@ class Rightarrows {
     }
 }
 class Unicorn {
-    constructor(x, rightKey, leftKey) {
+    constructor(x) {
         this.x = 0;
         this.rightSpeed = 10;
         this.leftSpeed = 10;
@@ -727,37 +718,16 @@ class Unicorn {
         this.unicorn = document.createElement("unicorn");
         let game = document.getElementsByTagName("game")[0];
         game.appendChild(this.unicorn);
-        this.rightkey = rightKey;
-        this.leftkey = leftKey;
         if (x != 0) {
             x = window.innerWidth - this.unicorn.clientWidth;
         }
         this.x = x;
         this.y = 500;
-        window.addEventListener("keydown", (e) => this.moveUnicorn(e));
     }
     get _win() { return this.win; }
     set _win(A) { this.win = A; }
     get _win2() { return this.win2; }
     set _win2(A) { this.win2 = A; }
-    moveUnicorn(e) {
-        console.log(e.keyCode);
-        switch (e.keyCode) {
-            case this.rightkey:
-                this.unicorn.classList.add("run");
-                this.rightSpeed = 5;
-                setTimeout(() => {
-                    this.rightSpeed = 0;
-                }, 1000);
-                break;
-            case this.leftkey:
-                this.unicorn.classList.add("run");
-                this.leftSpeed = 5;
-                setTimeout(() => {
-                    this.leftSpeed = 0;
-                }, 1000);
-        }
-    }
     moveUnicorns() {
     }
     update() {

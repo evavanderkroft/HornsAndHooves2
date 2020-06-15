@@ -9,6 +9,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    width:100vw;
 }
 
 game * {
@@ -120,16 +121,12 @@ frog {
     background-size: cover;
 }
 
-score {
-    margin:15px;
-    color: blue;
-    font-size: 50px;
+lifeheart{
+    background-image: url(../img/lifeheart.png);
+    width: 300px;
+    height: 300px;
 }
-score:nth-of-type(2) {
-    margin-left: 81vw;
-    color: blue;
-    font-size: 50px;
-}
+
 .tutorial {
     background-image: url(../img/Achtergrondschermen.jpg);
     background-size: cover;
@@ -416,4 +413,5 @@ bomb{
     left: 60%;
     transform: translate(-50%, 0 );
     z-index: 10;
+    visibility: hidden;
 }
