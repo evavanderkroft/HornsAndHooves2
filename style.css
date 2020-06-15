@@ -132,8 +132,8 @@ fightknop {
     height: 50px;
     width: 150px;
     border-color: white;
-    border-radius: 5px;
-    border-width: 3px;
+    border-radius: 20px;
+    border-width: 10px;
     border-style: outset;
     background-image: url(../img/knop2.png);
     background-size: 100% 100%;
@@ -289,8 +289,8 @@ quitknop {
     height: 10%;
     width: 30%;
     border-color: white;
-    border-radius: 10px;
-    border-width: 3px;
+    border-radius: 20px;
+    border-width: 10px;
     border-style: outset;
     background-image: url(../img/quit.jpg);
     background-size: 100% 100%;
@@ -300,8 +300,8 @@ againknop {
     height: 10%;
     width: 30%;
     border-color: white;
-    border-radius: 10px;
-    border-width: 3px;
+    border-radius: 20px;
+    border-width: 10px;
     border-style: outset;
     background-image: url(../img/play_again.jpg);
     background-size: 100% 100%;
