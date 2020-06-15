@@ -5,6 +5,10 @@ body {
     font-size:22px;
     overflow:hidden;
     margin:0px; padding:0px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 game * {
@@ -12,18 +16,24 @@ game * {
     display: block;
     box-sizing: border-box;
     background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
 }
-
 
 unicorn {
     background-image: url(../img/horsewhite.png);
     width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
+
     background-size:contain;
 }
 /* .player2  */
 unicorn2{
     background-image: url(../img/horsegreen.png);
     width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
     background-size:contain;
 }
 
@@ -33,9 +43,39 @@ frog {
     cursor: pointer;
 }
 
-.talk {
-    background-image: url(../img/jumpsalot.gif);
-    
+.talk0 {
+    background-image: url(../img/tip1.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
+
+}
+.talk1 {
+    background-image: url(../img/tip2.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
+}
+.talk2 {
+    background-image: url(../img/tip3.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
+
+}
+.talk3 {
+    background-image: url(../img/tip4.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
+
+}
+.talk4 {
+    background-image: url(../img/tip5.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
+
 }
 .run{
     background-image: url(../img/white.gif);
@@ -85,45 +125,63 @@ score {
     font-size: 50px;
 }
 score:nth-of-type(2) {
-    right: 15px;
+    margin-left: 81vw;
     color: blue;
     font-size: 50px;
 }
 .tutorial {
-    background-image: url(../img/SkyClouds.jpg);
-    width:100%; height: 100%;
+    background-image: url(../img/Achtergrondschermen.jpg);
     background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    overflow:hidden;
+    margin:0px; padding:0px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
 }
 .tutbut{
-    display: flex;
     justify-content: center;
+    width:1000px ;
+    height: 400px;
 }
 
-.tutbut img{
-    width:2000px;
-    height:1500px;
-}
+.tutbutarrows img{
+    width:600px;
+    height:400px;
+} 
+
+
 .tuttext{
     display: flex;
     justify-content: center;
-    font-size:  7em;
+    font-size:  35px;
     color: white;
-    -webkit-text-stroke: plum 7px;
-    text-shadow: 10px 10px black;
+    -webkit-text-stroke: plum 1.5px;
+    text-shadow: 2px 2px black;
     text-align: center;
-    
-
-    
+    padding: -500px; 
+    margin-top:-20px;
 }
 .tutbutfrog{
-    margin-top: 300px;
+    margin-bottom: 90px;
+}
+
+.tutbutfrog img{
+    width: 300px;
+    height: 250px;
 }
 .linkje{
     
-    font-size: 5em;
+    font-size: 40px;
     color:plum;
-    text-shadow: 7px 5px lightblue;
-    height: 200px;
+    text-shadow: 3px 3px lightblue;
+    height: auto;
     width: 500px;
     background: rgb(244,208,243);
     background: -moz-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
@@ -135,6 +193,9 @@ score:nth-of-type(2) {
     border-width: 10px;
     border-style: outset;
     text-align: center;
+}
+.buttoncenter{
+    justify-content: center;
 }
 
 .homescreen{

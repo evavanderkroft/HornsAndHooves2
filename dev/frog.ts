@@ -14,8 +14,10 @@ class Frog {
     }
 
     public updateFrog() {
-
-        this.frog.style.transform = `translate(500px, 0px) scale(0.3)`;
+        let x = ((window.innerWidth * 0.5) - (this.frog.clientWidth / 2))
+        let y = 0
+        // (window.innerHeight-915)
+        this.frog.style.transform = `translate(${x}px, ${y}px) scale(0.3)`;
 
 
     }
@@ -23,17 +25,19 @@ class Frog {
     private onFrogClick(e: KeyboardEvent): void {
         // Hiermee kan je checken welke keycode achter een bepaalde toets zit. 
         console.log(e.keyCode)
+        let tipnmr = Math.floor(Math.random() * 5)
 
         switch (e.keyCode) {
             case this.keyinfo:
-                this.frog.classList.add("talk")
+                this.frog.classList.add("talk" + tipnmr)
                 setTimeout(() => {
                     this.talking()
-                }, 3000);
+                }, 3500);
 
         }
     }
     talking() {
-        this.frog.classList.remove("talk")
+        this.frog.setAttribute("class", "")
+
     }
 }
