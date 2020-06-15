@@ -296,4 +296,5 @@ bomb{
     left: 60%;
     transform: translate(-50%, 0 );
     z-index: 10;
+    visibility: hidden;
 }

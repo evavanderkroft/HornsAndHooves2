@@ -15,9 +15,11 @@ class Explosion {
     }
     explode() {
         this.explosion.style.display = "block";
+        this.explosion.style.visibility = "visible";
     }
     stopExplode() {
         this.explosion.style.display = "none";
+        this.explosion.style.visibility = "hidden";
     }
 }
 class Frog {

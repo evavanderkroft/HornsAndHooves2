@@ -20,9 +20,11 @@ class Explosion {
 
     public explode() {
         this.explosion.style.display = "block"
+        this.explosion.style.visibility = "visible"
     }
 
     public stopExplode() {
         this.explosion.style.display = "none"
+        this.explosion.style.visibility = "hidden"
     }
 }
