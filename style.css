@@ -151,7 +151,7 @@ score:nth-of-type(2) {
     height: 400px;
 }
 
-.tutbutarrows img{
+img.tutbutarrows{
     width:600px;
     height:400px;
 } 
@@ -172,7 +172,7 @@ score:nth-of-type(2) {
     margin-bottom: 90px;
 }
 
-.tutbutfrog img{
+img.tutbutfrog{
     width: 300px;
     height: 250px;
 }
