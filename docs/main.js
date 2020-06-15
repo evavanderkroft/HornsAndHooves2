@@ -65,7 +65,12 @@ class Game {
         this.unicorn = new Unicorn(0, 68, 65);
         this.unicorn2 = new Unicorn(2, 37, 39);
         this.frog = new Frog();
-        this.lifehearts.push(new Lifeheart(0));
+        this.lifehearts.push(new Lifeheart(50));
+        this.lifehearts.push(new Lifeheart(150));
+        this.lifehearts.push(new Lifeheart(250));
+        this.lifehearts2.push(new Lifeheart(1200));
+        this.lifehearts2.push(new Lifeheart(1300));
+        this.lifehearts2.push(new Lifeheart(1400));
         this.gameloop();
     }
     gameloop() {
@@ -75,12 +80,16 @@ class Game {
         for (const heart of this.lifehearts) {
             heart.lifeupdate();
         }
+        for (const heart2 of this.lifehearts2) {
+            heart2.lifeupdate();
+        }
         if ((this.leftArrows._win == 1) || (this.rightArrows._win == 1)) {
             if (this.leftArrows._win == 1) {
                 this.leftArrows._win = 0;
                 this.unicorn._win = 1;
                 console.log("winLeft");
                 this.rightArrows.delete();
+                this.lifehearts;
             }
             if (this.rightArrows._win == 1) {
                 this.rightArrows._win = 0;
@@ -393,10 +402,13 @@ class Lifeheart {
         this.lifeheart = document.createElement("lifeheart");
         let game = document.getElementsByTagName("game")[0];
         game.appendChild(this.lifeheart);
-        this.y = 40;
+        this.y = -60;
+        this.x = x;
     }
     lifeupdate() {
-        this.lifeheart.style.transform = `scale(0.2)`;
+        this.lifeheart.style.transform = `translate(${this.x}px, ${this.y}px) scale(0.3)`;
+        console.log(this.x);
+        console.log(this.y);
     }
 }
 class Rightarrows {

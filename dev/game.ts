@@ -5,8 +5,8 @@ class Game {
     private frog: Frog
     public leftArrows: Leftarrows
     public rightArrows: Rightarrows
-    private lifehearts : Lifeheart[] = []
-    private lifehearts2 : Lifeheart[] = []
+    private lifehearts: Lifeheart[] = []
+    private lifehearts2: Lifeheart[] = []
 
     constructor() {
         console.log("Game was created!")
@@ -19,7 +19,12 @@ class Game {
         this.unicorn = new Unicorn(0, 68, 65)
         this.unicorn2 = new Unicorn(2, 37, 39)
         this.frog = new Frog()
-        this.lifehearts.push(new Lifeheart(0))
+        this.lifehearts.push(new Lifeheart(50))
+        this.lifehearts.push(new Lifeheart(150))
+        this.lifehearts.push(new Lifeheart(250))
+        this.lifehearts2.push(new Lifeheart(1200))
+        this.lifehearts2.push(new Lifeheart(1300))
+        this.lifehearts2.push(new Lifeheart(1400))
 
         this.gameloop()
 
@@ -32,7 +37,12 @@ class Game {
         this.frog.updateFrog()
 
         for (const heart of this.lifehearts) {
-            heart.lifeupdate()}
+            heart.lifeupdate()
+        }
+
+        for (const heart2 of this.lifehearts2) {
+            heart2.lifeupdate()
+        }
 
 
         if ((this.leftArrows._win == 1) || (this.rightArrows._win == 1)) {
@@ -41,6 +51,7 @@ class Game {
                 this.unicorn._win = 1
                 console.log("winLeft")
                 this.rightArrows.delete()
+                this.lifehearts
 
 
             }
