@@ -1,11 +1,14 @@
 class Winner{
     private winnergif!: HTMLElement
-    private pressany!: HTMLElement
+    private quitknop!: HTMLElement
+    private againknop!: HTMLElement
+    private winnerplat!: HTMLElement
 
     constructor(colour: string){
-
+        this.createwinnerplat()
         this.creategif(colour)
-        this.createpressany()
+        this.createquit()
+        this.createagain()
     }
 
     creategif(colour: string){
@@ -15,18 +18,30 @@ class Winner{
 
         this.winnergif.classList.add(`${colour}winner`)
     }
-    public createpressany(){
-        this.pressany = document.createElement("pressany")
+
+    createquit(){
+        this.quitknop = document.createElement("quitknop")
         let winner = document.getElementsByTagName("winner")[0]
-        winner.appendChild(this.pressany)
+        winner.appendChild(this.quitknop)
 
-        this.pressany.addEventListener("click",(e:Event)=> this.onKeyboard(e))
+        this.quitknop.addEventListener("click", (e: Event) => this.onKlick(e,))
+    }
+    createagain(){
+        this.againknop = document.createElement("againknop")
+        let winner = document.getElementsByTagName("winner")[0]
+        winner.appendChild(this.againknop)
 
+        this.againknop.addEventListener("click", (e: Event) => this.onKlick(e,))
+    }
+    createwinnerplat(){
+        this.winnerplat = document.createElement("winnerplat")
+        let winner = document.getElementsByTagName("winner")[0]
+        winner.appendChild(this.winnerplat)
     }
     
-    onKeyboard(e: Event):void{
+    onKlick(e: Event):void{
         console.log("hallo");
-        (e.target as HTMLElement).style.filter= `invert(100%)`
+        (e.target as HTMLElement).style.filter= `grayscale(1)`
     }
 }
-window.addEventListener("load", () => new Winner("green"))
+window.addEventListener("load", () => new Winner("black"))

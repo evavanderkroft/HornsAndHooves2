@@ -8,8 +8,15 @@ class Selectcharacter{
     private plateau!: HTMLElement
     private profile!: HTMLElement
     private knop!: HTMLElement
+    
     private _check: boolean = false
     public get check() : boolean {return this._check}
+    private _selected: boolean= false
+    public get selected():boolean{return this._selected}
+    private _horse1: string = ""
+    public get horse1():string{return this._horse1}
+    private _horse2: string = ""
+    public get horse2():string{return this._horse2}
 
     private _chosen: string = ''
     public get chosen() : string {return this._chosen}
@@ -76,14 +83,13 @@ class Selectcharacter{
     }
 
     public onProfileClick(e: Event, colour: string){
-        let horses = []
         console.log(e.srcElement);
         (e.target as HTMLElement).style.filter= `grayscale(1)`;
         if (this._check== true){
             if(this._chosen != colour){
                 this._check= true
                 this.character_2.classList.add(`c${colour}`)
-                horses.push(colour)
+                this._horse2 =colour
                 this.createknop()
                 
             }
@@ -91,7 +97,7 @@ class Selectcharacter{
         if (this._check== false){
             this._check= true
             this.character_1.classList.add(`c${colour}`)
-            horses.push(colour)
+            this._horse1 =colour
         }
         this._chosen = colour
         console.log(this._chosen)
@@ -99,8 +105,10 @@ class Selectcharacter{
 
     }
     public onknopClick(e:Event){
+        this._selected = true;
         (e.target as HTMLElement).style.filter= `grayscale(1)`;
     }
 
 
 }
+// window.addEventListener("load", () => new Selectcharacter())

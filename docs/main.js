@@ -1,15 +1,23 @@
 "use strict";
 class Control {
     constructor() {
-        this.player1 = "";
-        this.player2 = "";
-        new Game(this.player1, this.player2);
+        this._player1 = "";
+        this._player2 = "";
+        this.selecharacter = new Selectcharacter();
+        this.gameLoop();
     }
-    startStory(character1, character2) {
-        this.player1 = character1;
-        this.player2 = character2;
-    }
-    startGame() {
+    get player1() { return this._player1; }
+    get player2() { return this._player2; }
+    gameLoop() {
+        if (this.selecharacter != null &&
+            this.selecharacter.selected == true) {
+            console.log("story");
+            this._player1 = this.selecharacter.horse1;
+            this._player2 = this.selecharacter.horse2;
+            this.selecharacter = undefined;
+            document.getElementsByTagName('selectcharacter')[0].remove();
+        }
+        requestAnimationFrame(() => this.gameLoop());
     }
 }
 class Frog {
@@ -663,6 +671,9 @@ class Rightarrows {
 class Selectcharacter {
     constructor() {
         this._check = false;
+        this._selected = false;
+        this._horse1 = "";
+        this._horse2 = "";
         this._chosen = '';
         let y = ((window.innerHeight * 0.5) - 100);
         let x1 = ((window.innerWidth * 0.10));
@@ -677,6 +688,9 @@ class Selectcharacter {
         });
     }
     get check() { return this._check; }
+    get selected() { return this._selected; }
+    get horse1() { return this._horse1; }
+    get horse2() { return this._horse2; }
     get chosen() { return this._chosen; }
     createProfile(colour) {
         console.log('hallo');
@@ -715,26 +729,26 @@ class Selectcharacter {
         this.knop.style.transform = `translate(${x}px, ${y}px) scale(1.5)`;
     }
     onProfileClick(e, colour) {
-        let horses = [];
         console.log(e.srcElement);
         e.target.style.filter = `grayscale(1)`;
         if (this._check == true) {
             if (this._chosen != colour) {
                 this._check = true;
                 this.character_2.classList.add(`c${colour}`);
-                horses.push(colour);
+                this._horse2 = colour;
                 this.createknop();
             }
         }
         if (this._check == false) {
             this._check = true;
             this.character_1.classList.add(`c${colour}`);
-            horses.push(colour);
+            this._horse1 = colour;
         }
         this._chosen = colour;
         console.log(this._chosen);
     }
     onknopClick(e) {
+        this._selected = true;
         e.target.style.filter = `grayscale(1)`;
     }
 }
@@ -847,8 +861,10 @@ class Unicorn {
 }
 class Winner {
     constructor(colour) {
+        this.createwinnerplat();
         this.creategif(colour);
-        this.createpressany();
+        this.createquit();
+        this.createagain();
     }
     creategif(colour) {
         this.winnergif = document.createElement("winnergif");
@@ -856,16 +872,27 @@ class Winner {
         winner.appendChild(this.winnergif);
         this.winnergif.classList.add(`${colour}winner`);
     }
-    createpressany() {
-        this.pressany = document.createElement("pressany");
+    createquit() {
+        this.quitknop = document.createElement("quitknop");
         let winner = document.getElementsByTagName("winner")[0];
-        winner.appendChild(this.pressany);
-        this.pressany.addEventListener("click", (e) => this.onKeyboard(e));
+        winner.appendChild(this.quitknop);
+        this.quitknop.addEventListener("click", (e) => this.onKlick(e));
     }
-    onKeyboard(e) {
+    createagain() {
+        this.againknop = document.createElement("againknop");
+        let winner = document.getElementsByTagName("winner")[0];
+        winner.appendChild(this.againknop);
+        this.againknop.addEventListener("click", (e) => this.onKlick(e));
+    }
+    createwinnerplat() {
+        this.winnerplat = document.createElement("winnerplat");
+        let winner = document.getElementsByTagName("winner")[0];
+        winner.appendChild(this.winnerplat);
+    }
+    onKlick(e) {
         console.log("hallo");
-        e.target.style.filter = `invert(100%)`;
+        e.target.style.filter = `grayscale(1)`;
     }
 }
-window.addEventListener("load", () => new Winner("green"));
+window.addEventListener("load", () => new Winner("black"));
 //# sourceMappingURL=main.js.map
