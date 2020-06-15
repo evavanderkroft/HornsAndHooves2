@@ -63,7 +63,7 @@ class Rightarrows {
             this.rightarrow_1.classList.add("rightdown")
         }
 
-        let x = ((window.innerWidth * 0.975) - this.rightarrow_1.clientWidth * this._scale * 4)
+        let x = ((window.innerWidth * 0.973) - this.rightarrow_1.clientWidth * this._scale * 4)
         let y = ((window.innerHeight * 0.2) - (this.rightarrow_1.clientWidth * this._scale / 2))
 
         this.rightarrow_1.style.transform = `translate(${x}px, ${y}px) scale(${this._scale})`
@@ -95,7 +95,7 @@ class Rightarrows {
             this.rightarrow_2.classList.add("rightdown")
         }
 
-        let x = ((window.innerWidth * 0.975) - this.rightarrow_2.clientWidth * this._scale * 3)
+        let x = ((window.innerWidth * 0.973) - this.rightarrow_2.clientWidth * this._scale * 3)
         let y = ((window.innerHeight * 0.2) - (this.rightarrow_2.clientWidth * this._scale / 2))
 
         this.rightarrow_2.style.transform = `translate(${x}px, ${y}px) scale(${this._scale})`
@@ -126,7 +126,7 @@ class Rightarrows {
             this.rightarrow_3.classList.add("rightdown")
         }
 
-        let x = ((window.innerWidth * 0.975) - this.rightarrow_3.clientWidth * this._scale * 2)
+        let x = ((window.innerWidth * 0.973) - this.rightarrow_3.clientWidth * this._scale * 2)
         let y = ((window.innerHeight * 0.2) - (this.rightarrow_3.clientWidth * this._scale / 2))
 
         this.rightarrow_3.style.transform = `translate(${x}px, ${y}px) scale(${this._scale})`
@@ -157,14 +157,14 @@ class Rightarrows {
             this.rightarrow_4.classList.add("rightdown")
         }
 
-        let x = ((window.innerWidth * 0.975) - this.rightarrow_1.clientWidth * this._scale)
+        let x = ((window.innerWidth * 0.973) - this.rightarrow_1.clientWidth * this._scale)
         let y = ((window.innerHeight * 0.2) - (this.rightarrow_4.clientWidth * this._scale / 2))
 
         this.rightarrow_4.style.transform = `translate(${x}px, ${y}px) scale(${this._scale})`
     }
     keypressright_1(event: KeyboardEvent): void {
         switch (event.keyCode) {
-            case 74:
+            case 85:
                 //right up
                 if (this._x_1 == 0) {
                     this.rightarrow_1.remove()
@@ -172,35 +172,35 @@ class Rightarrows {
 
                 }
                 break
-            case 75:
+            case 73:
                 //up
                 if (this._x_1 == 1) {
                     this.rightarrow_1.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_2(e))
                 }
                 break
-            case 76:
+            case 79:
                 //rightup
                 if (this._x_1 == 2) {
                     this.rightarrow_1.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_2(e))
                 }
                 break
-            case 78:
+            case 74:
                 //rightdown
                 if (this._x_1 == 3) {
                     this.rightarrow_1.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_2(e))
                 }
                 break
-            case 77:
+            case 75:
                 //down
                 if (this._x_1 == 4) {
                     this.rightarrow_1.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_2(e))
                 }
                 break
-            case 188:
+            case 76:
                 //rightdown
                 if (this._x_1 == 5) {
                     this.rightarrow_1.remove()
@@ -213,7 +213,7 @@ class Rightarrows {
     }
     keypressright_2(event: KeyboardEvent): void {
         switch (event.keyCode) {
-            case 74:
+            case 85:
                 //right up
                 if (this._x_2 == 0) {
                     this.rightarrow_2.remove()
@@ -221,35 +221,35 @@ class Rightarrows {
 
                 }
                 break
-            case 75:
+            case 73:
                 //up
                 if (this._x_2 == 1) {
                     this.rightarrow_2.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_3(e))
                 }
                 break
-            case 76:
+            case 79:
                 //rightup
                 if (this._x_2 == 2) {
                     this.rightarrow_2.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_3(e))
                 }
                 break
-            case 78:
+            case 74:
                 //rightdown
                 if (this._x_2 == 3) {
                     this.rightarrow_2.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_3(e))
                 }
                 break
-            case 77:
+            case 75:
                 //down
                 if (this._x_2 == 4) {
                     this.rightarrow_2.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_3(e))
                 }
                 break
-            case 188:
+            case 76:
                 //rightdown
                 if (this._x_2 == 5) {
                     this.rightarrow_2.remove()
@@ -262,7 +262,7 @@ class Rightarrows {
     }
     keypressright_3(event: KeyboardEvent): void {
         switch (event.keyCode) {
-            case 74:
+            case 85:
                 //right up
                 if (this._x_3 == 0) {
                     this.rightarrow_3.remove()
@@ -270,35 +270,35 @@ class Rightarrows {
 
                 }
                 break
-            case 75:
+            case 73:
                 //up
                 if (this._x_3 == 1) {
                     this.rightarrow_3.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_4(e))
                 }
                 break
-            case 76:
+            case 79:
                 //rightup
                 if (this._x_3 == 2) {
                     this.rightarrow_3.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_4(e))
                 }
                 break
-            case 78:
+            case 74:
                 //rightdown
                 if (this._x_3 == 3) {
                     this.rightarrow_3.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_4(e))
                 }
                 break
-            case 77:
+            case 75:
                 //down
                 if (this._x_3 == 4) {
                     this.rightarrow_3.remove()
                     window.addEventListener("keydown", (e: KeyboardEvent) => this.keypressright_4(e))
                 }
                 break
-            case 188:
+            case 76:
                 //rightdown
                 if (this._x_3 == 5) {
                     this.rightarrow_3.remove()
@@ -311,42 +311,42 @@ class Rightarrows {
     }
     keypressright_4(event: KeyboardEvent): void {
         switch (event.keyCode) {
-            case 74:
+            case 85:
                 //right up
                 if (this._x_4 == 0) {
                     this.rightarrow_4.remove()
                     this.win = 1
                 }
                 break
-            case 75:
+            case 73:
                 //up            
                 if (this._x_4 == 1) {
                     this.rightarrow_4.remove()
                     this.win = 1
                 }
                 break
-            case 76:
+            case 79:
                 //rightup
                 if (this._x_4 == 2) {
                     this.rightarrow_4.remove()
                     this.win = 1
                 }
                 break
-            case 78:
+            case 74:
                 //rightdown
                 if (this._x_4 == 3) {
                     this.rightarrow_4.remove()
                     this.win = 1
                 }
                 break
-            case 77:
+            case 75:
                 //down
                 if (this._x_4 == 4) {
                     this.rightarrow_4.remove()
                     this.win = 1
                 }
                 break
-            case 188:
+            case 76:
                 //rightdown
                 if (this._x_4 == 5) {
                     this.rightarrow_4.remove()

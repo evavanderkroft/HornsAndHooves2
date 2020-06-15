@@ -3,9 +3,6 @@ class Unicorn {
     private x: number = 0
     private y: number
 
-    private rightkey: number
-    private leftkey: number
-
     rightSpeed: number = 10
     leftSpeed: number = 10
 
@@ -21,42 +18,15 @@ class Unicorn {
     public get _win2(): number { return this.win2 }
     public set _win2(A: number) { this.win2 = A }
 
-    constructor(x: number, rightKey: number, leftKey: number) {
+    constructor(x: number) {
         this.unicorn = document.createElement("unicorn")
         let game = document.getElementsByTagName("game")[0]
         game.appendChild(this.unicorn)
-
-        this.rightkey = rightKey
-        this.leftkey = leftKey
 
 
         if (x != 0) { x = window.innerWidth - this.unicorn.clientWidth }
         this.x = x
         this.y = 500
-        window.addEventListener("keydown", (e: KeyboardEvent) => this.moveUnicorn(e))
-    }
-
-
-    private moveUnicorn(e: KeyboardEvent): void {
-        console.log(e.keyCode)
-        switch (e.keyCode) {
-            case this.rightkey:
-                this.unicorn.classList.add("run")
-                this.rightSpeed = 5
-                setTimeout(() => {
-                    this.rightSpeed = 0
-                    // this.stopRunning()
-                }, 1000);
-                break
-            case this.leftkey:
-                this.unicorn.classList.add("run")
-                this.leftSpeed = 5
-                setTimeout(() => {
-                    this.leftSpeed = 0
-                    // this.stopRunning()
-                }, 1000);
-        }
-
     }
 
     public moveUnicorns() {
