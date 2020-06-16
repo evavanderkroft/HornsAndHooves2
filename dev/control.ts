@@ -1,5 +1,4 @@
 class Control{
-    private background!: HTMLElement
     public selectcharacter?: Selectcharacter
     public createselect!: HTMLElement
     public story?: Story
