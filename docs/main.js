@@ -45,12 +45,15 @@ class Control {
         }
         if (this.story != null &&
             this.story.next == true) {
-            this.createwinnerpage();
+            this.creategamepage();
             this.story = undefined;
             document.getElementsByTagName('story')[0].remove();
         }
         if (this.game != null &&
             this.game.next == true) {
+            this.createwinnerpage();
+            this.game = undefined;
+            document.getElementsByTagName('game')[0].remove();
         }
         if (this.winner != null &&
             this.winner.next == true) {
@@ -93,8 +96,8 @@ class Game {
         this.score = 10;
         this.score2 = 10;
         this._next = false;
+        this.createbackground();
         console.log(player1, player2);
-        console.log("Game was created!");
         let first = Math.floor(Math.random() * 6);
         let second = Math.floor(Math.random() * 6);
         let third = Math.floor(Math.random() * 6);
@@ -107,6 +110,12 @@ class Game {
         this.gameloop();
     }
     get next() { return this._next; }
+    createbackground() {
+        this.background = document.createElement("background");
+        let game = document.getElementsByTagName("game")[0];
+        game.appendChild(this.background);
+        this.background.classList.add(`gamebg`);
+    }
     gameloop() {
         this.unicorn.update();
         this.unicorn2.update2();

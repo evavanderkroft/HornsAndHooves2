@@ -1,5 +1,6 @@
 class Game {
-
+    
+    private background!: HTMLElement
     private unicorn: Unicorn
     private unicorn2: Unicorn
     private frog: Frog
@@ -10,9 +11,8 @@ class Game {
     public get next():boolean{return this._next}
 
     constructor(player1:string, player2: string) {
+        this.createbackground()
         console.log(player1,player2)
-
-        console.log("Game was created!")
         let first =  Math.floor(Math.random() * 6)
         let second = Math.floor(Math.random() * 6)
         let third = Math.floor(Math.random() * 6)
@@ -25,7 +25,13 @@ class Game {
         this.gameloop()
     
     }
-    
+    createbackground(){
+        this.background = document.createElement("background")
+        let game = document.getElementsByTagName("game")[0]
+        game.appendChild(this.background)
+
+        this.background.classList.add(`gamebg`)
+    }
     
     private gameloop() {
         this.unicorn.update()

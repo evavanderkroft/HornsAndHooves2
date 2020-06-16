@@ -61,7 +61,7 @@ class Control{
         }
         if(this.story != null &&
             this.story.next== true){
-                this.createwinnerpage()
+                this.creategamepage()
                 
                 this.story = undefined;
                 document.getElementsByTagName('story')[0].remove();
@@ -69,7 +69,10 @@ class Control{
         }
         if(this.game != null &&
             this.game.next==true){
+                this.createwinnerpage()
 
+                this.game = undefined;
+                document.getElementsByTagName('game')[0].remove();
         }
         if(this.winner != null &&
             this.winner.next == true){
