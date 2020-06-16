@@ -2,7 +2,7 @@
 class Selectcharacter{
     
     // private selectcharacter!:HTMLElement
-
+    private background!: HTMLElement
     private character_1!: HTMLElement
     private character_2!: HTMLElement
     private plateau!: HTMLElement
@@ -11,8 +11,9 @@ class Selectcharacter{
     
     private _check: boolean = false
     public get check() : boolean {return this._check}
-    private _selected: boolean= false
-    public get selected():boolean{return this._selected}
+    private _next: boolean= false
+    public get next():boolean{return this._next}
+    
     private _horse1: string = ""
     public get horse1():string{return this._horse1}
     private _horse2: string = ""
@@ -22,7 +23,7 @@ class Selectcharacter{
     public get chosen() : string {return this._chosen}
 
     constructor() {
-
+        this.createbackground()
         let y=((window.innerHeight *0.5)-100)
         let x1=((window.innerWidth * 0.10))
         this.createplateau(x1,y)
@@ -36,6 +37,12 @@ class Selectcharacter{
         colours.forEach(colour => {
             this.createProfile(colour)
         });
+    }
+
+    createbackground(){
+        this.background = document.createElement("background")
+        let selectcharacter = document.getElementsByTagName("selectcharacter")[0]
+        selectcharacter.appendChild(this.background)
     }
     public createProfile(colour: string){
         console.log('hallo')
@@ -105,7 +112,7 @@ class Selectcharacter{
 
     }
     public onknopClick(e:Event){
-        this._selected = true;
+        this._next = true;
         (e.target as HTMLElement).style.filter= `grayscale(1)`;
     }
 

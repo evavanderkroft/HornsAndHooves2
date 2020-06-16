@@ -3,23 +3,65 @@ class Control {
     constructor() {
         this._player1 = "";
         this._player2 = "";
-        this.selecharacter = new Selectcharacter();
+        this.createselectpage();
         this.gameLoop();
     }
     get player1() { return this._player1; }
     get player2() { return this._player2; }
+    createselectpage() {
+        this.createselect = document.createElement("selectcharacter");
+        let control = document.getElementsByTagName("control")[0];
+        control.appendChild(this.createselect);
+        this.selectcharacter = new Selectcharacter();
+    }
+    createstorypage() {
+        this.createstory = document.createElement("story");
+        let control = document.getElementsByTagName("control")[0];
+        control.appendChild(this.createstory);
+        this.story = new Story(this.player1, this.player2);
+    }
+    creategamepage() {
+        this.creategame = document.createElement("game");
+        let control = document.getElementsByTagName("control")[0];
+        control.appendChild(this.creategame);
+        this.game = new Game(this.player1, this.player2);
+    }
+    createwinnerpage() {
+        this.createwinner = document.createElement("winner");
+        let control = document.getElementsByTagName("control")[0];
+        control.appendChild(this.createwinner);
+        this.winner = new Winner("pink");
+    }
     gameLoop() {
-        if (this.selecharacter != null &&
-            this.selecharacter.selected == true) {
+        if (this.selectcharacter != null &&
+            this.selectcharacter.next == true) {
             console.log("story");
-            this._player1 = this.selecharacter.horse1;
-            this._player2 = this.selecharacter.horse2;
-            this.selecharacter = undefined;
+            this._player1 = this.selectcharacter.horse1;
+            this._player2 = this.selectcharacter.horse2;
+            console.log(this._player1, this._player2);
+            this.createstorypage();
+            this.selectcharacter = undefined;
             document.getElementsByTagName('selectcharacter')[0].remove();
+        }
+        if (this.story != null &&
+            this.story.next == true) {
+            this.createwinnerpage();
+            this.story = undefined;
+            document.getElementsByTagName('story')[0].remove();
+        }
+        if (this.game != null &&
+            this.game.next == true) {
+        }
+        if (this.winner != null &&
+            this.winner.next == true) {
+            this.createselectpage();
+            this.winner = undefined;
+            document.getElementsByTagName('winner')[0].remove();
         }
         requestAnimationFrame(() => this.gameLoop());
     }
 }
+window.addEventListener("load", () => new Control());
 class Frog {
     constructor() {
         this.frog = document.createElement("frog");
@@ -50,6 +92,7 @@ class Game {
     constructor(player1, player2) {
         this.score = 10;
         this.score2 = 10;
+        this._next = false;
         console.log(player1, player2);
         console.log("Game was created!");
         let first = Math.floor(Math.random() * 6);
@@ -63,6 +106,7 @@ class Game {
         this.frog = new Frog();
         this.gameloop();
     }
+    get next() { return this._next; }
     gameloop() {
         this.unicorn.update();
         this.unicorn2.update2();
@@ -671,10 +715,11 @@ class Rightarrows {
 class Selectcharacter {
     constructor() {
         this._check = false;
-        this._selected = false;
+        this._next = false;
         this._horse1 = "";
         this._horse2 = "";
         this._chosen = '';
+        this.createbackground();
         let y = ((window.innerHeight * 0.5) - 100);
         let x1 = ((window.innerWidth * 0.10));
         this.createplateau(x1, y);
@@ -688,10 +733,15 @@ class Selectcharacter {
         });
     }
     get check() { return this._check; }
-    get selected() { return this._selected; }
+    get next() { return this._next; }
     get horse1() { return this._horse1; }
     get horse2() { return this._horse2; }
     get chosen() { return this._chosen; }
+    createbackground() {
+        this.background = document.createElement("background");
+        let selectcharacter = document.getElementsByTagName("selectcharacter")[0];
+        selectcharacter.appendChild(this.background);
+    }
     createProfile(colour) {
         console.log('hallo');
         this.profile = document.createElement("profile");
@@ -748,40 +798,42 @@ class Selectcharacter {
         console.log(this._chosen);
     }
     onknopClick(e) {
-        this._selected = true;
+        this._next = true;
         e.target.style.filter = `grayscale(1)`;
     }
 }
 class Story {
     constructor(player_1, player_2) {
+        this._next = false;
         this.createbackground(player_1, player_2);
         this.createstoryknop();
     }
+    get next() { return this._next; }
     createbackground(player_1, player_2) {
         this.storybg = document.createElement("storybg");
         let story = document.getElementsByTagName(`story`)[0];
         story.appendChild(this.storybg);
-        if (player_1 == "zwart" && player_2 == "wit" || player_1 == "wit" && player_2 == "zwart") {
+        if (player_1 == "black" && player_2 == "white" || player_1 == "white" && player_2 == "black") {
             this.storybg.classList.add(`bg1`);
             console.log(`hallo`);
         }
-        else if (player_1 == "zwart" && player_2 == "groen" || player_1 == "groen" && player_2 == "zwart") {
+        else if (player_1 == "black" && player_2 == "green" || player_1 == "green" && player_2 == "black") {
             this.storybg.classList.add(`bg2`);
             console.log(`hallo`);
         }
-        else if (player_1 == "groen" && player_2 == "roze" || player_1 == "roze" && player_2 == "groen") {
+        else if (player_1 == "green" && player_2 == "pink" || player_1 == "pink" && player_2 == "green") {
             this.storybg.classList.add(`bg3`);
             console.log(`hallo`);
         }
-        else if (player_1 == "groen" && player_2 == "wit" || player_1 == "wit" && player_2 == "groen") {
+        else if (player_1 == "green" && player_2 == "white" || player_1 == "white" && player_2 == "green") {
             this.storybg.classList.add(`bg2`);
             console.log(`hallo`);
         }
-        else if (player_1 == "zwart" && player_2 == "roze" || player_1 == "roze" && player_2 == "zwart") {
+        else if (player_1 == "black" && player_2 == "pink" || player_1 == "pink" && player_2 == "black") {
             this.storybg.classList.add(`bg4`);
             console.log(`hallo`);
         }
-        else if (player_1 == "wit" && player_2 == "roze" || player_1 == "roze" && player_2 == "wit") {
+        else if (player_1 == "white" && player_2 == "pink" || player_1 == "pink" && player_2 == "white") {
             this.storybg.classList.add(`bg4`);
             console.log(`hallo`);
         }
@@ -796,6 +848,7 @@ class Story {
         this.storyknop.style.transform = `translate(${x}px, ${y}px)`;
     }
     onstoryknopClick(e) {
+        this._next = true;
         e.target.style.filter = `grayscale(1)`;
     }
 }
@@ -861,10 +914,18 @@ class Unicorn {
 }
 class Winner {
     constructor(colour) {
+        this._next = false;
+        this.createbackground();
         this.createwinnerplat();
         this.creategif(colour);
         this.createquit();
         this.createagain();
+    }
+    get next() { return this._next; }
+    createbackground() {
+        this.background = document.createElement("background");
+        let winner = document.getElementsByTagName("winner")[0];
+        winner.appendChild(this.background);
     }
     creategif(colour) {
         this.winnergif = document.createElement("winnergif");
@@ -872,27 +933,31 @@ class Winner {
         winner.appendChild(this.winnergif);
         this.winnergif.classList.add(`${colour}winner`);
     }
-    createquit() {
-        this.quitknop = document.createElement("quitknop");
-        let winner = document.getElementsByTagName("winner")[0];
-        winner.appendChild(this.quitknop);
-        this.quitknop.addEventListener("click", (e) => this.onKlick(e));
-    }
-    createagain() {
-        this.againknop = document.createElement("againknop");
-        let winner = document.getElementsByTagName("winner")[0];
-        winner.appendChild(this.againknop);
-        this.againknop.addEventListener("click", (e) => this.onKlick(e));
-    }
     createwinnerplat() {
         this.winnerplat = document.createElement("winnerplat");
         let winner = document.getElementsByTagName("winner")[0];
         winner.appendChild(this.winnerplat);
     }
-    onKlick(e) {
+    createagain() {
+        this.againknop = document.createElement("againknop");
+        let winner = document.getElementsByTagName("winner")[0];
+        winner.appendChild(this.againknop);
+        this.againknop.addEventListener("click", (e) => this.onagainKlick(e));
+    }
+    createquit() {
+        this.quitknop = document.createElement("quitknop");
+        let winner = document.getElementsByTagName("winner")[0];
+        winner.appendChild(this.quitknop);
+        this.quitknop.addEventListener("click", (e) => this.onquitKlick(e));
+    }
+    onagainKlick(e) {
+        console.log("hallo");
+        this._next = true;
+        e.target.style.filter = `grayscale(1)`;
+    }
+    onquitKlick(e) {
         console.log("hallo");
         e.target.style.filter = `grayscale(1)`;
     }
 }
-window.addEventListener("load", () => new Winner("black"));
 //# sourceMappingURL=main.js.map

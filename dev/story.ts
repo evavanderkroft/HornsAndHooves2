@@ -2,6 +2,9 @@ class Story{
     private storybg!: HTMLElement
     private storyknop!: HTMLElement
 
+    private _next: boolean= false
+    public get next():boolean{return this._next}
+
     constructor(player_1: string, player_2: string) {
         this.createbackground(player_1, player_2)
         this.createstoryknop()
@@ -13,32 +16,33 @@ class Story{
         let story= document.getElementsByTagName(`story`)[0]
         story.appendChild(this.storybg)
 
-        if (player_1== "zwart" && player_2 == "wit" ||player_1== "wit" && player_2 == "zwart" ){
+        if (player_1== "black" && player_2 == "white" ||player_1== "white" && player_2 == "black" ){
             // voeg een css element toe aan background
+            // console.log("black white")
             this.storybg.classList.add(`bg1`)
             console.log(`hallo`)
         }
-        else if (player_1== "zwart" && player_2 == "groen"||player_1== "groen" && player_2 == "zwart" ){
+        else if (player_1== "black" && player_2 == "green"||player_1== "green" && player_2 == "black" ){
             // voeg een css element toe aan background
             this.storybg.classList.add(`bg2`)
             console.log(`hallo`)
         }
-        else if (player_1== "groen" && player_2 == "roze"||player_1== "roze" && player_2 == "groen" ){
+        else if (player_1== "green" && player_2 == "pink"||player_1== "pink" && player_2 == "green" ){
             // voeg een css element toe aan background
             this.storybg.classList.add(`bg3`)
             console.log(`hallo`)
         }
-        else if (player_1== "groen" && player_2 == "wit"||player_1== "wit" && player_2 == "groen" ){
+        else if (player_1== "green" && player_2 == "white"||player_1== "white" && player_2 == "green" ){
             // voeg een css element toe aan background
             this.storybg.classList.add(`bg2`)
             console.log(`hallo`)
         }
-        else if (player_1== "zwart" && player_2 == "roze"||player_1== "roze" && player_2 == "zwart" ){
+        else if (player_1== "black" && player_2 == "pink"||player_1== "pink" && player_2 == "black" ){
             // voeg een css element toe aan background
             this.storybg.classList.add(`bg4`)
             console.log(`hallo`)
         }
-        else if (player_1== "wit" && player_2 == "roze"||player_1== "roze" && player_2 == "wit" ){
+        else if (player_1== "white" && player_2 == "pink"||player_1== "pink" && player_2 == "white" ){
             // voeg een css element toe aan background
             this.storybg.classList.add(`bg4`)
             console.log(`hallo`)
@@ -58,6 +62,7 @@ class Story{
         this.storyknop.style.transform = `translate(${x}px, ${y}px)`
     }
     public onstoryknopClick(e:Event){
+        this._next = true;
         (e.target as HTMLElement).style.filter= `grayscale(1)`;
     }
 

@@ -6,6 +6,8 @@ class Game {
     private score : number = 10
     private score2 : number = 10
 
+    private _next: boolean= false
+    public get next():boolean{return this._next}
 
     constructor(player1:string, player2: string) {
         console.log(player1,player2)
