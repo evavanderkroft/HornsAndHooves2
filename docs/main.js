@@ -904,12 +904,12 @@ class Selectcharacter {
     }
     onProfileClick(e, colour) {
         console.log(e.srcElement);
-        e.target.style.filter = `grayscale(1)`;
         if (this._check == true) {
-            if (this._chosen != colour) {
+            if (this._chosen != colour && this._horse2 === "") {
                 this._check = true;
                 this.character_2.classList.add(`c${colour}`);
                 this._horse2 = colour;
+                e.target.style.filter = `grayscale(1)`;
                 this.createknop();
             }
         }
@@ -917,6 +917,7 @@ class Selectcharacter {
             this._check = true;
             this.character_1.classList.add(`c${colour}`);
             this._horse1 = colour;
+            e.target.style.filter = `grayscale(1)`;
         }
         this._chosen = colour;
         console.log(this._chosen);
