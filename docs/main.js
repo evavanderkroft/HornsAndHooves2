@@ -57,11 +57,11 @@ class Control {
         control.appendChild(this.creategame);
         this.game = new Game(this.player1, this.player2, this._background);
     }
-    createwinnerpage() {
+    createwinnerpage(winner) {
         this.createwinner = document.createElement("winner");
         let control = document.getElementsByTagName("control")[0];
         control.appendChild(this.createwinner);
-        this.winner = new Winner("pink");
+        this.winner = new Winner(winner);
     }
     gameLoop() {
         if (this.selectcharacter != null &&
@@ -83,7 +83,7 @@ class Control {
         }
         if (this.game != null &&
             this.game.next == true) {
-            this.createwinnerpage();
+            this.createwinnerpage(this.game.winner);
             this.game = undefined;
             document.getElementsByTagName('game')[0].remove();
         }
@@ -135,6 +135,11 @@ class Game {
         this.winLeft = 0;
         this.WinRight = 0;
         this._next = false;
+        this._player1 = "";
+        this._player2 = "";
+        this._winner = "";
+        this._player1 = player1;
+        this._player2 = player2;
         this.createbackground(background);
         console.log(player1, player2);
         console.log("Game was created!");
@@ -145,6 +150,9 @@ class Game {
         this.gameloop();
     }
     get next() { return this._next; }
+    get player1() { return this._player1; }
+    get player2() { return this._player2; }
+    get winner() { return this._winner; }
     createbackground(background) {
         this.background = document.createElement("background");
         let game = document.getElementsByTagName("game")[0];
@@ -165,6 +173,16 @@ class Game {
             this.lifehearts2.push(new Lifeheart(1400));
             this.lifehearts2.push(new Lifeheart(1500));
             this.addArrows();
+        }
+        if (this.lifehearts.length == 1) {
+            this._next = true;
+            this._winner = this._player2;
+            console.log(this.winner);
+        }
+        if (this.lifehearts2.length == 1) {
+            this._next = true;
+            this._winner = this._player1;
+            console.log(this.winner);
         }
         if (this.winLeft == 1) {
             let lifeHeart = this.lifehearts2.shift();
