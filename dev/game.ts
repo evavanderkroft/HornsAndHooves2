@@ -20,12 +20,6 @@ class Game {
         this.unicorn = new Unicorn(0, player1)
         this.unicorn2 = new Unicorn(2, player2)
         this.frog = new Frog()
-         let themeSong = new Audio('audio/ThemeSong.mp3');
-         themeSong.play();
-         themeSong.addEventListener('ended', function() {
-             this.currentTime = 0;
-             this.play();
-         }, false);
         
 
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {

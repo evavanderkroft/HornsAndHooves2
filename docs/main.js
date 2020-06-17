@@ -28,6 +28,12 @@ class Control {
         this._player2 = "";
         this.createselectpage();
         this.gameLoop();
+        let themeSong = new Audio('audio/ThemeSong.mp3');
+        themeSong.play();
+        themeSong.addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        }, false);
     }
     get player1() { return this._player1; }
     get player2() { return this._player2; }
@@ -75,7 +81,8 @@ class Control {
         if (this.game != null &&
             this.game.next == true) {
             this.createwinnerpage();
-            this.game = undefined;
+            themeSong.
+                this.game = undefined;
             document.getElementsByTagName('game')[0].remove();
         }
         if (this.winner != null &&
@@ -132,12 +139,6 @@ class Game {
         this.unicorn = new Unicorn(0, player1);
         this.unicorn2 = new Unicorn(2, player2);
         this.frog = new Frog();
-        let themeSong = new Audio('audio/ThemeSong.mp3');
-        themeSong.play();
-        themeSong.addEventListener('ended', function () {
-            this.currentTime = 0;
-            this.play();
-        }, false);
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
             this.lifehearts.push(new Lifeheart(50));
             this.lifehearts.push(new Lifeheart(150));
