@@ -74,6 +74,7 @@ class Unicorn {
             console.log("hij werkt nu wel")
             this.unicorn.classList.remove("run")
             this.win = 0
+
             this.explosion.flippedBack()
             this.attackAnimation()
         }
@@ -97,6 +98,7 @@ class Unicorn {
         if ((this.x < 1000) && (this.attackBack == false)) {
             console.log("hij werkt nu wel 2")
             this.unicorn.classList.remove("run")
+
             this.win = 0
             this.explosion.flipped()
             this.attackAnimation()

@@ -57,13 +57,9 @@ class Game {
     constructor() {
         this.lifehearts = [];
         this.lifehearts2 = [];
+        this.winLeft = 0;
+        this.WinRight = 0;
         console.log("Game was created!");
-        let first = Math.floor(Math.random() * 6);
-        let second = Math.floor(Math.random() * 6);
-        let third = Math.floor(Math.random() * 6);
-        let fourth = Math.floor(Math.random() * 6);
-        this.leftArrows = new Leftarrows(first, second, third, fourth);
-        this.rightArrows = new Rightarrows(first, second, third, fourth);
         this.unicorn = new Unicorn(0);
         this.unicorn2 = new Unicorn(2);
         this.frog = new Frog();
@@ -79,7 +75,52 @@ class Game {
             this.currentTime = 0;
             this.play();
         }, false);
+        if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
+            this.lifehearts.push(new Lifeheart(50));
+            this.lifehearts.push(new Lifeheart(150));
+            this.lifehearts.push(new Lifeheart(250));
+            this.lifehearts2.push(new Lifeheart(1200));
+            this.lifehearts2.push(new Lifeheart(1300));
+            this.lifehearts2.push(new Lifeheart(1400));
+            this.addArrows();
+        }
+        this.newGame();
         this.gameloop();
+    }
+    newGame() {
+        console.log("game is gecreerd in new game");
+        if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
+            this.lifehearts.push(new Lifeheart(50));
+            this.lifehearts.push(new Lifeheart(150));
+            this.lifehearts.push(new Lifeheart(250));
+            this.lifehearts2.push(new Lifeheart(1200));
+            this.lifehearts2.push(new Lifeheart(1300));
+            this.lifehearts2.push(new Lifeheart(1400));
+            this.addArrows();
+        }
+        if (this.winLeft == 1) {
+            for (let i = this.lifehearts2.length; i >= 0; i--) {
+                this.lifehearts2.splice(i, 1);
+                console.log("spliced");
+                break;
+            }
+            this.winLeft = 0;
+            this.addArrows();
+            console.log("leftArrows.win");
+        }
+        if (this.WinRight == 1) {
+            this.WinRight = 0;
+            this.addArrows();
+            console.log("rightArrows.win");
+        }
+    }
+    addArrows() {
+        let first = Math.floor(Math.random() * 6);
+        let second = Math.floor(Math.random() * 6);
+        let third = Math.floor(Math.random() * 6);
+        let fourth = Math.floor(Math.random() * 6);
+        this.leftArrows = new Leftarrows(first, second, third, fourth);
+        this.rightArrows = new Rightarrows(first, second, third, fourth);
     }
     gameloop() {
         this.unicorn.update();
@@ -92,18 +133,26 @@ class Game {
             heart2.lifeupdate();
         }
         if ((this.leftArrows._win == 1) || (this.rightArrows._win == 1)) {
+            console.log("winLeft");
             if (this.leftArrows._win == 1) {
+                this.winLeft = 1;
                 this.leftArrows._win = 0;
                 this.unicorn._win = 1;
-                console.log("winLeft");
                 this.rightArrows.delete();
-                this.lifehearts;
+                this.leftArrows.delete();
+                setTimeout(() => {
+                    this.newGame();
+                }, 6000);
             }
             if (this.rightArrows._win == 1) {
                 this.rightArrows._win = 0;
                 this.unicorn2._win = 1;
+                this.WinRight = 1;
                 console.log("winRight");
                 this.leftArrows.delete();
+                setTimeout(() => {
+                    this.newGame();
+                }, 4500);
             }
         }
         requestAnimationFrame(() => this.gameloop());
@@ -415,8 +464,9 @@ class Lifeheart {
     }
     lifeupdate() {
         this.lifeheart.style.transform = `translate(${this.x}px, ${this.y}px) scale(0.3)`;
-        console.log(this.x);
-        console.log(this.y);
+    }
+    delete() {
+        this.lifeheart.remove();
     }
 }
 class Rightarrows {

@@ -16,7 +16,10 @@ class Lifeheart {
     }
     public lifeupdate() {
         this.lifeheart.style.transform = `translate(${this.x}px, ${this.y}px) scale(0.3)`
-        console.log(this.x)
-        console.log(this.y)
+
+    }
+
+    public delete() {
+        this.lifeheart.remove()
     }
 }
