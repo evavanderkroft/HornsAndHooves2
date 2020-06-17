@@ -20,17 +20,29 @@ game * {
     width: 100vw;
 }
 
-unicorn {
+unicornwhite {
     background-image: url(../img/horsewhite.png);
     width:500px; height: 500px;
     top: 0%;
     left: 0%;
-
     background-size:contain;
 }
-/* .player2  */
-unicorn2{
+unicorngreen {
     background-image: url(../img/horsegreen.png);
+    width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
+    background-size:contain;
+}
+unicornpink {
+    background-image: url(../img/horsepink.png);
+    width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
+    background-size:contain;
+}
+unicornblack {
+    background-image: url(../img/horseblack.png);
     width:500px; height: 500px;
     top: 0%;
     left: 0%;
@@ -41,6 +53,7 @@ frog {
     background-image: url(../img/froggi.png);
     width:500px; height: 400px;
     cursor: pointer;
+    margin-top:-10%;
 }
 
 .talk0 {
@@ -77,8 +90,17 @@ frog {
     margin-left: 100px;
 
 }
-.run{
+.greenrun{
+    background-image: url(../img/green.gif);
+}
+.blackrun{
+    background-image: url(../img/black.gif);
+}
+.whiterun{
     background-image: url(../img/white.gif);
+}
+.pinkrun{
+    background-image: url(../img/pink.gif);
 }
 .run2{
     background-image: url(../img/green.gif);
@@ -248,6 +270,177 @@ img.tutbutfrog{
     padding: 5px;
     margin:20px;
 }
+
+.credits {
+    background-image: url(../img/SkyClouds.jpg);
+    width:100%; height: 100%;
+    background-size: cover;
+}
+
+.creditstitle{
+    display: flex;
+    justify-content: center;
+    font-size:  100px;
+    color: white;
+    -webkit-text-stroke: plum 5px;
+    text-shadow: 10px 10px black;
+    text-align: center;
+    padding: -500px;
+    position:absolute;
+    top:-10%;
+    left:38.8%;
+}
+
+.created{
+    display: flex;
+    justify-content: center;
+    font-size:  50px;
+    color: white;
+    -webkit-text-stroke: plum 3px;
+    text-shadow: 5px 5px black;
+    text-align: center;
+    padding: -500px;
+    position: absolute;
+    top:12%;
+    left: 41.5%;
+}
+
+
+.backtohome {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    color:plum;
+    text-shadow: 7px 5px lightblue;
+    height: auto;
+    width: 400px;
+    background: rgb(244,208,243);
+    background: -moz-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: -webkit-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f4d0f3",endColorstr="#d4ebed",GradientType=1);
+    border-color: white;
+    border-radius: 20px;
+    border-width: 10px;
+    border-style: outset;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+    margin:20px;
+    top:80%;
+    left: 34%;
+    position: absolute;
+}
+
+.creditstext{
+    display: flex;
+    justify-content: center;
+    font-size:  30px;
+    color: white;
+    -webkit-text-stroke: plum 1.5px;
+    text-shadow: 2px 2px black;
+    text-align: center;
+    padding: -500px; 
+    position:absolute;
+    top:25%;
+    left:42%;
+}
+
+.sound{
+    display: flex;
+    justify-content: center;
+    font-size:  50px;
+    color: white;
+    -webkit-text-stroke: plum 3px;
+    text-shadow: 5px 5px black;
+    text-align: center;
+    padding: -500px;
+    position: absolute;
+    top: 50%;
+    left: 44.6%;
+}
+
+.soundtext{
+    display: flex;
+    justify-content: center;
+    font-size:  30px;
+    color: white;
+    -webkit-text-stroke: plum 1.5px;
+    text-shadow: 2px 2px black;
+    text-align: center;
+    padding: -500px; 
+    top: 65%;
+    left:45%;
+    position: absolute;
+}
+
+.horsewhite {
+    position: absolute;
+    height:250px;
+    width:300px;
+    left:8%;
+    top:35%;
+}
+
+.horseblack {
+    position: absolute;
+    height:250px;
+    width:300px;
+    left:75%;
+    top:35%;
+    transform: scaleX(-1);
+}
+img{
+    width:400px; 
+    height: auto;
+} 
+/* ------------------------------move unicorn-------------------------------------------------- */
+.greenUnicornHome{
+    position: absolute;
+    bottom: 10%;
+    left: 3%;
+    transform: translate(0, -50%);
+}
+.whiteUnicornHome{
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    transform: translate(0, -50%);
+}
+
+.blackUnicornHome{
+    position: absolute;
+   bottom: 10%;
+    right: 3%;
+    transform: translate(0, -50%) scaleX(-1);
+   
+}
+
+.pinkUnicornHome{
+    position: absolute;
+    top: 70%;
+    right: 10%;
+    transform: translate(0, -50%) scaleX(-1);
+}
+
+bomb{
+    background-image: url("../img/explosion_2.gif");
+    width: 480px;
+    height: 480px;
+    display: none;
+    top: 400px;
+    left: 60%;
+    transform: translate(-50%, 0 );
+    z-index: 10;
+    visibility: hidden;
+}
+/* -----character select ----------------------------------------------------------------------*/
+selectcharacter *{
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
 fightknop {
     height: 50px;
     width: 150px;
@@ -257,14 +450,6 @@ fightknop {
     border-style: outset;
     background-image: url(../img/knop2.png);
     background-size: 100% 100%;
-}
-
-/* -----character select ----------------------------------------------------------*/
-selectcharacter *{
-    position: absolute;
-    display: block;
-    box-sizing: border-box;
-    background-repeat: no-repeat;
 }
 background{
     background-image: url(../img/background_select.jpg);

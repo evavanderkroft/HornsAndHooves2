@@ -10,17 +10,17 @@ class Game {
     private lifehearts2: Lifeheart[] = []
     private winLeft: number = 0
     private WinRight: number = 0
+    private _next: boolean= false
+    public get next():boolean{return this._next}
 
-    private _next: boolean = false
-    public get next(): boolean { return this._next }
-
-
-    constructor(player1: string, player2: string) {
+    constructor(player1:string, player2: string) {
         this.createbackground()
+        console.log(player1,player2)
         console.log("Game was created!")
-        this.unicorn = new Unicorn(0)
-        this.unicorn2 = new Unicorn(2)
+        this.unicorn = new Unicorn(0, player1)
+        this.unicorn2 = new Unicorn(2, player2)
         this.frog = new Frog()
+        
 
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
             this.lifehearts.push(new Lifeheart(50))
@@ -37,6 +37,13 @@ class Game {
 
 
 
+    }
+    createbackground(){
+        this.background = document.createElement("background")
+        let game = document.getElementsByTagName("game")[0]
+        game.appendChild(this.background)
+
+        this.background.classList.add(`gamebg`)
     }
 
     public newGame() {
@@ -89,7 +96,8 @@ class Game {
         game.appendChild(this.background)
         this.background.classList.add(`gamebg`)
     }
-    private gameloop() {
+
+    public gameloop() {
         this.unicorn.update()
         this.unicorn2.update2()
         this.frog.updateFrog()
@@ -156,5 +164,5 @@ class Game {
     //         score.innerHTML = "Score: " + this.score2
     //     }
     // }
-
 }
+

@@ -16,6 +16,12 @@ class Control{
     constructor(){
         this.createselectpage();
         this.gameLoop();
+        let themeSong = new Audio('audio/ThemeSong.mp3');
+        themeSong.play();
+        themeSong.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
     }  
 
     private createselectpage(){
@@ -70,6 +76,7 @@ class Control{
         if(this.game != null &&
             this.game.next==true){
                 this.createwinnerpage()
+                themeSong.
 
                 this.game = undefined;
                 document.getElementsByTagName('game')[0].remove();

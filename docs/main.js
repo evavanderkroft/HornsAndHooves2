@@ -28,6 +28,12 @@ class Control {
         this._player2 = "";
         this.createselectpage();
         this.gameLoop();
+        let themeSong = new Audio('audio/ThemeSong.mp3');
+        themeSong.play();
+        themeSong.addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        }, false);
     }
     get player1() { return this._player1; }
     get player2() { return this._player2; }
@@ -75,7 +81,8 @@ class Control {
         if (this.game != null &&
             this.game.next == true) {
             this.createwinnerpage();
-            this.game = undefined;
+            themeSong.
+                this.game = undefined;
             document.getElementsByTagName('game')[0].remove();
         }
         if (this.winner != null &&
@@ -99,15 +106,17 @@ class Frog {
     }
     updateFrog() {
         let x = ((window.innerWidth * 0.5) - (this.frog.clientWidth / 2));
-        let y = 0;
+        let y = window.innerHeight - 915;
         this.frog.style.transform = `translate(${x}px, ${y}px) scale(0.3)`;
     }
     onFrogClick(e) {
         console.log(e.keyCode);
         let tipnmr = Math.floor(Math.random() * 5);
+        let kikkergeluid = new Audio('audio/kikker.mp3');
         switch (e.keyCode) {
             case this.keyinfo:
                 this.frog.classList.add("talk" + tipnmr);
+                kikkergeluid.play();
                 setTimeout(() => {
                     this.talking();
                 }, 3500);
@@ -125,9 +134,13 @@ class Game {
         this.WinRight = 0;
         this._next = false;
         this.createbackground();
+<<<<<<< HEAD
+=======
+        console.log(player1, player2);
+>>>>>>> Inci
         console.log("Game was created!");
-        this.unicorn = new Unicorn(0);
-        this.unicorn2 = new Unicorn(2);
+        this.unicorn = new Unicorn(0, player1);
+        this.unicorn2 = new Unicorn(2, player2);
         this.frog = new Frog();
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
             this.lifehearts.push(new Lifeheart(50));
@@ -142,6 +155,15 @@ class Game {
         this.gameloop();
     }
     get next() { return this._next; }
+<<<<<<< HEAD
+=======
+    createbackground() {
+        this.background = document.createElement("background");
+        let game = document.getElementsByTagName("game")[0];
+        game.appendChild(this.background);
+        this.background.classList.add(`gamebg`);
+    }
+>>>>>>> Inci
     newGame() {
         console.log("game is gecreerd in new game");
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
@@ -177,12 +199,15 @@ class Game {
         this.leftArrows = new Leftarrows(first, second, third, fourth);
         this.rightArrows = new Rightarrows(first, second, third, fourth);
     }
+<<<<<<< HEAD
     createbackground() {
         this.background = document.createElement("background");
         let game = document.getElementsByTagName("game")[0];
         game.appendChild(this.background);
         this.background.classList.add(`gamebg`);
     }
+=======
+>>>>>>> Inci
     gameloop() {
         this.unicorn.update();
         this.unicorn2.update2();
@@ -965,7 +990,7 @@ class Story {
     }
 }
 class Unicorn {
-    constructor(x) {
+    constructor(x, colour) {
         this.x = 0;
         this.rightSpeed = 10;
         this.leftSpeed = 10;
@@ -973,7 +998,9 @@ class Unicorn {
         this.explosion = new Explosion;
         this.win = 0;
         this.win2 = 0;
-        this.unicorn = document.createElement("unicorn");
+        this._colour = "";
+        this._colour = colour;
+        this.unicorn = document.createElement(`unicorn${colour}`);
         let game = document.getElementsByTagName("game")[0];
         game.appendChild(this.unicorn);
         if (x != 0) {
@@ -986,6 +1013,12 @@ class Unicorn {
     set _win(A) { this.win = A; }
     get _win2() { return this.win2; }
     set _win2(A) { this.win2 = A; }
+<<<<<<< HEAD
+=======
+    get colour() { return this._colour; }
+    moveUnicorns() {
+    }
+>>>>>>> Inci
     update() {
         this.attackMove();
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px)`;
@@ -994,16 +1027,29 @@ class Unicorn {
         this.attackMove2();
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`;
     }
+<<<<<<< HEAD
+=======
+    getRectangle() {
+        return this.unicorn.getBoundingClientRect();
+    }
+    bounceX() {
+        this.rightSpeed = -1;
+        this.unicorn.classList.remove(`${this.colour}run`);
+        setTimeout(() => {
+            this.rightSpeed = 0;
+        }, 300);
+    }
+>>>>>>> Inci
     attackMove() {
         if ((this.x <= 403) && (this.win == 1)) {
             console.log("hij doet het update 1");
-            this.unicorn.classList.add("run");
+            this.unicorn.classList.add(`${this.colour}run`);
             this.x += 4;
             console.log(this.win);
         }
         if ((this.x > 400) && (this.attackBack == false)) {
             console.log("hij werkt nu wel");
-            this.unicorn.classList.remove("run");
+            this.unicorn.classList.remove(`${this.colour}run`);
             this.win = 0;
             console.log(this.win);
             this.explosion.flippedBack();
@@ -1014,19 +1060,23 @@ class Unicorn {
         }
         if ((this.x < 0) && (this.attackBack == true)) {
             this.x = 0;
+<<<<<<< HEAD
             this.unicorn.classList.remove("run");
             this.attackBack = false;
+=======
+            this.unicorn.classList.remove(`${this.colour}run`);
+>>>>>>> Inci
         }
     }
     attackMove2() {
         if ((this.x >= 1000) && (this.win == 1)) {
             console.log("hij doet het update 2");
-            this.unicorn.classList.add("run");
+            this.unicorn.classList.add(`${this.colour}run`);
             this.x -= 4;
         }
         if ((this.x < 1000) && (this.attackBack == false)) {
             console.log("hij werkt nu wel 2");
-            this.unicorn.classList.remove("run");
+            this.unicorn.classList.remove(`${this.colour}run`);
             this.win = 0;
             this.explosion.flipped();
             this.attackAnimation();
@@ -1036,16 +1086,22 @@ class Unicorn {
         }
         if ((this.x > window.innerWidth - this.unicorn.clientWidth) && (this.attackBack == true)) {
             this.x = window.innerWidth - this.unicorn.clientWidth;
+<<<<<<< HEAD
             this.unicorn.classList.remove("run");
             this.attackBack = false;
+=======
+            this.unicorn.classList.remove(`${this.colour}run`);
+>>>>>>> Inci
         }
     }
     attackAnimation() {
         console.log("doe attack animation");
+        let attackSound = new Audio('audio/attack.mp3');
         this.explosion.explode();
+        attackSound.play();
         setTimeout(() => {
             this.attackBack = true;
-            this.unicorn.classList.add("run");
+            this.unicorn.classList.add(`${this.colour}run`);
             this.explosion.stopExplode();
             console.log("hoi = true");
         }, 2000);
