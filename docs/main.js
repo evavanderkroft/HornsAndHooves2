@@ -33,15 +33,17 @@ class Frog {
     }
     updateFrog() {
         let x = ((window.innerWidth * 0.5) - (this.frog.clientWidth / 2));
-        let y = 0;
+        let y = window.innerHeight - 915;
         this.frog.style.transform = `translate(${x}px, ${y}px) scale(0.3)`;
     }
     onFrogClick(e) {
         console.log(e.keyCode);
         let tipnmr = Math.floor(Math.random() * 5);
+        let kikkergeluid = new Audio('audio/kikker.mp3');
         switch (e.keyCode) {
             case this.keyinfo:
                 this.frog.classList.add("talk" + tipnmr);
+                kikkergeluid.play();
                 setTimeout(() => {
                     this.talking();
                 }, 3500);
@@ -61,6 +63,12 @@ class Game {
         this.unicorn = new Unicorn(0);
         this.unicorn2 = new Unicorn(2);
         this.frog = new Frog();
+        let themeSong = new Audio('audio/ThemeSong.mp3');
+        themeSong.play();
+        themeSong.addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        }, false);
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
             this.lifehearts.push(new Lifeheart(50));
             this.lifehearts.push(new Lifeheart(150));
@@ -836,7 +844,9 @@ class Unicorn {
     }
     attackAnimation() {
         console.log("doe attack animation");
+        let attackSound = new Audio('audio/attack.mp3');
         this.explosion.explode();
+        attackSound.play();
         setTimeout(() => {
             this.attackBack = true;
             this.unicorn.classList.add("run");
