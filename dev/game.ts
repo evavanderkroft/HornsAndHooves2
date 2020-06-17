@@ -85,6 +85,8 @@ class Game {
             console.log(this.winner)
         }
 
+
+
         if (this.winLeft == 1) {
             let lifeHeart: Lifeheart = this.lifehearts2.shift()!
             lifeHeart.delete()
