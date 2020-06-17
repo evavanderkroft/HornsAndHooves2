@@ -1,5 +1,6 @@
 class Game {
 
+    private background!: HTMLElement
     private unicorn: Unicorn
     private unicorn2: Unicorn
     private frog: Frog
@@ -10,12 +11,14 @@ class Game {
     private winLeft: number = 0
     private WinRight: number = 0
 
-    constructor() {
+    private _next: boolean = false
+    public get next(): boolean { return this._next }
+    constructor(player1: string, player2: string) {
+        this.createbackground()
         console.log("Game was created!")
         this.unicorn = new Unicorn(0)
         this.unicorn2 = new Unicorn(2)
         this.frog = new Frog()
-
 
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
             this.lifehearts.push(new Lifeheart(50))
@@ -46,7 +49,6 @@ class Game {
             this.addArrows()
         }
 
-
         if (this.winLeft == 1) {
             // this.lifehearts2[this.lifehearts2.length].remove()
             for (let i = this.lifehearts2.length; i >= 0; i--) {
@@ -64,17 +66,14 @@ class Game {
             console.log("leftArrows.win")
         }
 
-
         if (this.WinRight == 1) {
             // this.lifehearts[this.lifehearts.length].remove()
             this.WinRight = 0
 
             this.addArrows()
-
             console.log("rightArrows.win")
         }
     }
-
     public addArrows() {
         let first = Math.floor(Math.random() * 6)
         let second = Math.floor(Math.random() * 6)
@@ -83,9 +82,13 @@ class Game {
         this.leftArrows = new Leftarrows(first, second, third, fourth)
         this.rightArrows = new Rightarrows(first, second, third, fourth)
     }
-
-    public gameloop() {
-
+    createbackground() {
+        this.background = document.createElement("background")
+        let game = document.getElementsByTagName("game")[0]
+        game.appendChild(this.background)
+        this.background.classList.add(`gamebg`)
+    }
+    private gameloop() {
         this.unicorn.update()
         this.unicorn2.update2()
         this.frog.updateFrog()
@@ -102,6 +105,7 @@ class Game {
 
         if ((this.leftArrows._win == 1) || (this.rightArrows._win == 1)) {
             console.log("winLeft")
+
             if (this.leftArrows._win == 1) {
                 this.winLeft = 1
                 this.leftArrows._win = 0
@@ -110,9 +114,9 @@ class Game {
                 this.rightArrows.delete()
                 this.leftArrows.delete()
 
-                setTimeout(() => {
-                    this.newGame()
-                }, 6000);
+                // setTimeout(() => {
+                this.newGame()
+                // }, 6000);
 
 
 
@@ -125,9 +129,9 @@ class Game {
                 console.log("winRight")
                 this.leftArrows.delete()
 
-                setTimeout(() => {
-                    this.newGame()
-                }, 4500);
+                // setTimeout(() => {
+                this.newGame()
+                // }, 4500);
 
             }
 
@@ -153,5 +157,3 @@ class Game {
     // }
 
 }
-
-window.addEventListener("load", () => new Game())
