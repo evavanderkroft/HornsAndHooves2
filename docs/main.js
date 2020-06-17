@@ -63,12 +63,6 @@ class Game {
         this.unicorn = new Unicorn(0);
         this.unicorn2 = new Unicorn(2);
         this.frog = new Frog();
-        this.lifehearts.push(new Lifeheart(50));
-        this.lifehearts.push(new Lifeheart(150));
-        this.lifehearts.push(new Lifeheart(250));
-        this.lifehearts2.push(new Lifeheart(1200));
-        this.lifehearts2.push(new Lifeheart(1300));
-        this.lifehearts2.push(new Lifeheart(1400));
         let themeSong = new Audio('audio/ThemeSong.mp3');
         themeSong.play();
         themeSong.addEventListener('ended', function () {
