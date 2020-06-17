@@ -38,14 +38,7 @@ class Game {
 
 
     }
-    createbackground(){
-        this.background = document.createElement("background")
-        let game = document.getElementsByTagName("game")[0]
-        game.appendChild(this.background)
-
-        this.background.classList.add(`gamebg`)
-    }
-
+   
     public newGame() {
         console.log("game is gecreerd in new game")
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {

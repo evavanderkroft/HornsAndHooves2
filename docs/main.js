@@ -81,8 +81,7 @@ class Control {
         if (this.game != null &&
             this.game.next == true) {
             this.createwinnerpage();
-            themeSong.
-                this.game = undefined;
+            this.game = undefined;
             document.getElementsByTagName('game')[0].remove();
         }
         if (this.winner != null &&
@@ -134,10 +133,7 @@ class Game {
         this.WinRight = 0;
         this._next = false;
         this.createbackground();
-<<<<<<< HEAD
-=======
         console.log(player1, player2);
->>>>>>> Inci
         console.log("Game was created!");
         this.unicorn = new Unicorn(0, player1);
         this.unicorn2 = new Unicorn(2, player2);
@@ -155,15 +151,6 @@ class Game {
         this.gameloop();
     }
     get next() { return this._next; }
-<<<<<<< HEAD
-=======
-    createbackground() {
-        this.background = document.createElement("background");
-        let game = document.getElementsByTagName("game")[0];
-        game.appendChild(this.background);
-        this.background.classList.add(`gamebg`);
-    }
->>>>>>> Inci
     newGame() {
         console.log("game is gecreerd in new game");
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
@@ -199,15 +186,12 @@ class Game {
         this.leftArrows = new Leftarrows(first, second, third, fourth);
         this.rightArrows = new Rightarrows(first, second, third, fourth);
     }
-<<<<<<< HEAD
     createbackground() {
         this.background = document.createElement("background");
         let game = document.getElementsByTagName("game")[0];
         game.appendChild(this.background);
         this.background.classList.add(`gamebg`);
     }
-=======
->>>>>>> Inci
     gameloop() {
         this.unicorn.update();
         this.unicorn2.update2();
@@ -1013,12 +997,7 @@ class Unicorn {
     set _win(A) { this.win = A; }
     get _win2() { return this.win2; }
     set _win2(A) { this.win2 = A; }
-<<<<<<< HEAD
-=======
     get colour() { return this._colour; }
-    moveUnicorns() {
-    }
->>>>>>> Inci
     update() {
         this.attackMove();
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px)`;
@@ -1027,19 +1006,6 @@ class Unicorn {
         this.attackMove2();
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`;
     }
-<<<<<<< HEAD
-=======
-    getRectangle() {
-        return this.unicorn.getBoundingClientRect();
-    }
-    bounceX() {
-        this.rightSpeed = -1;
-        this.unicorn.classList.remove(`${this.colour}run`);
-        setTimeout(() => {
-            this.rightSpeed = 0;
-        }, 300);
-    }
->>>>>>> Inci
     attackMove() {
         if ((this.x <= 403) && (this.win == 1)) {
             console.log("hij doet het update 1");
@@ -1060,12 +1026,8 @@ class Unicorn {
         }
         if ((this.x < 0) && (this.attackBack == true)) {
             this.x = 0;
-<<<<<<< HEAD
-            this.unicorn.classList.remove("run");
-            this.attackBack = false;
-=======
             this.unicorn.classList.remove(`${this.colour}run`);
->>>>>>> Inci
+            this.attackBack = false;
         }
     }
     attackMove2() {
@@ -1086,12 +1048,8 @@ class Unicorn {
         }
         if ((this.x > window.innerWidth - this.unicorn.clientWidth) && (this.attackBack == true)) {
             this.x = window.innerWidth - this.unicorn.clientWidth;
-<<<<<<< HEAD
-            this.unicorn.classList.remove("run");
-            this.attackBack = false;
-=======
             this.unicorn.classList.remove(`${this.colour}run`);
->>>>>>> Inci
+            this.attackBack = false;
         }
     }
     attackAnimation() {
@@ -1153,6 +1111,7 @@ class Winner {
     onquitKlick(e) {
         console.log("hallo");
         e.target.style.filter = `grayscale(1)`;
+        window.location.href = 'homescreen.html';
     }
 }
 //# sourceMappingURL=main.js.map
