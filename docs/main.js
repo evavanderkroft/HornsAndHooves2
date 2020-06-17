@@ -138,15 +138,6 @@ class Game {
         this.unicorn = new Unicorn(0, player1);
         this.unicorn2 = new Unicorn(2, player2);
         this.frog = new Frog();
-        if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
-            this.lifehearts.push(new Lifeheart(50));
-            this.lifehearts.push(new Lifeheart(150));
-            this.lifehearts.push(new Lifeheart(250));
-            this.lifehearts2.push(new Lifeheart(1200));
-            this.lifehearts2.push(new Lifeheart(1300));
-            this.lifehearts2.push(new Lifeheart(1400));
-            this.addArrows();
-        }
         this.newGame();
         this.gameloop();
     }
@@ -154,25 +145,28 @@ class Game {
     newGame() {
         console.log("game is gecreerd in new game");
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
+            this.lifehearts.push(new Lifeheart(-50));
             this.lifehearts.push(new Lifeheart(50));
             this.lifehearts.push(new Lifeheart(150));
             this.lifehearts.push(new Lifeheart(250));
+            this.lifehearts.push(new Lifeheart(350));
+            this.lifehearts2.push(new Lifeheart(1100));
             this.lifehearts2.push(new Lifeheart(1200));
             this.lifehearts2.push(new Lifeheart(1300));
             this.lifehearts2.push(new Lifeheart(1400));
+            this.lifehearts2.push(new Lifeheart(1500));
             this.addArrows();
         }
         if (this.winLeft == 1) {
-            for (let i = this.lifehearts2.length; i >= 0; i--) {
-                this.lifehearts2.splice(i, 1);
-                console.log("spliced");
-                break;
-            }
+            let lifeHeart = this.lifehearts2.shift();
+            lifeHeart.delete();
             this.winLeft = 0;
             this.addArrows();
             console.log("leftArrows.win");
         }
         if (this.WinRight == 1) {
+            let lifeHeart2 = this.lifehearts.pop();
+            lifeHeart2.delete();
             this.WinRight = 0;
             this.addArrows();
             console.log("rightArrows.win");
