@@ -42,6 +42,7 @@ frog {
     background-image: url(../img/froggi.png);
     width:500px; height: 400px;
     cursor: pointer;
+    margin-top:-10%;
 }
 
 .talk0 {
@@ -250,6 +251,125 @@ img.tutbutfrog{
     margin:20px;
 }
 
+.credits {
+    background-image: url(../img/SkyClouds.jpg);
+    width:100%; height: 100%;
+    background-size: cover;
+}
+
+.creditstitle{
+    display: flex;
+    justify-content: center;
+    font-size:  100px;
+    color: white;
+    -webkit-text-stroke: plum 5px;
+    text-shadow: 10px 10px black;
+    text-align: center;
+    padding: -500px;
+    position:absolute;
+    top:-10%;
+    left:38.8%;
+}
+
+.created{
+    display: flex;
+    justify-content: center;
+    font-size:  50px;
+    color: white;
+    -webkit-text-stroke: plum 3px;
+    text-shadow: 5px 5px black;
+    text-align: center;
+    padding: -500px;
+    position: absolute;
+    top:12%;
+    left: 41.5%;
+}
+
+
+.backtohome {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    color:plum;
+    text-shadow: 7px 5px lightblue;
+    height: auto;
+    width: 400px;
+    background: rgb(244,208,243);
+    background: -moz-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: -webkit-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f4d0f3",endColorstr="#d4ebed",GradientType=1);
+    border-color: white;
+    border-radius: 20px;
+    border-width: 10px;
+    border-style: outset;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+    margin:20px;
+    top:80%;
+    left: 34%;
+    position: absolute;
+}
+
+.creditstext{
+    display: flex;
+    justify-content: center;
+    font-size:  30px;
+    color: white;
+    -webkit-text-stroke: plum 1.5px;
+    text-shadow: 2px 2px black;
+    text-align: center;
+    padding: -500px; 
+    position:absolute;
+    top:25%;
+    left:42%;
+}
+
+.sound{
+    display: flex;
+    justify-content: center;
+    font-size:  50px;
+    color: white;
+    -webkit-text-stroke: plum 3px;
+    text-shadow: 5px 5px black;
+    text-align: center;
+    padding: -500px;
+    position: absolute;
+    top: 50%;
+    left: 44.6%;
+}
+
+.soundtext{
+    display: flex;
+    justify-content: center;
+    font-size:  30px;
+    color: white;
+    -webkit-text-stroke: plum 1.5px;
+    text-shadow: 2px 2px black;
+    text-align: center;
+    padding: -500px; 
+    top: 65%;
+    left:45%;
+    position: absolute;
+}
+
+.horsewhite {
+    position: absolute;
+    height:250px;
+    width:300px;
+    left:8%;
+    top:35%;
+}
+
+.horseblack {
+    position: absolute;
+    height:250px;
+    width:300px;
+    left:75%;
+    top:35%;
+    transform: scaleX(-1);
+}
 img{
     width:400px; 
     height: auto;
