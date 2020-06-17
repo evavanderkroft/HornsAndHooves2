@@ -70,7 +70,7 @@ class Control{
         if(this.game != null &&
             this.game.next==true){
                 this.createwinnerpage()
-
+                
                 this.game = undefined;
                 document.getElementsByTagName('game')[0].remove();
         }
