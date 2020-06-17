@@ -90,12 +90,6 @@ class Game {
         this.leftArrows = new Leftarrows(first, second, third, fourth)
         this.rightArrows = new Rightarrows(first, second, third, fourth)
     }
-    createbackground() {
-        this.background = document.createElement("background")
-        let game = document.getElementsByTagName("game")[0]
-        game.appendChild(this.background)
-        this.background.classList.add(`gamebg`)
-    }
 
     public gameloop() {
         this.unicorn.update()
