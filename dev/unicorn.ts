@@ -114,7 +114,9 @@ class Unicorn {
     attackAnimation() {
         // doe attack move animation
         console.log("doe attack animation")
+        let attackSound = new Audio('audio/attack.mp3')
         this.explosion.explode()
+        attackSound.play()
         // this.explosion.style.display = "block";
 
 

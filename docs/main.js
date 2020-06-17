@@ -800,7 +800,9 @@ class Unicorn {
     }
     attackAnimation() {
         console.log("doe attack animation");
+        let attackSound = new Audio('audio/attack.mp3');
         this.explosion.explode();
+        attackSound.play();
         setTimeout(() => {
             this.attackBack = true;
             this.unicorn.classList.add("run");
