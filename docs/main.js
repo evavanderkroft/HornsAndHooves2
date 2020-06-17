@@ -26,11 +26,13 @@ class Control {
     constructor() {
         this._player1 = "";
         this._player2 = "";
+        this._background = "";
         this.createselectpage();
         this.gameLoop();
     }
     get player1() { return this._player1; }
     get player2() { return this._player2; }
+    get background() { return this._background; }
     createselectpage() {
         this.createselect = document.createElement("selectcharacter");
         let control = document.getElementsByTagName("control")[0];
@@ -47,7 +49,7 @@ class Control {
         this.creategame = document.createElement("game");
         let control = document.getElementsByTagName("control")[0];
         control.appendChild(this.creategame);
-        this.game = new Game(this.player1, this.player2);
+        this.game = new Game(this.player1, this.player2, this._background);
     }
     createwinnerpage() {
         this.createwinner = document.createElement("winner");
@@ -68,6 +70,7 @@ class Control {
         }
         if (this.story != null &&
             this.story.next == true) {
+            this._background = this.story.background;
             this.creategamepage();
             this.story = undefined;
             document.getElementsByTagName('story')[0].remove();
@@ -120,13 +123,13 @@ class Frog {
     }
 }
 class Game {
-    constructor(player1, player2) {
+    constructor(player1, player2, background) {
         this.lifehearts = [];
         this.lifehearts2 = [];
         this.winLeft = 0;
         this.WinRight = 0;
         this._next = false;
-        this.createbackground();
+        this.createbackground(background);
         console.log(player1, player2);
         console.log("Game was created!");
         this.unicorn = new Unicorn(0, player1);
@@ -151,11 +154,11 @@ class Game {
         this.gameloop();
     }
     get next() { return this._next; }
-    createbackground() {
+    createbackground(background) {
         this.background = document.createElement("background");
         let game = document.getElementsByTagName("game")[0];
         game.appendChild(this.background);
-        this.background.classList.add(`gamebg`);
+        this.background.style.backgroundImage = `url(../img/${background}.jpg)`;
     }
     newGame() {
         console.log("game is gecreerd in new game");
@@ -926,10 +929,12 @@ class Selectcharacter {
 class Story {
     constructor(player_1, player_2) {
         this._next = false;
+        this._background = "";
         this.createbackground(player_1, player_2);
         this.createstoryknop();
     }
     get next() { return this._next; }
+    get background() { return this._background; }
     createbackground(player_1, player_2) {
         this.storybg = document.createElement("storybg");
         let story = document.getElementsByTagName(`story`)[0];
@@ -937,26 +942,32 @@ class Story {
         if (player_1 == "black" && player_2 == "white" || player_1 == "white" && player_2 == "black") {
             this.storybg.classList.add(`bg1`);
             console.log(`hallo`);
+            this._background = "SkyClouds";
         }
         else if (player_1 == "black" && player_2 == "green" || player_1 == "green" && player_2 == "black") {
             this.storybg.classList.add(`bg2`);
             console.log(`hallo`);
+            this._background = "RainbowForest";
         }
         else if (player_1 == "green" && player_2 == "pink" || player_1 == "pink" && player_2 == "green") {
             this.storybg.classList.add(`bg3`);
             console.log(`hallo`);
+            this._background = "SpaceCastle";
         }
         else if (player_1 == "green" && player_2 == "white" || player_1 == "white" && player_2 == "green") {
             this.storybg.classList.add(`bg2`);
             console.log(`hallo`);
+            this._background = "RainbowForest";
         }
         else if (player_1 == "black" && player_2 == "pink" || player_1 == "pink" && player_2 == "black") {
             this.storybg.classList.add(`bg4`);
             console.log(`hallo`);
+            this._background = "ArenaOrange";
         }
         else if (player_1 == "white" && player_2 == "pink" || player_1 == "pink" && player_2 == "white") {
             this.storybg.classList.add(`bg4`);
             console.log(`hallo`);
+            this._background = "ArenaOrange";
         }
     }
     createstoryknop() {

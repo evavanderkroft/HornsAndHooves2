@@ -13,8 +13,8 @@ class Game {
     private _next: boolean= false
     public get next():boolean{return this._next}
 
-    constructor(player1:string, player2: string) {
-        this.createbackground()
+    constructor(player1:string, player2: string, background: string) {
+        this.createbackground(background)
         console.log(player1,player2)
         console.log("Game was created!")
         this.unicorn = new Unicorn(0, player1)
@@ -44,12 +44,12 @@ class Game {
 
 
     }
-    createbackground(){
+    createbackground(background:string){
         this.background = document.createElement("background")
         let game = document.getElementsByTagName("game")[0]
         game.appendChild(this.background)
 
-        this.background.classList.add(`gamebg`)
+        this.background.style.backgroundImage = `url(../img/${background}.jpg)`
     }
 
     public newGame() {
