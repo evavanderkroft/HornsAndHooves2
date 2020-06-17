@@ -10,6 +10,9 @@ class Game {
     private lifehearts2: Lifeheart[] = []
     private winLeft: number = 0
     private WinRight: number = 0
+    private specialdone1 : number = 0
+    private specialdone2 : number = 0
+    private bezig : number = 0
     
 
     private _next: boolean = false
@@ -22,6 +25,7 @@ class Game {
     public get winner(): string {return this._winner}
 
     constructor(player1: string, player2: string, background: string) {
+        window.addEventListener("keyup", (e: KeyboardEvent) => this.specialAttack(e))
         this._player1 = player1
         this._player2 = player2
         this.createbackground(background)
@@ -30,17 +34,9 @@ class Game {
         this.unicorn = new Unicorn(0, player1)
         this.unicorn2 = new Unicorn(2, player2)
         this.frog = new Frog()
-
-
-        // if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
-        //     this.lifehearts.push(new Lifeheart(50))
-        //     this.lifehearts.push(new Lifeheart(150))
-        //     this.lifehearts.push(new Lifeheart(250))
-        //     this.lifehearts2.push(new Lifeheart(1200))
-        //     this.lifehearts2.push(new Lifeheart(1300))
-        //     this.lifehearts2.push(new Lifeheart(1400))
-        //     this.addArrows()
-        // }
+        this.specialdone1=0
+        this.specialdone2=0
+        this.bezig=0
 
         this.newGame()
         this.gameloop()
@@ -115,6 +111,65 @@ class Game {
         let fourth = Math.floor(Math.random() * 6)
         this.leftArrows = new Leftarrows(first, second, third, fourth)
         this.rightArrows = new Rightarrows(first, second, third, fourth)
+    }
+    public specialAttack(e: KeyboardEvent): void{
+        switch (e.keyCode) {
+        case 67:
+            if (this.specialdone1 == 1){
+                console.log("special attack is al gebruikt")
+            }else if (this.bezig==1){
+                console.log("1 special attack tegelijk mogelijk")
+            }else{
+            this.bezig=1
+            let soundspecial = new Audio('audio/specialattack.mp3')
+            soundspecial.play()
+            this.unicorn.specialattackplayer1()
+            this.rightArrows.delete()
+            this.leftArrows.delete()
+            setTimeout(() => {
+                this.addArrows()
+                window.removeEventListener("keydown", (e: KeyboardEvent) => this.specialAttack(e),true)
+                if (this.lifehearts2.length <= 2){
+                    this._next = true
+                    this._winner = this._player1
+                    console.log(this.winner)
+                } else{
+                    let lifeHeart: Lifeheart = this.lifehearts2.shift()!
+                    lifeHeart.delete()
+                    let lifeheart2:Lifeheart=this.lifehearts2.shift()!
+                    lifeheart2.delete()}
+                    this.specialdone1 = 1
+                    this.bezig=0
+            }, 3000);}
+            break;  
+        case 78:
+            if (this.specialdone2 == 1){
+                console.log("special attack is al gebruikt")
+            }else if (this.bezig==1){
+                console.log("1 special attack tegelijk mogelijk")
+            }else{
+            this.bezig=1
+            let soundspecial2 = new Audio('audio/specialattack.mp3')
+            soundspecial2.play()
+            this.unicorn2.specialattackplayer2()
+            this.rightArrows.delete()
+            this.leftArrows.delete()
+            setTimeout(() => {
+                this.addArrows()
+                if (this.lifehearts.length <= 2){
+                    this._next = true
+                    this._winner = this._player2
+                    console.log(this.winner)
+                } else{
+                    let lifeHeart: Lifeheart = this.lifehearts.shift()!
+                    lifeHeart.delete()
+                    let lifeheart2:Lifeheart=this.lifehearts.shift()!
+                    lifeheart2.delete()}
+                    this.specialdone2 = 1
+                    this.bezig=0
+            }, 3000);}
+
+        }
     }
 
     public gameloop() {

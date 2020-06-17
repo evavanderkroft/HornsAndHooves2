@@ -7,7 +7,7 @@ class Frog {
         this.frog = document.createElement("frog")
         console.log("Frog was created!")
         this.keyinfo = 32;
-        window.addEventListener("keydown", (e: KeyboardEvent) => this.onFrogClick(e))
+        window.addEventListener("keyup", (e: KeyboardEvent) => this.onFrogClick(e))
         let game = document.getElementsByTagName("game")[0]
         game.appendChild(this.frog)
 

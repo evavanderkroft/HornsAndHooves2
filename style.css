@@ -666,3 +666,18 @@ bomb{
     z-index: 10;
     visibility: hidden;
 }
+.specialattack{
+    transform: scale(3);
+    width: 1000px;
+    height: 1000px;
+    margin-top: -400px;
+
+}
+.specialattack2{
+    transform: scale(3);
+    width: 1000px;
+    height: 1000px;
+    margin-top: -400px;
+    margin-left: -500px;
+
+}

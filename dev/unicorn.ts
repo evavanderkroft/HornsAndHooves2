@@ -96,6 +96,29 @@ class Unicorn {
             this.attackBack = false
         }
     }
+    public specialattackplayer1(){
+            this.unicorn.classList.add(`specialattack`)
+        setTimeout(() => {
+            this.explosion.flippedBack()
+            this.attackAnimation()
+        }, 1000);
+            setTimeout(() => {
+                this.unicorn.setAttribute("class", "")
+
+            }, 3000);
+        }
+    public specialattackplayer2(){
+        this.unicorn.classList.add(`specialattack2`)
+        setTimeout(() => {
+            this.explosion.flipped()
+            this.attackAnimation()
+        }, 1000);
+            setTimeout(() => {
+                this.unicorn.setAttribute("class", "")
+
+            }, 3000);
+
+    }
 
     attackAnimation() {
         // doe attack move animation
