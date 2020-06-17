@@ -29,9 +29,6 @@ class Unicorn {
         this.y = 500
     }
 
-    public moveUnicorns() {
-        // && (this.win == 1)
-    }
 
     public update() {
         this.attackMove()
@@ -40,27 +37,8 @@ class Unicorn {
     }
     public update2() {
         this.attackMove2()
-
-        // private Bounceright() {
-        // this.toRight = false;
-        // }
-
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`
     }
-    // public stopRunning() {
-    //     this.unicorn.classList.remove("run")
-    // }
-    public getRectangle() {
-        return this.unicorn.getBoundingClientRect()
-    }
-    public bounceX() {
-        this.rightSpeed = -1
-        this.unicorn.classList.remove("run")
-        setTimeout(() => {
-            this.rightSpeed = 0
-        }, 300);
-    }
-
 
 
     attackMove() {
@@ -68,12 +46,14 @@ class Unicorn {
             console.log("hij doet het update 1")
             this.unicorn.classList.add("run")
             this.x += 4
+            console.log(this.win)
         }
 
         if ((this.x > 400) && (this.attackBack == false)) {
             console.log("hij werkt nu wel")
             this.unicorn.classList.remove("run")
             this.win = 0
+            console.log(this.win)
 
             this.explosion.flippedBack()
             this.attackAnimation()
@@ -85,6 +65,8 @@ class Unicorn {
         if ((this.x < 0) && (this.attackBack == true)) {
             this.x = 0
             this.unicorn.classList.remove("run")
+            this.attackBack = false
+
         }
     }
 
@@ -110,6 +92,7 @@ class Unicorn {
         if ((this.x > window.innerWidth - this.unicorn.clientWidth) && (this.attackBack == true)) {
             this.x = window.innerWidth - this.unicorn.clientWidth
             this.unicorn.classList.remove("run")
+            this.attackBack = false
         }
     }
 
@@ -117,7 +100,7 @@ class Unicorn {
         // doe attack move animation
         console.log("doe attack animation")
         this.explosion.explode()
-        // this.explosion.style.display = "block";
+
 
 
 

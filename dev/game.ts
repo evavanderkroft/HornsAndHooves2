@@ -13,6 +13,8 @@ class Game {
 
     private _next: boolean = false
     public get next(): boolean { return this._next }
+
+
     constructor(player1: string, player2: string) {
         this.createbackground()
         console.log("Game was created!")
@@ -50,7 +52,6 @@ class Game {
         }
 
         if (this.winLeft == 1) {
-            // this.lifehearts2[this.lifehearts2.length].remove()
             for (let i = this.lifehearts2.length; i >= 0; i--) {
                 // verwijder het object tijdens de loop
                 this.lifehearts2.splice(i, 1)
@@ -114,9 +115,9 @@ class Game {
                 this.rightArrows.delete()
                 this.leftArrows.delete()
 
-                // setTimeout(() => {
-                this.newGame()
-                // }, 6000);
+                setTimeout(() => {
+                    this.newGame()
+                }, 6000);
 
 
 
@@ -129,9 +130,9 @@ class Game {
                 console.log("winRight")
                 this.leftArrows.delete()
 
-                // setTimeout(() => {
-                this.newGame()
-                // }, 4500);
+                setTimeout(() => {
+                    this.newGame()
+                }, 4500);
 
             }
 
