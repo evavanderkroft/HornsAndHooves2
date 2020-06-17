@@ -20,17 +20,29 @@ game * {
     width: 100vw;
 }
 
-unicorn {
+unicornwhite {
     background-image: url(../img/horsewhite.png);
     width:500px; height: 500px;
     top: 0%;
     left: 0%;
-
     background-size:contain;
 }
-/* .player2  */
-unicorn2{
+unicorngreen {
     background-image: url(../img/horsegreen.png);
+    width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
+    background-size:contain;
+}
+unicornpink {
+    background-image: url(../img/horsepink.png);
+    width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
+    background-size:contain;
+}
+unicornblack {
+    background-image: url(../img/horseblack.png);
     width:500px; height: 500px;
     top: 0%;
     left: 0%;
@@ -77,8 +89,17 @@ frog {
     margin-left: 100px;
 
 }
-.run{
+.greenrun{
+    background-image: url(../img/green.gif);
+}
+.blackrun{
+    background-image: url(../img/black.gif);
+}
+.whiterun{
     background-image: url(../img/white.gif);
+}
+.pinkrun{
+    background-image: url(../img/pink.gif);
 }
 .run2{
     background-image: url(../img/green.gif);
@@ -409,7 +430,7 @@ storybg{
     background-size: 100% 100%;
 }
 .bg3{
-    background-image: url(../img/bg3.jpg);
+    background-image: url(../img/bg3.jpeg);
     background-size: 100% 100%;
 }
 .bg4{

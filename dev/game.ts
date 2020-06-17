@@ -17,8 +17,8 @@ class Game {
         this.createbackground()
         console.log(player1,player2)
         console.log("Game was created!")
-        this.unicorn = new Unicorn(0)
-        this.unicorn2 = new Unicorn(2)
+        this.unicorn = new Unicorn(0, player1)
+        this.unicorn2 = new Unicorn(2, player2)
         this.frog = new Frog()
 
 

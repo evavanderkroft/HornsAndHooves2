@@ -1,4 +1,27 @@
 "use strict";
+class Explosion {
+    constructor() {
+        this.explosion = document.createElement("bomb");
+        let game = document.getElementsByTagName("game")[0];
+        game.appendChild(this.explosion);
+    }
+    flipped() {
+        this.explosion.style.transform = `scaleX(-1)`;
+        this.explosion.style.left = `15%`;
+    }
+    flippedBack() {
+        this.explosion.style.transform = `scaleX(1)`;
+        this.explosion.style.left = `60%`;
+    }
+    explode() {
+        this.explosion.style.display = "block";
+        this.explosion.style.visibility = "visible";
+    }
+    stopExplode() {
+        this.explosion.style.display = "none";
+        this.explosion.style.visibility = "hidden";
+    }
+}
 class Control {
     constructor() {
         this._player1 = "";
@@ -69,44 +92,54 @@ class Frog {
     constructor() {
         this.frog = document.createElement("frog");
         console.log("Frog was created!");
-        this.keyinfo = 73;
+        this.keyinfo = 32;
         window.addEventListener("keydown", (e) => this.onFrogClick(e));
         let game = document.getElementsByTagName("game")[0];
         game.appendChild(this.frog);
     }
     updateFrog() {
-        this.frog.style.transform = `translate(500px, 0px) scale(0.3)`;
+        let x = ((window.innerWidth * 0.5) - (this.frog.clientWidth / 2));
+        let y = 0;
+        this.frog.style.transform = `translate(${x}px, ${y}px) scale(0.3)`;
     }
     onFrogClick(e) {
         console.log(e.keyCode);
+        let tipnmr = Math.floor(Math.random() * 5);
         switch (e.keyCode) {
             case this.keyinfo:
-                this.frog.classList.add("talk");
+                this.frog.classList.add("talk" + tipnmr);
                 setTimeout(() => {
                     this.talking();
-                }, 3000);
+                }, 3500);
         }
     }
     talking() {
-        this.frog.classList.remove("talk");
+        this.frog.setAttribute("class", "");
     }
 }
 class Game {
     constructor(player1, player2) {
-        this.score = 10;
-        this.score2 = 10;
+        this.lifehearts = [];
+        this.lifehearts2 = [];
+        this.winLeft = 0;
+        this.WinRight = 0;
         this._next = false;
         this.createbackground();
         console.log(player1, player2);
-        let first = Math.floor(Math.random() * 6);
-        let second = Math.floor(Math.random() * 6);
-        let third = Math.floor(Math.random() * 6);
-        let fourth = Math.floor(Math.random() * 6);
-        new Leftarrows(first, second, third, fourth);
-        new Rightarrows(first, second, third, fourth);
-        this.unicorn = new Unicorn(0, 68, 65);
-        this.unicorn2 = new Unicorn(2, 37, 39);
+        console.log("Game was created!");
+        this.unicorn = new Unicorn(0, player1);
+        this.unicorn2 = new Unicorn(2, player2);
         this.frog = new Frog();
+        if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
+            this.lifehearts.push(new Lifeheart(50));
+            this.lifehearts.push(new Lifeheart(150));
+            this.lifehearts.push(new Lifeheart(250));
+            this.lifehearts2.push(new Lifeheart(1200));
+            this.lifehearts2.push(new Lifeheart(1300));
+            this.lifehearts2.push(new Lifeheart(1400));
+            this.addArrows();
+        }
+        this.newGame();
         this.gameloop();
     }
     get next() { return this._next; }
@@ -116,53 +149,80 @@ class Game {
         game.appendChild(this.background);
         this.background.classList.add(`gamebg`);
     }
+    newGame() {
+        console.log("game is gecreerd in new game");
+        if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
+            this.lifehearts.push(new Lifeheart(50));
+            this.lifehearts.push(new Lifeheart(150));
+            this.lifehearts.push(new Lifeheart(250));
+            this.lifehearts2.push(new Lifeheart(1200));
+            this.lifehearts2.push(new Lifeheart(1300));
+            this.lifehearts2.push(new Lifeheart(1400));
+            this.addArrows();
+        }
+        if (this.winLeft == 1) {
+            for (let i = this.lifehearts2.length; i >= 0; i--) {
+                this.lifehearts2.splice(i, 1);
+                console.log("spliced");
+                break;
+            }
+            this.winLeft = 0;
+            this.addArrows();
+            console.log("leftArrows.win");
+        }
+        if (this.WinRight == 1) {
+            this.WinRight = 0;
+            this.addArrows();
+            console.log("rightArrows.win");
+        }
+    }
+    addArrows() {
+        let first = Math.floor(Math.random() * 6);
+        let second = Math.floor(Math.random() * 6);
+        let third = Math.floor(Math.random() * 6);
+        let fourth = Math.floor(Math.random() * 6);
+        this.leftArrows = new Leftarrows(first, second, third, fourth);
+        this.rightArrows = new Rightarrows(first, second, third, fourth);
+    }
     gameloop() {
         this.unicorn.update();
         this.unicorn2.update2();
         this.frog.updateFrog();
-        if (this.checkCollision(this.unicorn.getRectangle(), this.unicorn2.getRectangle())) {
-            console.log("Attack p1");
-            this.removePoint(1);
-            this.unicorn2.bounceX();
+        for (const heart of this.lifehearts) {
+            heart.lifeupdate();
         }
-        if (this.checkCollision(this.unicorn.getRectangle(), this.unicorn2.getRectangle())) {
-            console.log("Attack p2");
-            this.removePoint(2);
-            this.unicorn.bounceX();
+        for (const heart2 of this.lifehearts2) {
+            heart2.lifeupdate();
         }
-        if (this.score <= 1) {
-            this.score = 10;
-            this.score2 = 10;
-            console.log("player 2 won!");
-        }
-        if (this.score2 <= 1) {
-            this.score = 10;
-            this.score2 = 10;
-            console.log("player 1 won!");
+        if ((this.leftArrows._win == 1) || (this.rightArrows._win == 1)) {
+            console.log("winLeft");
+            if (this.leftArrows._win == 1) {
+                this.winLeft = 1;
+                this.leftArrows._win = 0;
+                this.unicorn._win = 1;
+                this.rightArrows.delete();
+                this.leftArrows.delete();
+                setTimeout(() => {
+                    this.newGame();
+                }, 6000);
+            }
+            if (this.rightArrows._win == 1) {
+                this.rightArrows._win = 0;
+                this.unicorn2._win = 1;
+                this.WinRight = 1;
+                console.log("winRight");
+                this.leftArrows.delete();
+                setTimeout(() => {
+                    this.newGame();
+                }, 4500);
+            }
         }
         requestAnimationFrame(() => this.gameloop());
-    }
-    checkCollision(a, b) {
-        return (a.left <= b.right &&
-            b.left <= a.right &&
-            a.top <= b.bottom &&
-            b.top <= a.bottom);
-    }
-    removePoint(player) {
-        if (player == 1) {
-            let score = document.getElementsByTagName("score")[0];
-            this.score--;
-            score.innerHTML = "Score: " + this.score;
-        }
-        else {
-            let score = document.getElementsByTagName("score")[1];
-            this.score2--;
-            score.innerHTML = "Score: " + this.score2;
-        }
     }
 }
 class Leftarrows {
     constructor(_x_1, _x_2, _x_3, _x_4) {
+        this.win = 0;
         this._x_1 = 0;
         this._x_2 = 0;
         this._x_3 = 0;
@@ -181,6 +241,8 @@ class Leftarrows {
         this.createleftarrow_4();
         window.addEventListener("keydown", (e) => this.keypressleft_1(e));
     }
+    get _win() { return this.win; }
+    set _win(A) { this.win = A; }
     get x_1() { return this._x_1; }
     get x_2() { return this._x_2; }
     get x_3() { return this._x_3; }
@@ -288,37 +350,37 @@ class Leftarrows {
     }
     keypressleft_1(event) {
         switch (event.keyCode) {
-            case 82:
+            case 81:
                 if (this._x_1 == 0) {
                     this.leftarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_2(e));
                 }
                 break;
-            case 84:
+            case 87:
                 if (this._x_1 == 1) {
                     this.leftarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_2(e));
                 }
                 break;
-            case 89:
+            case 69:
                 if (this._x_1 == 2) {
                     this.leftarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_2(e));
                 }
                 break;
-            case 70:
+            case 65:
                 if (this._x_1 == 3) {
                     this.leftarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_2(e));
                 }
                 break;
-            case 71:
+            case 83:
                 if (this._x_1 == 4) {
                     this.leftarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_2(e));
                 }
                 break;
-            case 72:
+            case 68:
                 if (this._x_1 == 5) {
                     this.leftarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_2(e));
@@ -328,37 +390,37 @@ class Leftarrows {
     }
     keypressleft_2(event) {
         switch (event.keyCode) {
-            case 82:
+            case 81:
                 if (this._x_2 == 0) {
                     this.leftarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_3(e));
                 }
                 break;
-            case 84:
+            case 87:
                 if (this._x_2 == 1) {
                     this.leftarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_3(e));
                 }
                 break;
-            case 89:
+            case 69:
                 if (this._x_2 == 2) {
                     this.leftarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_3(e));
                 }
                 break;
-            case 70:
+            case 65:
                 if (this._x_2 == 3) {
                     this.leftarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_3(e));
                 }
                 break;
-            case 71:
+            case 83:
                 if (this._x_2 == 4) {
                     this.leftarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_3(e));
                 }
                 break;
-            case 72:
+            case 68:
                 if (this._x_2 == 5) {
                     this.leftarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_3(e));
@@ -368,37 +430,37 @@ class Leftarrows {
     }
     keypressleft_3(event) {
         switch (event.keyCode) {
-            case 82:
+            case 81:
                 if (this._x_3 == 0) {
                     this.leftarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_4(e));
                 }
                 break;
-            case 84:
+            case 87:
                 if (this._x_3 == 1) {
                     this.leftarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_4(e));
                 }
                 break;
-            case 89:
+            case 69:
                 if (this._x_3 == 2) {
                     this.leftarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_4(e));
                 }
                 break;
-            case 70:
+            case 65:
                 if (this._x_3 == 3) {
                     this.leftarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_4(e));
                 }
                 break;
-            case 71:
+            case 83:
                 if (this._x_3 == 4) {
                     this.leftarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_4(e));
                 }
                 break;
-            case 72:
+            case 68:
                 if (this._x_3 == 5) {
                     this.leftarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressleft_4(e));
@@ -408,41 +470,69 @@ class Leftarrows {
     }
     keypressleft_4(event) {
         switch (event.keyCode) {
-            case 82:
+            case 81:
                 if (this._x_4 == 0) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
-            case 84:
+            case 87:
                 if (this._x_4 == 1) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
-            case 89:
+            case 69:
                 if (this._x_4 == 2) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
-            case 70:
+            case 65:
                 if (this._x_4 == 3) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
-            case 71:
+            case 83:
                 if (this._x_4 == 4) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
-            case 72:
+            case 68:
                 if (this._x_4 == 5) {
                     this.leftarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
         }
     }
+    delete() {
+        this.leftarrow_1.remove();
+        this.leftarrow_2.remove();
+        this.leftarrow_3.remove();
+        this.leftarrow_4.remove();
+    }
+}
+class Lifeheart {
+    constructor(x) {
+        this.lifeheart = document.createElement("lifeheart");
+        let game = document.getElementsByTagName("game")[0];
+        game.appendChild(this.lifeheart);
+        this.y = -60;
+        this.x = x;
+    }
+    lifeupdate() {
+        this.lifeheart.style.transform = `translate(${this.x}px, ${this.y}px) scale(0.3)`;
+    }
+    delete() {
+        this.lifeheart.remove();
+    }
 }
 class Rightarrows {
     constructor(_x_1, _x_2, _x_3, _x_4) {
+        this.win = 0;
         this._x_1 = 0;
         this._x_2 = 0;
         this._x_3 = 0;
@@ -461,6 +551,8 @@ class Rightarrows {
         this.createrightarrow_4();
         window.addEventListener("keydown", (e) => this.keypressright_1(e));
     }
+    get _win() { return this.win; }
+    set _win(A) { this.win = A; }
     get x_1() { return this._x_1; }
     get x_2() { return this._x_2; }
     get x_3() { return this._x_3; }
@@ -487,7 +579,7 @@ class Rightarrows {
         else if (this._x_1 == 5) {
             this.rightarrow_1.classList.add("rightdown");
         }
-        let x = ((window.innerWidth * 0.975) - this.rightarrow_1.clientWidth * this._scale * 4);
+        let x = ((window.innerWidth * 0.973) - this.rightarrow_1.clientWidth * this._scale * 4);
         let y = ((window.innerHeight * 0.2) - (this.rightarrow_1.clientWidth * this._scale / 2));
         this.rightarrow_1.style.transform = `translate(${x}px, ${y}px) scale(${this._scale})`;
     }
@@ -512,7 +604,7 @@ class Rightarrows {
         else if (this._x_2 == 5) {
             this.rightarrow_2.classList.add("rightdown");
         }
-        let x = ((window.innerWidth * 0.975) - this.rightarrow_2.clientWidth * this._scale * 3);
+        let x = ((window.innerWidth * 0.973) - this.rightarrow_2.clientWidth * this._scale * 3);
         let y = ((window.innerHeight * 0.2) - (this.rightarrow_2.clientWidth * this._scale / 2));
         this.rightarrow_2.style.transform = `translate(${x}px, ${y}px) scale(${this._scale})`;
     }
@@ -537,7 +629,7 @@ class Rightarrows {
         else if (this._x_3 == 5) {
             this.rightarrow_3.classList.add("rightdown");
         }
-        let x = ((window.innerWidth * 0.975) - this.rightarrow_3.clientWidth * this._scale * 2);
+        let x = ((window.innerWidth * 0.973) - this.rightarrow_3.clientWidth * this._scale * 2);
         let y = ((window.innerHeight * 0.2) - (this.rightarrow_3.clientWidth * this._scale / 2));
         this.rightarrow_3.style.transform = `translate(${x}px, ${y}px) scale(${this._scale})`;
     }
@@ -562,43 +654,43 @@ class Rightarrows {
         else if (this._x_4 == 5) {
             this.rightarrow_4.classList.add("rightdown");
         }
-        let x = ((window.innerWidth * 0.975) - this.rightarrow_1.clientWidth * this._scale);
+        let x = ((window.innerWidth * 0.973) - this.rightarrow_1.clientWidth * this._scale);
         let y = ((window.innerHeight * 0.2) - (this.rightarrow_4.clientWidth * this._scale / 2));
         this.rightarrow_4.style.transform = `translate(${x}px, ${y}px) scale(${this._scale})`;
     }
     keypressright_1(event) {
         switch (event.keyCode) {
-            case 74:
+            case 85:
                 if (this._x_1 == 0) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
                 }
                 break;
-            case 75:
+            case 73:
                 if (this._x_1 == 1) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
                 }
                 break;
-            case 76:
+            case 79:
                 if (this._x_1 == 2) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
                 }
                 break;
-            case 78:
+            case 74:
                 if (this._x_1 == 3) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
                 }
                 break;
-            case 77:
+            case 75:
                 if (this._x_1 == 4) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
                 }
                 break;
-            case 188:
+            case 76:
                 if (this._x_1 == 5) {
                     this.rightarrow_1.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_2(e));
@@ -608,37 +700,37 @@ class Rightarrows {
     }
     keypressright_2(event) {
         switch (event.keyCode) {
-            case 74:
+            case 85:
                 if (this._x_2 == 0) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
                 }
                 break;
-            case 75:
+            case 73:
                 if (this._x_2 == 1) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
                 }
                 break;
-            case 76:
+            case 79:
                 if (this._x_2 == 2) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
                 }
                 break;
-            case 78:
+            case 74:
                 if (this._x_2 == 3) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
                 }
                 break;
-            case 77:
+            case 75:
                 if (this._x_2 == 4) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
                 }
                 break;
-            case 188:
+            case 76:
                 if (this._x_2 == 5) {
                     this.rightarrow_2.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_3(e));
@@ -648,37 +740,37 @@ class Rightarrows {
     }
     keypressright_3(event) {
         switch (event.keyCode) {
-            case 74:
+            case 85:
                 if (this._x_3 == 0) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
                 }
                 break;
-            case 75:
+            case 73:
                 if (this._x_3 == 1) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
                 }
                 break;
-            case 76:
+            case 79:
                 if (this._x_3 == 2) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
                 }
                 break;
-            case 78:
+            case 74:
                 if (this._x_3 == 3) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
                 }
                 break;
-            case 77:
+            case 75:
                 if (this._x_3 == 4) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
                 }
                 break;
-            case 188:
+            case 76:
                 if (this._x_3 == 5) {
                     this.rightarrow_3.remove();
                     window.addEventListener("keydown", (e) => this.keypressright_4(e));
@@ -688,37 +780,49 @@ class Rightarrows {
     }
     keypressright_4(event) {
         switch (event.keyCode) {
-            case 74:
+            case 85:
                 if (this._x_4 == 0) {
                     this.rightarrow_4.remove();
+                    this.win = 1;
+                }
+                break;
+            case 73:
+                if (this._x_4 == 1) {
+                    this.rightarrow_4.remove();
+                    this.win = 1;
+                }
+                break;
+            case 79:
+                if (this._x_4 == 2) {
+                    this.rightarrow_4.remove();
+                    this.win = 1;
+                }
+                break;
+            case 74:
+                if (this._x_4 == 3) {
+                    this.rightarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 75:
-                if (this._x_4 == 1) {
+                if (this._x_4 == 4) {
                     this.rightarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
             case 76:
-                if (this._x_4 == 2) {
-                    this.rightarrow_4.remove();
-                }
-                break;
-            case 78:
-                if (this._x_4 == 3) {
-                    this.rightarrow_4.remove();
-                }
-                break;
-            case 77:
-                if (this._x_4 == 4) {
-                    this.rightarrow_4.remove();
-                }
-                break;
-            case 188:
                 if (this._x_4 == 5) {
                     this.rightarrow_4.remove();
+                    this.win = 1;
                 }
                 break;
         }
+    }
+    delete() {
+        this.rightarrow_1.remove();
+        this.rightarrow_2.remove();
+        this.rightarrow_3.remove();
+        this.rightarrow_4.remove();
     }
 }
 class Selectcharacter {
@@ -862,63 +966,101 @@ class Story {
     }
 }
 class Unicorn {
-    constructor(x, rightKey, leftKey) {
-        this.rightSpeed = 0;
-        this.leftSpeed = 0;
-        this.unicorn = document.createElement("unicorn");
+    constructor(x, colour) {
+        this.x = 0;
+        this.rightSpeed = 10;
+        this.leftSpeed = 10;
+        this.attackBack = false;
+        this.explosion = new Explosion;
+        this.win = 0;
+        this.win2 = 0;
+        this._colour = "";
+        this._colour = colour;
+        this.unicorn = document.createElement(`unicorn${colour}`);
         let game = document.getElementsByTagName("game")[0];
         game.appendChild(this.unicorn);
-        this.rightkey = rightKey;
-        this.leftkey = leftKey;
         if (x != 0) {
             x = window.innerWidth - this.unicorn.clientWidth;
         }
         this.x = x;
         this.y = 500;
-        window.addEventListener("keydown", (e) => this.moveUnicorn(e));
     }
-    moveUnicorn(e) {
-        console.log(e.keyCode);
-        switch (e.keyCode) {
-            case this.rightkey:
-                this.unicorn.classList.add("run");
-                this.rightSpeed = 5;
-                setTimeout(() => {
-                    this.rightSpeed = 0;
-                    this.running();
-                }, 1000);
-                break;
-            case this.leftkey:
-                this.unicorn.classList.add("run");
-                this.leftSpeed = 5;
-                setTimeout(() => {
-                    this.leftSpeed = 0;
-                    this.running();
-                }, 1000);
-        }
+    get _win() { return this.win; }
+    set _win(A) { this.win = A; }
+    get _win2() { return this.win2; }
+    set _win2(A) { this.win2 = A; }
+    get colour() { return this._colour; }
+    moveUnicorns() {
     }
     update() {
-        this.x += this.rightSpeed;
-        this.x -= this.leftSpeed;
+        this.attackMove();
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
     update2() {
-        this.x -= this.rightSpeed;
-        this.x += this.leftSpeed;
+        this.attackMove2();
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`;
-    }
-    running() {
-        this.unicorn.classList.remove("run");
     }
     getRectangle() {
         return this.unicorn.getBoundingClientRect();
     }
     bounceX() {
         this.rightSpeed = -1;
-        this.running();
+        this.unicorn.classList.remove(`${this.colour}run`);
         setTimeout(() => {
             this.rightSpeed = 0;
         }, 300);
+    }
+    attackMove() {
+        if ((this.x <= 403) && (this.win == 1)) {
+            console.log("hij doet het update 1");
+            this.unicorn.classList.add(`${this.colour}run`);
+            this.x += 4;
+        }
+        if ((this.x > 400) && (this.attackBack == false)) {
+            console.log("hij werkt nu wel");
+            this.unicorn.classList.remove(`${this.colour}run`);
+            this.win = 0;
+            this.explosion.flippedBack();
+            this.attackAnimation();
+        }
+        if (this.attackBack == true) {
+            this.x -= 4;
+        }
+        if ((this.x < 0) && (this.attackBack == true)) {
+            this.x = 0;
+            this.unicorn.classList.remove(`${this.colour}run`);
+        }
+    }
+    attackMove2() {
+        if ((this.x >= 1000) && (this.win == 1)) {
+            console.log("hij doet het update 2");
+            this.unicorn.classList.add(`${this.colour}run`);
+            this.x -= 4;
+        }
+        if ((this.x < 1000) && (this.attackBack == false)) {
+            console.log("hij werkt nu wel 2");
+            this.unicorn.classList.remove(`${this.colour}run`);
+            this.win = 0;
+            this.explosion.flipped();
+            this.attackAnimation();
+        }
+        if (this.attackBack == true) {
+            this.x += 4;
+        }
+        if ((this.x > window.innerWidth - this.unicorn.clientWidth) && (this.attackBack == true)) {
+            this.x = window.innerWidth - this.unicorn.clientWidth;
+            this.unicorn.classList.remove(`${this.colour}run`);
+        }
+    }
+    attackAnimation() {
+        console.log("doe attack animation");
+        this.explosion.explode();
+        setTimeout(() => {
+            this.attackBack = true;
+            this.unicorn.classList.add(`${this.colour}run`);
+            this.explosion.stopExplode();
+            console.log("hoi = true");
+        }, 2000);
     }
 }
 class Winner {
