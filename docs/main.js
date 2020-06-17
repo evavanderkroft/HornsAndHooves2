@@ -29,9 +29,9 @@ class Control {
         this._background = "";
         this.createselectpage();
         this.gameLoop();
-        let themeSong = new Audio('audio/ThemeSong.mp3');
-        themeSong.play();
-        themeSong.addEventListener('ended', function () {
+        this.themeSong = new Audio('audio/ThemeSong.mp3');
+        this.themeSong.play();
+        this.themeSong.addEventListener('ended', function () {
             this.currentTime = 0;
             this.play();
         }, false);
@@ -83,7 +83,10 @@ class Control {
         }
         if (this.game != null &&
             this.game.next == true) {
+            this.themeSong.pause();
             this.createwinnerpage(this.game.winner);
+            let winnersound = new Audio('audio/winner.mp3');
+            winnersound.play();
             this.game = undefined;
             document.getElementsByTagName('game')[0].remove();
         }
@@ -113,7 +116,7 @@ class Frog {
     }
     onFrogClick(e) {
         console.log(e.keyCode);
-        let tipnmr = Math.floor(Math.random() * 5);
+        let tipnmr = Math.floor(Math.random() * 4);
         let kikkergeluid = new Audio('audio/kikker.mp3');
         switch (e.keyCode) {
             case this.keyinfo:
