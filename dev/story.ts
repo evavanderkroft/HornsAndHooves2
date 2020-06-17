@@ -4,6 +4,9 @@ class Story{
 
     private _next: boolean= false
     public get next():boolean{return this._next}
+    private _background: string = ""
+    public get background():string{return this._background}
+
 
     constructor(player_1: string, player_2: string) {
         this.createbackground(player_1, player_2)
@@ -18,34 +21,39 @@ class Story{
 
         if (player_1== "black" && player_2 == "white" ||player_1== "white" && player_2 == "black" ){
             // voeg een css element toe aan background
-            // console.log("black white")
             this.storybg.classList.add(`bg1`)
             console.log(`hallo`)
+            this._background = "SkyClouds"
         }
         else if (player_1== "black" && player_2 == "green"||player_1== "green" && player_2 == "black" ){
             // voeg een css element toe aan background
             this.storybg.classList.add(`bg2`)
             console.log(`hallo`)
+            this._background = "RainbowForest"
         }
         else if (player_1== "green" && player_2 == "pink"||player_1== "pink" && player_2 == "green" ){
             // voeg een css element toe aan background
             this.storybg.classList.add(`bg3`)
             console.log(`hallo`)
+            this._background = "SpaceCastle"
         }
         else if (player_1== "green" && player_2 == "white"||player_1== "white" && player_2 == "green" ){
             // voeg een css element toe aan background
             this.storybg.classList.add(`bg2`)
             console.log(`hallo`)
+            this._background = "RainbowForest"
         }
         else if (player_1== "black" && player_2 == "pink"||player_1== "pink" && player_2 == "black" ){
             // voeg een css element toe aan background
             this.storybg.classList.add(`bg4`)
             console.log(`hallo`)
+            this._background = "ArenaOrange"
         }
         else if (player_1== "white" && player_2 == "pink"||player_1== "pink" && player_2 == "white" ){
             // voeg een css element toe aan background
             this.storybg.classList.add(`bg4`)
             console.log(`hallo`)
+            this._background = "ArenaOrange"
         }
 
     }

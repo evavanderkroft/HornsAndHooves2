@@ -91,12 +91,12 @@ class Selectcharacter{
 
     public onProfileClick(e: Event, colour: string){
         console.log(e.srcElement);
-        (e.target as HTMLElement).style.filter= `grayscale(1)`;
-        if (this._check== true){
-            if(this._chosen != colour){
+        if (this._check== true ){
+            if(this._chosen != colour && this._horse2===""){
                 this._check= true
                 this.character_2.classList.add(`c${colour}`)
-                this._horse2 =colour
+                this._horse2 =colour;
+                (e.target as HTMLElement).style.filter= `grayscale(1)`;
                 this.createknop()
                 
             }
@@ -104,7 +104,8 @@ class Selectcharacter{
         if (this._check== false){
             this._check= true
             this.character_1.classList.add(`c${colour}`)
-            this._horse1 =colour
+            this._horse1 =colour;
+            (e.target as HTMLElement).style.filter= `grayscale(1)`;
         }
         this._chosen = colour
         console.log(this._chosen)
