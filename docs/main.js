@@ -107,7 +107,7 @@ class Frog {
         this.frog = document.createElement("frog");
         console.log("Frog was created!");
         this.keyinfo = 32;
-        window.addEventListener("keydown", (e) => this.onFrogClick(e));
+        window.addEventListener("keyup", (e) => this.onFrogClick(e));
         let game = document.getElementsByTagName("game")[0];
         game.appendChild(this.frog);
     }
@@ -139,10 +139,14 @@ class Game {
         this.lifehearts2 = [];
         this.winLeft = 0;
         this.WinRight = 0;
+        this.specialdone1 = 0;
+        this.specialdone2 = 0;
+        this.bezig = 0;
         this._next = false;
         this._player1 = "";
         this._player2 = "";
         this._winner = "";
+        window.addEventListener("keyup", (e) => this.specialAttack(e));
         this._player1 = player1;
         this._player2 = player2;
         this.createbackground(background);
@@ -151,6 +155,9 @@ class Game {
         this.unicorn = new Unicorn(0, player1);
         this.unicorn2 = new Unicorn(2, player2);
         this.frog = new Frog();
+        this.specialdone1 = 0;
+        this.specialdone2 = 0;
+        this.bezig = 0;
         this.newGame();
         this.gameloop();
     }
@@ -211,6 +218,74 @@ class Game {
         let fourth = Math.floor(Math.random() * 6);
         this.leftArrows = new Leftarrows(first, second, third, fourth);
         this.rightArrows = new Rightarrows(first, second, third, fourth);
+    }
+    specialAttack(e) {
+        switch (e.keyCode) {
+            case 67:
+                if (this.specialdone1 == 1) {
+                    console.log("special attack is al gebruikt");
+                }
+                else if (this.bezig == 1) {
+                    console.log("1 special attack tegelijk mogelijk");
+                }
+                else {
+                    this.bezig = 1;
+                    let soundspecial = new Audio('audio/specialattack.mp3');
+                    soundspecial.play();
+                    this.unicorn.specialattackplayer1();
+                    this.rightArrows.delete();
+                    this.leftArrows.delete();
+                    setTimeout(() => {
+                        this.addArrows();
+                        window.removeEventListener("keydown", (e) => this.specialAttack(e), true);
+                        if (this.lifehearts2.length <= 2) {
+                            this._next = true;
+                            this._winner = this._player1;
+                            console.log(this.winner);
+                        }
+                        else {
+                            let lifeHeart = this.lifehearts2.shift();
+                            lifeHeart.delete();
+                            let lifeheart2 = this.lifehearts2.shift();
+                            lifeheart2.delete();
+                        }
+                        this.specialdone1 = 1;
+                        this.bezig = 0;
+                    }, 3000);
+                }
+                break;
+            case 78:
+                if (this.specialdone2 == 1) {
+                    console.log("special attack is al gebruikt");
+                }
+                else if (this.bezig == 1) {
+                    console.log("1 special attack tegelijk mogelijk");
+                }
+                else {
+                    this.bezig = 1;
+                    let soundspecial2 = new Audio('audio/specialattack.mp3');
+                    soundspecial2.play();
+                    this.unicorn2.specialattackplayer2();
+                    this.rightArrows.delete();
+                    this.leftArrows.delete();
+                    setTimeout(() => {
+                        this.addArrows();
+                        if (this.lifehearts.length <= 2) {
+                            this._next = true;
+                            this._winner = this._player2;
+                            console.log(this.winner);
+                        }
+                        else {
+                            let lifeHeart = this.lifehearts.shift();
+                            lifeHeart.delete();
+                            let lifeheart2 = this.lifehearts.shift();
+                            lifeheart2.delete();
+                        }
+                        this.specialdone2 = 1;
+                        this.bezig = 0;
+                    }, 3000);
+                }
+        }
     }
     gameloop() {
         this.unicorn.update();
@@ -1080,6 +1155,26 @@ class Unicorn {
             this.unicorn.classList.remove(`${this.colour}run`);
             this.attackBack = false;
         }
+    }
+    specialattackplayer1() {
+        this.unicorn.classList.add(`specialattack`);
+        setTimeout(() => {
+            this.explosion.flippedBack();
+            this.attackAnimation();
+        }, 1000);
+        setTimeout(() => {
+            this.unicorn.setAttribute("class", "");
+        }, 3000);
+    }
+    specialattackplayer2() {
+        this.unicorn.classList.add(`specialattack2`);
+        setTimeout(() => {
+            this.explosion.flipped();
+            this.attackAnimation();
+        }, 1000);
+        setTimeout(() => {
+            this.unicorn.setAttribute("class", "");
+        }, 3000);
     }
     attackAnimation() {
         console.log("doe attack animation");
