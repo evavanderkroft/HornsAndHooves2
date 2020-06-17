@@ -185,6 +185,8 @@ img.tutbutarrows{
     text-align: center;
     padding: -500px; 
     margin-top:-20px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 .tutbutfrog{
     margin-bottom: 90px;
@@ -287,7 +289,7 @@ img.tutbutfrog{
     text-align: center;
     padding: -500px;
     position:absolute;
-    top:-10%;
+    top:-8%;
     left:38.8%;
 }
 
@@ -328,7 +330,7 @@ img.tutbutfrog{
     padding: 5px;
     margin:20px;
     top:80%;
-    left: 34%;
+    left: 35%;
     position: absolute;
 }
 
