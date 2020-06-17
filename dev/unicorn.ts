@@ -17,21 +17,20 @@ class Unicorn {
     private win2: number = 0
     public get _win2(): number { return this.win2 }
     public set _win2(A: number) { this.win2 = A }
+    private _colour: string =""
+    public get colour():string{return this._colour}
 
-    constructor(x: number) {
-        this.unicorn = document.createElement("unicorn")
+    constructor(x: number, colour:string) {
+        this._colour = colour
+        this.unicorn = document.createElement(`unicorn${colour}`)
         let game = document.getElementsByTagName("game")[0]
         game.appendChild(this.unicorn)
-
 
         if (x != 0) { x = window.innerWidth - this.unicorn.clientWidth }
         this.x = x
         this.y = 500
     }
 
-    public moveUnicorns() {
-        // && (this.win == 1)
-    }
 
     public update() {
         this.attackMove()
@@ -40,40 +39,23 @@ class Unicorn {
     }
     public update2() {
         this.attackMove2()
-
-        // private Bounceright() {
-        // this.toRight = false;
-        // }
-
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`
     }
-    // public stopRunning() {
-    //     this.unicorn.classList.remove("run")
-    // }
-    public getRectangle() {
-        return this.unicorn.getBoundingClientRect()
-    }
-    public bounceX() {
-        this.rightSpeed = -1
-        this.unicorn.classList.remove("run")
-        setTimeout(() => {
-            this.rightSpeed = 0
-        }, 300);
-    }
-
 
 
     attackMove() {
         if ((this.x <= 403) && (this.win == 1)) {
             console.log("hij doet het update 1")
-            this.unicorn.classList.add("run")
+            this.unicorn.classList.add(`${this.colour}run`)
             this.x += 4
+            console.log(this.win)
         }
 
         if ((this.x > 400) && (this.attackBack == false)) {
             console.log("hij werkt nu wel")
-            this.unicorn.classList.remove("run")
+            this.unicorn.classList.remove(`${this.colour}run`)
             this.win = 0
+            console.log(this.win)
 
             this.explosion.flippedBack()
             this.attackAnimation()
@@ -84,20 +66,21 @@ class Unicorn {
         }
         if ((this.x < 0) && (this.attackBack == true)) {
             this.x = 0
-            this.unicorn.classList.remove("run")
+            this.unicorn.classList.remove(`${this.colour}run`)
+            this.attackBack = false
         }
     }
 
     attackMove2() {
         if ((this.x >= 1000) && (this.win == 1)) {
             console.log("hij doet het update 2")
-            this.unicorn.classList.add("run")
+            this.unicorn.classList.add(`${this.colour}run`)
             this.x -= 4
         }
 
         if ((this.x < 1000) && (this.attackBack == false)) {
             console.log("hij werkt nu wel 2")
-            this.unicorn.classList.remove("run")
+            this.unicorn.classList.remove(`${this.colour}run`)
 
             this.win = 0
             this.explosion.flipped()
@@ -109,7 +92,8 @@ class Unicorn {
         }
         if ((this.x > window.innerWidth - this.unicorn.clientWidth) && (this.attackBack == true)) {
             this.x = window.innerWidth - this.unicorn.clientWidth
-            this.unicorn.classList.remove("run")
+            this.unicorn.classList.remove(`${this.colour}run`)
+            this.attackBack = false
         }
     }
 
@@ -123,9 +107,10 @@ class Unicorn {
 
 
 
+
         setTimeout(() => {
             this.attackBack = true;
-            this.unicorn.classList.add("run")
+            this.unicorn.classList.add(`${this.colour}run`)
             this.explosion.stopExplode()
             console.log("hoi = true")
         }, 2000);
