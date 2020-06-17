@@ -20,11 +20,12 @@ class Control {
         this.createselectpage();
         this.gameLoop();
         this.themeSong = new Audio('audio/ThemeSong.mp3');
-        this.themeSong.play();
+        this.themeSong.play()
         this.themeSong.addEventListener('ended', function () {
             this.currentTime = 0;
             this.play();
-        }, false);
+        }, false);  
+        requestAnimationFrame(() => this.gameLoop());
     }
 
     private createselectpage() {
@@ -57,6 +58,7 @@ class Control {
     }
 
     public gameLoop() {
+
         if (this.selectcharacter != null &&
             this.selectcharacter.next == true) {
             console.log("story")
@@ -95,9 +97,11 @@ class Control {
         if (this.winner != null &&
             this.winner.next == true) {
             this.createselectpage()
+            this.themeSong.play()
             this.winner = undefined;
             document.getElementsByTagName('winner')[0].remove();
         }
+        
         requestAnimationFrame(() => this.gameLoop());
     }
 }

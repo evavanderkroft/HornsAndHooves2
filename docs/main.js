@@ -35,6 +35,7 @@ class Control {
             this.currentTime = 0;
             this.play();
         }, false);
+        requestAnimationFrame(() => this.gameLoop());
     }
     get player1() { return this._player1; }
     get player2() { return this._player2; }
@@ -93,6 +94,7 @@ class Control {
         if (this.winner != null &&
             this.winner.next == true) {
             this.createselectpage();
+            this.themeSong.play();
             this.winner = undefined;
             document.getElementsByTagName('winner')[0].remove();
         }
