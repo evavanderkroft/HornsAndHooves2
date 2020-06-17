@@ -39,9 +39,11 @@ class Frog {
     onFrogClick(e) {
         console.log(e.keyCode);
         let tipnmr = Math.floor(Math.random() * 5);
+        let kikkergeluid = new Audio('audio/kikker.mp3');
         switch (e.keyCode) {
             case this.keyinfo:
                 this.frog.classList.add("talk" + tipnmr);
+                kikkergeluid.play();
                 setTimeout(() => {
                     this.talking();
                 }, 3500);
@@ -71,6 +73,12 @@ class Game {
         this.lifehearts2.push(new Lifeheart(1200));
         this.lifehearts2.push(new Lifeheart(1300));
         this.lifehearts2.push(new Lifeheart(1400));
+        let themeSong = new Audio('audio/ThemeSong.mp3');
+        themeSong.play();
+        themeSong.addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        }, false);
         this.gameloop();
     }
     gameloop() {

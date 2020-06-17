@@ -26,12 +26,15 @@ class Frog {
         // Hiermee kan je checken welke keycode achter een bepaalde toets zit. 
         console.log(e.keyCode)
         let tipnmr = Math.floor(Math.random() * 5)
+        let kikkergeluid = new Audio('audio/kikker.mp3')
 
         switch (e.keyCode) {
             case this.keyinfo:
                 this.frog.classList.add("talk" + tipnmr)
+                kikkergeluid.play()
                 setTimeout(() => {
                     this.talking()
+
                 }, 3500);
 
         }

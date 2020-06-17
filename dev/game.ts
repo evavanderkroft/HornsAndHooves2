@@ -25,6 +25,13 @@ class Game {
         this.lifehearts2.push(new Lifeheart(1200))
         this.lifehearts2.push(new Lifeheart(1300))
         this.lifehearts2.push(new Lifeheart(1400))
+         let themeSong = new Audio('audio/ThemeSong.mp3');
+         themeSong.play();
+         themeSong.addEventListener('ended', function() {
+             this.currentTime = 0;
+             this.play();
+         }, false);
+        
 
         this.gameloop()
 
@@ -35,6 +42,7 @@ class Game {
         this.unicorn.update()
         this.unicorn2.update2()
         this.frog.updateFrog()
+
 
         for (const heart of this.lifehearts) {
             heart.lifeupdate()
@@ -80,7 +88,6 @@ class Game {
     //         score.innerHTML = "Score: " + this.score2
     //     }
     // }
-
 }
 
 window.addEventListener("load", () => new Game())
