@@ -11,6 +11,7 @@ class Game {
     private winLeft: number = 0
     private WinRight: number = 0
     
+
     private _next: boolean = false
     public get next(): boolean { return this._next }
     private _player1: string =""
@@ -168,6 +169,5 @@ class Game {
 
 
     }
-
 }
 

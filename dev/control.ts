@@ -7,6 +7,7 @@ class Control {
     public creategame!: HTMLElement
     public winner?: Winner
     public createwinner!: HTMLElement
+    public themeSong : HTMLAudioElement
 
     private _player1: string = ""
     public get player1(): string { return this._player1 }
@@ -18,9 +19,9 @@ class Control {
     constructor() {
         this.createselectpage();
         this.gameLoop();
-        let themeSong = new Audio('audio/ThemeSong.mp3');
-        themeSong.play();
-        themeSong.addEventListener('ended', function () {
+        this.themeSong = new Audio('audio/ThemeSong.mp3');
+        this.themeSong.play();
+        this.themeSong.addEventListener('ended', function () {
             this.currentTime = 0;
             this.play();
         }, false);
@@ -78,7 +79,13 @@ class Control {
         }
         if (this.game != null &&
             this.game.next == true) {
+            this.themeSong.pause()
             this.createwinnerpage(this.game.winner)
+            let winnersound = new Audio('audio/winner.mp3')
+            winnersound.play()
+           
+            
+
 
 
             this.game = undefined;
