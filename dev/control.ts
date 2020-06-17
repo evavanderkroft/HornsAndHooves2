@@ -47,12 +47,12 @@ class Control {
         
         this.game = new Game(this.player1, this.player2, this._background)
     }
-    private createwinnerpage() {
+    private createwinnerpage(winner: string) {
         this.createwinner = document.createElement("winner")
         let control = document.getElementsByTagName("control")[0]
         control.appendChild(this.createwinner)
 
-        this.winner = new Winner("pink")
+        this.winner = new Winner(winner)
     }
 
     public gameLoop() {
@@ -72,14 +72,13 @@ class Control {
                 this._background = this.story.background
                 this.creategamepage()
                 
-
-            this.story = undefined;
-            document.getElementsByTagName('story')[0].remove();
+                this.story = undefined;
+                document.getElementsByTagName('story')[0].remove();
 
         }
         if (this.game != null &&
             this.game.next == true) {
-            this.createwinnerpage()
+            this.createwinnerpage(this.game.winner)
 
 
             this.game = undefined;

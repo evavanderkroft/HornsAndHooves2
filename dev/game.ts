@@ -10,10 +10,19 @@ class Game {
     private lifehearts2: Lifeheart[] = []
     private winLeft: number = 0
     private WinRight: number = 0
+    
     private _next: boolean = false
     public get next(): boolean { return this._next }
+    private _player1: string =""
+    public get player1(): string {return this._player1}
+    private _player2: string =""
+    public get player2(): string {return this._player2}
+    private _winner: string =""
+    public get winner(): string {return this._winner}
 
     constructor(player1: string, player2: string, background: string) {
+        this._player1 = player1
+        this._player2 = player2
         this.createbackground(background)
         console.log(player1, player2)
         console.log("Game was created!")
@@ -64,6 +73,16 @@ class Game {
 
             this.addArrows()
         }
+        if (this.lifehearts.length == 1){
+            this._next = true
+            this._winner = this._player2
+            console.log(this.winner)
+        }
+        if (this.lifehearts2.length == 1){
+            this._next = true
+            this._winner = this._player1
+            console.log(this.winner)
+        }
 
         if (this.winLeft == 1) {
             let lifeHeart: Lifeheart = this.lifehearts2.shift()!
@@ -99,7 +118,6 @@ class Game {
         this.unicorn.update()
         this.unicorn2.update2()
         this.frog.updateFrog()
-
 
         for (const heart of this.lifehearts) {
             heart.lifeupdate()
