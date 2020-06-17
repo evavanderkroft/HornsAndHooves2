@@ -618,3 +618,49 @@ winnerplat{
     background-size: 100% 100%;
     left: 10%; top: 27%;
 }
+
+img{
+    width:400px; 
+    height: auto;
+} 
+
+.greenUnicornHome{
+    position: absolute;
+    bottom: 10%;
+    left: 3%;
+    transform: translate(0, -50%);
+}
+
+.whiteUnicornHome{
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    transform: translate(0, -50%);
+}
+
+.blackUnicornHome{
+    position: absolute;
+   bottom: 10%;
+    right: 3%;
+    transform: translate(0, -50%) scaleX(-1);
+   
+}
+
+.pinkUnicornHome{
+    position: absolute;
+    top: 70%;
+    right: 10%;
+    transform: translate(0, -50%) scaleX(-1);
+}
+
+bomb{
+    background-image: url("../img/explosion_2.gif");
+    width: 480px;
+    height: 480px;
+    display: none;
+    top: 400px;
+    left: 60%;
+    transform: translate(-50%, 0 );
+    z-index: 10;
+    visibility: hidden;
+}
