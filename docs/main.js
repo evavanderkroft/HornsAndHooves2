@@ -29,6 +29,12 @@ class Control {
         this._background = "";
         this.createselectpage();
         this.gameLoop();
+        let themeSong = new Audio('audio/ThemeSong.mp3');
+        themeSong.play();
+        themeSong.addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        }, false);
     }
     get player1() { return this._player1; }
     get player2() { return this._player2; }
@@ -135,12 +141,6 @@ class Game {
         this.unicorn = new Unicorn(0, player1);
         this.unicorn2 = new Unicorn(2, player2);
         this.frog = new Frog();
-        let themeSong = new Audio('audio/ThemeSong.mp3');
-        themeSong.play();
-        themeSong.addEventListener('ended', function () {
-            this.currentTime = 0;
-            this.play();
-        }, false);
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
             this.lifehearts.push(new Lifeheart(50));
             this.lifehearts.push(new Lifeheart(150));
@@ -194,6 +194,12 @@ class Game {
         let fourth = Math.floor(Math.random() * 6);
         this.leftArrows = new Leftarrows(first, second, third, fourth);
         this.rightArrows = new Rightarrows(first, second, third, fourth);
+    }
+    createbackground() {
+        this.background = document.createElement("background");
+        let game = document.getElementsByTagName("game")[0];
+        game.appendChild(this.background);
+        this.background.classList.add(`gamebg`);
     }
     gameloop() {
         this.unicorn.update();
@@ -1010,8 +1016,6 @@ class Unicorn {
     get _win2() { return this.win2; }
     set _win2(A) { this.win2 = A; }
     get colour() { return this._colour; }
-    moveUnicorns() {
-    }
     update() {
         this.attackMove();
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px)`;
@@ -1020,26 +1024,18 @@ class Unicorn {
         this.attackMove2();
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`;
     }
-    getRectangle() {
-        return this.unicorn.getBoundingClientRect();
-    }
-    bounceX() {
-        this.rightSpeed = -1;
-        this.unicorn.classList.remove(`${this.colour}run`);
-        setTimeout(() => {
-            this.rightSpeed = 0;
-        }, 300);
-    }
     attackMove() {
         if ((this.x <= 403) && (this.win == 1)) {
             console.log("hij doet het update 1");
             this.unicorn.classList.add(`${this.colour}run`);
             this.x += 4;
+            console.log(this.win);
         }
         if ((this.x > 400) && (this.attackBack == false)) {
             console.log("hij werkt nu wel");
             this.unicorn.classList.remove(`${this.colour}run`);
             this.win = 0;
+            console.log(this.win);
             this.explosion.flippedBack();
             this.attackAnimation();
         }
@@ -1049,6 +1045,7 @@ class Unicorn {
         if ((this.x < 0) && (this.attackBack == true)) {
             this.x = 0;
             this.unicorn.classList.remove(`${this.colour}run`);
+            this.attackBack = false;
         }
     }
     attackMove2() {
@@ -1070,6 +1067,7 @@ class Unicorn {
         if ((this.x > window.innerWidth - this.unicorn.clientWidth) && (this.attackBack == true)) {
             this.x = window.innerWidth - this.unicorn.clientWidth;
             this.unicorn.classList.remove(`${this.colour}run`);
+            this.attackBack = false;
         }
     }
     attackAnimation() {

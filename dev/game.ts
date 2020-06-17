@@ -1,5 +1,5 @@
 class Game {
-    
+
     private background!: HTMLElement
     private unicorn: Unicorn
     private unicorn2: Unicorn
@@ -20,12 +20,6 @@ class Game {
         this.unicorn = new Unicorn(0, player1)
         this.unicorn2 = new Unicorn(2, player2)
         this.frog = new Frog()
-         let themeSong = new Audio('audio/ThemeSong.mp3');
-         themeSong.play();
-         themeSong.addEventListener('ended', function() {
-             this.currentTime = 0;
-             this.play();
-         }, false);
         
 
         if ((this.lifehearts.length == 0) && (this.lifehearts2.length == 0)) {
@@ -64,9 +58,7 @@ class Game {
             this.addArrows()
         }
 
-
         if (this.winLeft == 1) {
-            // this.lifehearts2[this.lifehearts2.length].remove()
             for (let i = this.lifehearts2.length; i >= 0; i--) {
                 // verwijder het object tijdens de loop
                 this.lifehearts2.splice(i, 1)
@@ -82,17 +74,14 @@ class Game {
             console.log("leftArrows.win")
         }
 
-
         if (this.WinRight == 1) {
             // this.lifehearts[this.lifehearts.length].remove()
             this.WinRight = 0
 
             this.addArrows()
-
             console.log("rightArrows.win")
         }
     }
-
     public addArrows() {
         let first = Math.floor(Math.random() * 6)
         let second = Math.floor(Math.random() * 6)
@@ -101,9 +90,14 @@ class Game {
         this.leftArrows = new Leftarrows(first, second, third, fourth)
         this.rightArrows = new Rightarrows(first, second, third, fourth)
     }
+    createbackground() {
+        this.background = document.createElement("background")
+        let game = document.getElementsByTagName("game")[0]
+        game.appendChild(this.background)
+        this.background.classList.add(`gamebg`)
+    }
 
     public gameloop() {
-
         this.unicorn.update()
         this.unicorn2.update2()
         this.frog.updateFrog()
@@ -120,6 +114,7 @@ class Game {
 
         if ((this.leftArrows._win == 1) || (this.rightArrows._win == 1)) {
             console.log("winLeft")
+
             if (this.leftArrows._win == 1) {
                 this.winLeft = 1
                 this.leftArrows._win = 0
