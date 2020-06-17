@@ -81,8 +81,7 @@ class Control {
         if (this.game != null &&
             this.game.next == true) {
             this.createwinnerpage();
-            themeSong.
-                this.game = undefined;
+            this.game = undefined;
             document.getElementsByTagName('game')[0].remove();
         }
         if (this.winner != null &&
@@ -170,11 +169,7 @@ class Game {
             this.addArrows();
         }
         if (this.winLeft == 1) {
-            for (let i = this.lifehearts2.length; i >= 0; i--) {
-                this.lifehearts2.splice(i, 1);
-                console.log("spliced");
-                break;
-            }
+            this.lifehearts2.pop();
             this.winLeft = 0;
             this.addArrows();
             console.log("leftArrows.win");

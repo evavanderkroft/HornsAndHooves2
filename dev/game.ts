@@ -60,15 +60,8 @@ class Game {
 
 
         if (this.winLeft == 1) {
-            // this.lifehearts2[this.lifehearts2.length].remove()
-            for (let i = this.lifehearts2.length; i >= 0; i--) {
-                // verwijder het object tijdens de loop
-                this.lifehearts2.splice(i, 1)
-                console.log("spliced")
-                // stop de loop
-                break;
-
-            }
+          this.lifehearts2.pop()
+          
 
             this.winLeft = 0
 
@@ -78,7 +71,6 @@ class Game {
 
 
         if (this.WinRight == 1) {
-            // this.lifehearts[this.lifehearts.length].remove()
             this.WinRight = 0
 
             this.addArrows()
@@ -151,17 +143,5 @@ class Game {
 
 
     }
-
-    // private removePoint(player: number) {
-    //     if (player == 1) {
-    //         let score = document.getElementsByTagName("score")[0]
-    //         this.score--
-    //         score.innerHTML = "Score: " + this.score
-    //     } else {
-    //         let score = document.getElementsByTagName("score")[1]
-    //         this.score2--
-    //         score.innerHTML = "Score: " + this.score2
-    //     }
-    // }
 }
 

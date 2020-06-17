@@ -76,8 +76,6 @@ class Control{
         if(this.game != null &&
             this.game.next==true){
                 this.createwinnerpage()
-                themeSong.
-
                 this.game = undefined;
                 document.getElementsByTagName('game')[0].remove();
         }
