@@ -52,11 +52,12 @@ class Winner{
     
     onagainKlick(e: Event):void{
         console.log("hallo");
-        this._next= true;
         (e.target as HTMLElement).style.filter= `grayscale(1)`
+        this._next= true;
     }
     onquitKlick(e: Event):void{
         console.log("hallo");
         (e.target as HTMLElement).style.filter= `grayscale(1)`
+        window.location.href = 'homescreen.html';
     }
 }

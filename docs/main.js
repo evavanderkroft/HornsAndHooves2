@@ -1113,12 +1113,13 @@ class Winner {
     }
     onagainKlick(e) {
         console.log("hallo");
-        this._next = true;
         e.target.style.filter = `grayscale(1)`;
+        this._next = true;
     }
     onquitKlick(e) {
         console.log("hallo");
         e.target.style.filter = `grayscale(1)`;
+        window.location.href = 'homescreen.html';
     }
 }
 //# sourceMappingURL=main.js.map
