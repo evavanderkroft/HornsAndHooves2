@@ -1,5 +1,6 @@
 class Game {
-
+    
+    private background!: HTMLElement
     private unicorn: Unicorn
     private unicorn2: Unicorn
     private frog: Frog
@@ -9,11 +10,15 @@ class Game {
     private lifehearts2: Lifeheart[] = []
     private winLeft: number = 0
     private WinRight: number = 0
+    private _next: boolean= false
+    public get next():boolean{return this._next}
 
-    constructor() {
+    constructor(player1:string, player2: string) {
+        this.createbackground()
+        console.log(player1,player2)
         console.log("Game was created!")
-        this.unicorn = new Unicorn(0)
-        this.unicorn2 = new Unicorn(2)
+        this.unicorn = new Unicorn(0, player1)
+        this.unicorn2 = new Unicorn(2, player2)
         this.frog = new Frog()
          let themeSong = new Audio('audio/ThemeSong.mp3');
          themeSong.play();
@@ -38,6 +43,13 @@ class Game {
 
 
 
+    }
+    createbackground(){
+        this.background = document.createElement("background")
+        let game = document.getElementsByTagName("game")[0]
+        game.appendChild(this.background)
+
+        this.background.classList.add(`gamebg`)
     }
 
     public newGame() {
@@ -159,4 +171,3 @@ class Game {
     // }
 }
 
-window.addEventListener("load", () => new Game())
