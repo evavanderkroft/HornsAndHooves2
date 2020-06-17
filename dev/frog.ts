@@ -15,8 +15,7 @@ class Frog {
 
     public updateFrog() {
         let x = ((window.innerWidth * 0.5) - (this.frog.clientWidth / 2))
-        let y = 0
-        // (window.innerHeight-915)
+        let y = window.innerHeight-915
         this.frog.style.transform = `translate(${x}px, ${y}px) scale(0.3)`;
 
 
