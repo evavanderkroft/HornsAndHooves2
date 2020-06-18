@@ -118,7 +118,7 @@ class Frog {
     }
     onFrogClick(e) {
         console.log(e.keyCode);
-        let tipnmr = Math.floor(Math.random() * 4);
+        let tipnmr = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
         let kikkergeluid = new Audio('audio/kikker.mp3');
         switch (e.keyCode) {
             case this.keyinfo:
@@ -299,7 +299,8 @@ class Game {
         }
         if ((this.leftArrows._win == 1) || (this.rightArrows._win == 1)) {
             console.log("winLeft");
-            if (this.leftArrows._win == 1) {
+            if (this.leftArrows._win == 1 && this.bezig == 0) {
+                this.bezig = 1;
                 this.winLeft = 1;
                 this.leftArrows._win = 0;
                 this.unicorn._win = 1;
@@ -307,9 +308,11 @@ class Game {
                 this.leftArrows.delete();
                 setTimeout(() => {
                     this.newGame();
+                    this.bezig = 0;
                 }, 6000);
             }
-            if (this.rightArrows._win == 1) {
+            if (this.rightArrows._win == 1 && this.bezig == 0) {
+                this.bezig = 1;
                 this.rightArrows._win = 0;
                 this.unicorn2._win = 1;
                 this.WinRight = 1;
@@ -317,6 +320,7 @@ class Game {
                 this.leftArrows.delete();
                 setTimeout(() => {
                     this.newGame();
+                    this.bezig = 0;
                 }, 4500);
             }
         }

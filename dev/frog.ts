@@ -24,7 +24,7 @@ class Frog {
     private onFrogClick(e: KeyboardEvent): void {
         // Hiermee kan je checken welke keycode achter een bepaalde toets zit. 
         console.log(e.keyCode)
-        let tipnmr = Math.floor(Math.random() * 4)
+        let tipnmr = Math.floor(Math.random() * (6 - 1 + 1)) + 1
         let kikkergeluid = new Audio('audio/kikker.mp3')
 
         switch (e.keyCode) {
