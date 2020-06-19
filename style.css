@@ -56,39 +56,45 @@ frog {
     margin-top:-10%;
 }
 
-.talk0 {
+.talk1 {
     background-image: url(../img/tip1.gif);
     width:1500px;
     height: 500px;
     margin-left: 100px;
 
 }
-.talk1 {
+.talk2 {
     background-image: url(../img/tip2.gif);
     width:1500px;
     height: 500px;
     margin-left: 100px;
 }
-.talk2 {
+.talk3 {
     background-image: url(../img/tip3.gif);
     width:1500px;
     height: 500px;
     margin-left: 100px;
 
 }
-.talk3 {
+.talk4 {
     background-image: url(../img/tip4.gif);
     width:1500px;
     height: 500px;
     margin-left: 100px;
 
 }
-.talk4 {
+.talk5 {
     background-image: url(../img/tip5.gif);
     width:1500px;
     height: 500px;
     margin-left: 100px;
 
+}
+.talk6{
+    background-image: url(../img/tip6.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
 }
 .greenrun{
     background-image: url(../img/green.gif);
@@ -665,4 +671,19 @@ bomb{
     transform: translate(-50%, 0 );
     z-index: 10;
     visibility: hidden;
+}
+.specialattack{
+    transform: scale(3);
+    width: 1000px;
+    height: 1000px;
+    margin-top: -400px;
+
+}
+.specialattack2{
+    transform: scale(3);
+    width: 1000px;
+    height: 1000px;
+    margin-top: -400px;
+    margin-left: -500px;
+
 }

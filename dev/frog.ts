@@ -7,7 +7,7 @@ class Frog {
         this.frog = document.createElement("frog")
         console.log("Frog was created!")
         this.keyinfo = 32;
-        window.addEventListener("keydown", (e: KeyboardEvent) => this.onFrogClick(e))
+        window.addEventListener("keyup", (e: KeyboardEvent) => this.onFrogClick(e))
         let game = document.getElementsByTagName("game")[0]
         game.appendChild(this.frog)
 
@@ -24,7 +24,7 @@ class Frog {
     private onFrogClick(e: KeyboardEvent): void {
         // Hiermee kan je checken welke keycode achter een bepaalde toets zit. 
         console.log(e.keyCode)
-        let tipnmr = Math.floor(Math.random() * 4)
+        let tipnmr = Math.floor(Math.random() * (6 - 1 + 1)) + 1
         let kikkergeluid = new Audio('audio/kikker.mp3')
 
         switch (e.keyCode) {
