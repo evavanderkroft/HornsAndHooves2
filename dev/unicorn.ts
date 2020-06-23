@@ -1,78 +1,143 @@
 class Unicorn {
     private unicorn: HTMLElement
-    private x: number
+    private x: number = 0
     private y: number
 
-    private rightkey: number
-    private leftkey: number
+    rightSpeed: number = 10
+    leftSpeed: number = 10
 
-    rightSpeed: number = 0
-    leftSpeed: number = 0
+    public attackBack: boolean = false;
+    explosion: Explosion = new Explosion
 
-    constructor(x:number, rightKey:number, leftKey:number) {
-        this.unicorn = document.createElement("unicorn")
+    private win: number = 0
 
+    public get _win(): number { return this.win }
+    public set _win(A: number) { this.win = A }
 
+    private win2: number = 0
+    public get _win2(): number { return this.win2 }
+    public set _win2(A: number) { this.win2 = A }
+    private _colour: string =""
+    public get colour():string{return this._colour}
+
+    constructor(x: number, colour:string) {
+        this._colour = colour
+        this.unicorn = document.createElement(`unicorn${colour}`)
         let game = document.getElementsByTagName("game")[0]
         game.appendChild(this.unicorn)
-        this.rightkey = rightKey
-        this.leftkey = leftKey
 
-
-        if(x != 0) {x = window.innerWidth-this.unicorn.clientWidth}
+        if (x != 0) { x = window.innerWidth - this.unicorn.clientWidth }
         this.x = x
         this.y = 500
-        window.addEventListener("keydown", (e: KeyboardEvent) => this.moveUnicorn(e))
-    }
-   
-
-    private moveUnicorn(e: KeyboardEvent): void {
-        console.log(e.keyCode)
-        switch (e.keyCode) {
-            case this.rightkey:
-                this.unicorn.classList.add("run")
-                this.rightSpeed = 5
-                setTimeout(() => {
-                    this.rightSpeed = 0
-                    this.running()
-                }, 1000);
-                break
-            case this.leftkey:
-                this.unicorn.classList.add("run")
-                this.leftSpeed = 5
-                setTimeout(() => {
-                    this.leftSpeed = 0
-                    this.running()
-                }, 1000);
-        }
-
     }
 
 
     public update() {
-
-        this.x += this.rightSpeed
-        this.x -= this.leftSpeed
+        this.attackMove()
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px)`
+
     }
     public update2() {
-
-        this.x -= this.rightSpeed
-        this.x += this.leftSpeed
+        this.attackMove2()
         this.unicorn.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`
     }
-    running(){
-        this.unicorn.classList.remove("run")
+
+
+    attackMove() {
+        if ((this.x <= 403) && (this.win == 1)) {
+            console.log("hij doet het update 1")
+            this.unicorn.classList.add(`${this.colour}run`)
+            this.x += 4
+            console.log(this.win)
+        }
+
+        if ((this.x > 400) && (this.attackBack == false)) {
+            console.log("hij werkt nu wel")
+            this.unicorn.classList.remove(`${this.colour}run`)
+            this.win = 0
+            console.log(this.win)
+
+            this.explosion.flippedBack()
+            this.attackAnimation()
+        }
+
+        if (this.attackBack == true) {
+            this.x -= 4
+        }
+        if ((this.x < 0) && (this.attackBack == true)) {
+            this.x = 0
+            this.unicorn.classList.remove(`${this.colour}run`)
+            this.attackBack = false
+        }
     }
-    public getRectangle() {
-        return this.unicorn.getBoundingClientRect()
+
+    attackMove2() {
+        if ((this.x >= 1000) && (this.win == 1)) {
+            console.log("hij doet het update 2")
+            this.unicorn.classList.add(`${this.colour}run`)
+            this.x -= 4
+        }
+
+        if ((this.x < 1000) && (this.attackBack == false)) {
+            console.log("hij werkt nu wel 2")
+            this.unicorn.classList.remove(`${this.colour}run`)
+
+            this.win = 0
+            this.explosion.flipped()
+            this.attackAnimation()
+        }
+
+        if (this.attackBack == true) {
+            this.x += 4
+        }
+        if ((this.x > window.innerWidth - this.unicorn.clientWidth) && (this.attackBack == true)) {
+            this.x = window.innerWidth - this.unicorn.clientWidth
+            this.unicorn.classList.remove(`${this.colour}run`)
+            this.attackBack = false
+        }
     }
-    public bounceX(){
-        this.rightSpeed =-1
-        this.running()
+    public specialattackplayer1(){
+            this.unicorn.classList.add(`specialattack`)
         setTimeout(() => {
-            this.rightSpeed = 0
-        }, 300);
+            this.explosion.flippedBack()
+            this.attackAnimation()
+        }, 1000);
+            setTimeout(() => {
+                this.unicorn.setAttribute("class", "")
+
+            }, 3000);
+        }
+    public specialattackplayer2(){
+        this.unicorn.classList.add(`specialattack2`)
+        setTimeout(() => {
+            this.explosion.flipped()
+            this.attackAnimation()
+        }, 1000);
+            setTimeout(() => {
+                this.unicorn.setAttribute("class", "")
+
+            }, 3000);
+
+    }
+
+    attackAnimation() {
+        // doe attack move animation
+        console.log("doe attack animation")
+        let attackSound = new Audio('audio/attack.mp3')
+        this.explosion.explode()
+        attackSound.play()
+        // this.explosion.style.display = "block";
+
+
+
+
+        setTimeout(() => {
+            this.attackBack = true;
+            this.unicorn.classList.add(`${this.colour}run`)
+            this.explosion.stopExplode()
+            console.log("hoi = true")
+        }, 2000);
+
     }
 }
 

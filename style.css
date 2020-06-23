@@ -5,24 +5,47 @@ body {
     font-size:22px;
     overflow:hidden;
     margin:0px; padding:0px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width:100vw;
 }
-
 game * {
     position: absolute;
     display: block;
     box-sizing: border-box;
     background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
 }
 
-
-unicorn {
+unicornwhite {
     background-image: url(../img/horsewhite.png);
     width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
     background-size:contain;
 }
-.player2 {
+unicorngreen {
     background-image: url(../img/horsegreen.png);
     width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
+    background-size:contain;
+}
+unicornpink {
+    background-image: url(../img/horsepink.png);
+    width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
+    background-size:contain;
+}
+unicornblack {
+    background-image: url(../img/horseblack.png);
+    width:500px; height: 500px;
+    top: 0%;
+    left: 0%;
     background-size:contain;
 }
 
@@ -30,14 +53,60 @@ frog {
     background-image: url(../img/froggi.png);
     width:500px; height: 400px;
     cursor: pointer;
+    margin-top:-10%;
 }
 
-.talk {
-    background-image: url(../img/jumpsalot.gif);
-    
+.talk1 {
+    background-image: url(../img/tip1.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
+
 }
-.run{
+.talk2 {
+    background-image: url(../img/tip2.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
+}
+.talk3 {
+    background-image: url(../img/tip3.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
+
+}
+.talk4 {
+    background-image: url(../img/tip4.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
+
+}
+.talk5 {
+    background-image: url(../img/tip5.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
+
+}
+.talk6{
+    background-image: url(../img/tip6.gif);
+    width:1500px;
+    height: 500px;
+    margin-left: 100px;
+}
+.greenrun{
+    background-image: url(../img/green.gif);
+}
+.blackrun{
+    background-image: url(../img/black.gif);
+}
+.whiterun{
     background-image: url(../img/white.gif);
+}
+.pinkrun{
+    background-image: url(../img/pink.gif);
 }
 .run2{
     background-image: url(../img/green.gif);
@@ -78,46 +147,67 @@ frog {
     background-size: cover;
 }
 
-score {
-    margin:15px;
-    color: blue;
-    font-size: 50px;
+lifeheart{
+    background-image: url(../img/lifeheart.png);
+    width: 300px;
+    height: 300px;
 }
-score:nth-of-type(2) {
-    right: 15px;
-    color: blue;
-    font-size: 50px;
-}
+
 .tutorial {
-    background-image: url(../img/SkyClouds.jpg);
-    width:100%; height: 100%;
+    background-image: url(../img/Achtergrondschermen.jpg);
     background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    overflow:hidden;
+    margin:0px; padding:0px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
 }
 .tutbut{
-    display: flex;
     justify-content: center;
+    width:1000px ;
+    height: 400px;
 }
+
+img.tutbutarrows{
+    width:600px;
+    height:400px;
+} 
+
+
 .tuttext{
     display: flex;
     justify-content: center;
-    font-size:  7em;
+    font-size:  35px;
     color: white;
-    -webkit-text-stroke: plum 7px;
-    text-shadow: 10px 10px black;
+    -webkit-text-stroke: plum 1.5px;
+    text-shadow: 2px 2px black;
     text-align: center;
-    
-
-    
+    padding: -500px; 
+    margin-top:-20px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 .tutbutfrog{
-    margin-top: 300px;
+    margin-bottom: 90px;
+}
+
+img.tutbutfrog{
+    width: 300px;
+    height: 250px;
 }
 .linkje{
     
-    font-size: 5em;
+    font-size: 40px;
     color:plum;
-    text-shadow: 7px 5px lightblue;
-    height: 200px;
+    text-shadow: 3px 3px lightblue;
+    height: auto;
     width: 500px;
     background: rgb(244,208,243);
     background: -moz-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
@@ -129,4 +219,471 @@ score:nth-of-type(2) {
     border-width: 10px;
     border-style: outset;
     text-align: center;
+}
+.buttoncenter{
+    justify-content: center;
+}
+
+.homescreen{
+    background-image: url(../img/OptieStartscherm.jpg);
+    width:100vw; 
+    height: 100vh;
+    background-size: cover;
+    justify-content: center;
+    position: relative;
+}
+
+.homescreenTitle{
+    display: flex;
+    justify-content: center;
+    font-size:  100px;
+    color: white;
+    -webkit-text-stroke: plum 5px;
+    text-shadow: 10px 10px black;
+    text-align: center;
+    padding: -500px;
+}
+
+.buttonsHomescreen{
+    width:100%;
+    margin-top: 100px;
+    text-align: center;
+    justify-content: center;
+}
+
+.homeButtons{
+    display:flex;
+    justify-content: center;
+   
+}
+.homeButton{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    color:plum;
+    text-shadow: 7px 5px lightblue;
+    height: auto;
+    width: 500px;
+    background: rgb(244,208,243);
+    background: -moz-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: -webkit-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f4d0f3",endColorstr="#d4ebed",GradientType=1);
+    border-color: white;
+    border-radius: 20px;
+    border-width: 10px;
+    border-style: outset;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+    margin:20px;
+}
+
+.credits {
+    background-image: url(../img/SkyClouds.jpg);
+    width:100%; height: 100%;
+    background-size: cover;
+}
+
+.creditstitle{
+    display: flex;
+    justify-content: center;
+    font-size:  100px;
+    color: white;
+    -webkit-text-stroke: plum 5px;
+    text-shadow: 10px 10px black;
+    text-align: center;
+    padding: -500px;
+    position:absolute;
+    top:-8%;
+    left:38.8%;
+}
+
+.created{
+    display: flex;
+    justify-content: center;
+    font-size:  50px;
+    color: white;
+    -webkit-text-stroke: plum 3px;
+    text-shadow: 5px 5px black;
+    text-align: center;
+    padding: -500px;
+    position: absolute;
+    top:12%;
+    left: 41.5%;
+}
+
+
+.backtohome {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    color:plum;
+    text-shadow: 7px 5px lightblue;
+    height: auto;
+    width: 400px;
+    background: rgb(244,208,243);
+    background: -moz-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: -webkit-linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    background: linear-gradient(94deg, rgba(244,208,243,1) 0%, rgba(212,235,237,1) 67%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f4d0f3",endColorstr="#d4ebed",GradientType=1);
+    border-color: white;
+    border-radius: 20px;
+    border-width: 10px;
+    border-style: outset;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px;
+    margin:20px;
+    top:80%;
+    left: 35%;
+    position: absolute;
+}
+
+.creditstext{
+    display: flex;
+    justify-content: center;
+    font-size:  30px;
+    color: white;
+    -webkit-text-stroke: plum 1.5px;
+    text-shadow: 2px 2px black;
+    text-align: center;
+    padding: -500px; 
+    position:absolute;
+    top:25%;
+    left:42%;
+}
+
+.sound{
+    display: flex;
+    justify-content: center;
+    font-size:  50px;
+    color: white;
+    -webkit-text-stroke: plum 3px;
+    text-shadow: 5px 5px black;
+    text-align: center;
+    padding: -500px;
+    position: absolute;
+    top: 50%;
+    left: 44.6%;
+}
+
+.soundtext{
+    display: flex;
+    justify-content: center;
+    font-size:  30px;
+    color: white;
+    -webkit-text-stroke: plum 1.5px;
+    text-shadow: 2px 2px black;
+    text-align: center;
+    padding: -500px; 
+    top: 65%;
+    left:45%;
+    position: absolute;
+}
+
+.horsewhite {
+    position: absolute;
+    height:250px;
+    width:300px;
+    left:8%;
+    top:35%;
+}
+
+.horseblack {
+    position: absolute;
+    height:250px;
+    width:300px;
+    left:75%;
+    top:35%;
+    transform: scaleX(-1);
+}
+img{
+    width:400px; 
+    height: auto;
+} 
+/* ------------------------------move unicorn-------------------------------------------------- */
+.greenUnicornHome{
+    position: absolute;
+    bottom: 10%;
+    left: 3%;
+    transform: translate(0, -50%);
+}
+.whiteUnicornHome{
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    transform: translate(0, -50%);
+}
+
+.blackUnicornHome{
+    position: absolute;
+   bottom: 10%;
+    right: 3%;
+    transform: translate(0, -50%) scaleX(-1);
+   
+}
+
+.pinkUnicornHome{
+    position: absolute;
+    top: 70%;
+    right: 10%;
+    transform: translate(0, -50%) scaleX(-1);
+}
+
+bomb{
+    background-image: url("../img/explosion_2.gif");
+    width: 480px;
+    height: 480px;
+    display: none;
+    top: 400px;
+    left: 60%;
+    transform: translate(-50%, 0 );
+    z-index: 10;
+    visibility: hidden;
+}
+/* -----character select ----------------------------------------------------------------------*/
+selectcharacter *{
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+fightknop {
+    height: 50px;
+    width: 150px;
+    border-color: white;
+    border-radius: 20px;
+    border-width: 10px;
+    border-style: outset;
+    background-image: url(../img/knop2.png);
+    background-size: 100% 100%;
+}
+background{
+    background-image: url(../img/background_select.jpg);
+    width:100%; height: 100%;
+    background-size: cover;
+}
+
+profile{
+    border: 8px solid black;
+    border-radius: 5px;
+    
+}
+profile:hover {
+    box-shadow: 0 0 10px black;
+}
+
+.pblack{
+    background-image: url("../img/profile_black.png");
+    background-size: cover;
+    left: 6.4%;
+    bottom: 15%;
+}
+.pgreen{
+    background-image: url(../img/profile_green.png);
+    background-size:cover;
+    left: 29.8%;
+    bottom: 10%;
+
+}
+.ppink{
+    background-image: url(../img/profile_pink.png);
+    background-size: cover;
+    left: 53.2%;
+    bottom: 10%;
+
+}
+.pwhite{
+    background-image: url(../img/profile_white.png);
+    background-size: cover;
+    left: 76.6%;
+    bottom: 15%;
+
+}
+.chosen{
+    filter: grayscale(1);
+}
+character_1{
+    bottom: 50%;
+    left: 10%;
+    height: 450px; width: 450px;
+}
+character_2{
+    bottom: 50%;
+    right: 10%;
+    transform: scalex(-1);
+    height: 450px; width: 450px;
+}
+plateau{
+    height: 100px; width: 500px;
+    background-color: #555;
+    border-radius: 50%;
+}
+.cblack{
+    background-image: url(../img/horseblack.png);
+    background-size: contain;
+}
+.cgreen{
+    background-image: url(../img/horsegreen.png);
+    background-size: contain;
+
+}
+.cpink{
+    background-image: url(../img/horsepink.png);
+    background-size: contain;
+}
+.cwhite{
+    background-image: url(../img/horsewhite.png);
+    background-size: contain;
+}
+
+/* -----story ----------------------------------------------------------*/
+
+story *{
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+storybg{
+    width:100%; height: 100%;
+}
+.bg1{
+    background-image: url(../img/bg1.jpg);
+    background-size: 100% 100%;
+}
+.bg2{
+    background-image: url(../img/bg2.jpg);
+    background-size: 100% 100%;
+}
+.bg3{
+    background-image: url(../img/bg3.jpeg);
+    background-size: 100% 100%;
+}
+.bg4{
+    background-image: url(../img/bg4.jpg);
+    background-size: 100% 100%;
+}
+/* ---------------winner------------------------------------------ */
+winner *{
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background-repeat: no-repeat;  
+}
+winnergif{
+    left:5%; top: 10%;
+    width: 90%; height: 40%;
+}
+.greenwinner{
+    background-image: url(../img/greenwinner.gif);
+    background-size: contain;
+    background-position: center;
+}
+.blackwinner{
+    background-image: url(../img/blackwinner.gif);
+    background-size: contain;
+    background-position: center;
+}
+.whitewinner{
+    background-image: url(../img/whitewinner.gif);
+    background-size: contain;
+    background-position: center;
+
+}
+.pinkwinner{
+    background-image: url(../img/pinkwinner.gif);
+    background-size: contain;
+    background-position: center;
+
+}
+quitknop {
+    height: 10%;
+    width: 30%;
+    border-color: white;
+    border-radius: 20px;
+    border-width: 10px;
+    border-style: outset;
+    background-image: url(../img/quit.jpg);
+    background-size: 100% 100%;
+    top: 78%; right: 35%;
+}
+againknop {
+    height: 10%;
+    width: 30%;
+    border-color: white;
+    border-radius: 20px;
+    border-width: 10px;
+    border-style: outset;
+    background-image: url(../img/play_again.jpg);
+    background-size: 100% 100%;
+    top:65%; left: 35%;
+}
+winnerplat{
+    height: 40%; width: 80%;
+    background-image: url(../img/cloud.png);
+    background-size: 100% 100%;
+    left: 10%; top: 27%;
+}
+
+img{
+    width:400px; 
+    height: auto;
+} 
+
+.greenUnicornHome{
+    position: absolute;
+    bottom: 10%;
+    left: 3%;
+    transform: translate(0, -50%);
+}
+
+.whiteUnicornHome{
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    transform: translate(0, -50%);
+}
+
+.blackUnicornHome{
+    position: absolute;
+   bottom: 10%;
+    right: 3%;
+    transform: translate(0, -50%) scaleX(-1);
+   
+}
+
+.pinkUnicornHome{
+    position: absolute;
+    top: 70%;
+    right: 10%;
+    transform: translate(0, -50%) scaleX(-1);
+}
+
+bomb{
+    background-image: url("../img/explosion_2.gif");
+    width: 480px;
+    height: 480px;
+    display: none;
+    top: 400px;
+    left: 60%;
+    transform: translate(-50%, 0 );
+    z-index: 10;
+    visibility: hidden;
+}
+.specialattack{
+    transform: scale(3);
+    width: 1000px;
+    height: 1000px;
+    margin-top: -400px;
+
+}
+.specialattack2{
+    transform: scale(3);
+    width: 1000px;
+    height: 1000px;
+    margin-top: -400px;
+    margin-left: -500px;
+
 }
