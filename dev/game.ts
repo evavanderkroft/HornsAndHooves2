@@ -10,19 +10,19 @@ class Game {
     private lifehearts2: Lifeheart[] = []
     private winLeft: number = 0
     private WinRight: number = 0
-    private specialdone1 : number = 0
-    private specialdone2 : number = 0
-    private bezig : number = 0
-    
+    private specialdone1: number = 0
+    private specialdone2: number = 0
+    private bezig: number = 0
+
 
     private _next: boolean = false
     public get next(): boolean { return this._next }
-    private _player1: string =""
-    public get player1(): string {return this._player1}
-    private _player2: string =""
-    public get player2(): string {return this._player2}
-    private _winner: string =""
-    public get winner(): string {return this._winner}
+    private _player1: string = ""
+    public get player1(): string { return this._player1 }
+    private _player2: string = ""
+    public get player2(): string { return this._player2 }
+    private _winner: string = ""
+    public get winner(): string { return this._winner }
 
     constructor(player1: string, player2: string, background: string) {
         window.addEventListener("keyup", (e: KeyboardEvent) => this.specialAttack(e))
@@ -34,9 +34,9 @@ class Game {
         this.unicorn = new Unicorn(0, player1)
         this.unicorn2 = new Unicorn(2, player2)
         this.frog = new Frog()
-        this.specialdone1=0
-        this.specialdone2=0
-        this.bezig=0
+        this.specialdone1 = 0
+        this.specialdone2 = 0
+        this.bezig = 0
 
         this.newGame()
         this.gameloop()
@@ -70,16 +70,6 @@ class Game {
 
             this.addArrows()
         }
-        if (this.lifehearts.length == 1){
-            this._next = true
-            this._winner = this._player2
-            console.log(this.winner)
-        }
-        if (this.lifehearts2.length == 1){
-            this._next = true
-            this._winner = this._player1
-            console.log(this.winner)
-        }
 
 
 
@@ -112,62 +102,66 @@ class Game {
         this.leftArrows = new Leftarrows(first, second, third, fourth)
         this.rightArrows = new Rightarrows(first, second, third, fourth)
     }
-    public specialAttack(e: KeyboardEvent): void{
+    public specialAttack(e: KeyboardEvent): void {
         switch (e.keyCode) {
-        case 67:
-            if (this.specialdone1 == 1){
-                console.log("special attack is al gebruikt")
-            }else if (this.bezig==1){
-                console.log("1 special attack tegelijk mogelijk")
-            }else{
-            this.bezig=1
-            let soundspecial = new Audio('audio/specialattack.mp3')
-            soundspecial.play()
-            this.unicorn.specialattackplayer1()
-            this.rightArrows.delete()
-            this.leftArrows.delete()
-            setTimeout(() => {
-                this.addArrows()
-                window.removeEventListener("keydown", (e: KeyboardEvent) => this.specialAttack(e),true)
-                if (this.lifehearts2.length <= 2){
-                    this._next = true
-                    this._winner = this._player1
-                    console.log(this.winner)
-                } else{
-                    let lifeHeart: Lifeheart = this.lifehearts2.shift()!
-                    lifeHeart.delete()
-                    let lifeheart2:Lifeheart=this.lifehearts2.shift()!
-                    lifeheart2.delete()}
-                    this.specialdone1 = 1
-                    this.bezig=0
-            }, 3000);}
-            break;  
-        case 78:
-            if (this.specialdone2 == 1){
-                console.log("special attack is al gebruikt")
-            }else if (this.bezig==1){
-                console.log("1 special attack tegelijk mogelijk")
-            }else{
-            this.bezig=1
-            let soundspecial2 = new Audio('audio/specialattack.mp3')
-            soundspecial2.play()
-            this.unicorn2.specialattackplayer2()
-            this.rightArrows.delete()
-            this.leftArrows.delete()
-            setTimeout(() => {
-                this.addArrows()
-                if (this.lifehearts.length <= 2){
-                    this._next = true
-                    this._winner = this._player2
-                    console.log(this.winner)
-                } else{
-                    let lifeHeart: Lifeheart = this.lifehearts.shift()!
-                    lifeHeart.delete()
-                    let lifeheart2:Lifeheart=this.lifehearts.shift()!
-                    lifeheart2.delete()}
-                    this.specialdone2 = 1
-                    this.bezig=0
-            }, 3000);}
+            case 67:
+                if (this.specialdone1 == 1) {
+                    console.log("special attack is al gebruikt")
+                } else if (this.bezig == 1) {
+                    console.log("1 special attack tegelijk mogelijk")
+                } else {
+                    this.bezig = 1
+                    let soundspecial = new Audio('audio/specialattack.mp3')
+                    soundspecial.play()
+                    this.unicorn.specialattackplayer1()
+                    this.rightArrows.delete()
+                    this.leftArrows.delete()
+                    setTimeout(() => {
+                        this.addArrows()
+                        window.removeEventListener("keydown", (e: KeyboardEvent) => this.specialAttack(e), true)
+                        if (this.lifehearts2.length <= 2) {
+                            this._next = true
+                            this._winner = this._player1
+                            console.log(this.winner)
+                        } else {
+                            let lifeheart: Lifeheart = this.lifehearts2.shift()!
+                            lifeheart.delete()
+                            let lifeheart2: Lifeheart = this.lifehearts2.shift()!
+                            lifeheart2.delete()
+                        }
+                        this.specialdone1 = 1
+                        this.bezig = 0
+                    }, 3000);
+                }
+                break;
+            case 78:
+                if (this.specialdone2 == 1) {
+                    console.log("special attack is al gebruikt")
+                } else if (this.bezig == 1) {
+                    console.log("1 special attack tegelijk mogelijk")
+                } else {
+                    this.bezig = 1
+                    let soundspecial2 = new Audio('audio/specialattack.mp3')
+                    soundspecial2.play()
+                    this.unicorn2.specialattackplayer2()
+                    this.rightArrows.delete()
+                    this.leftArrows.delete()
+                    setTimeout(() => {
+                        this.addArrows()
+                        if (this.lifehearts.length <= 2) {
+                            this._next = true
+                            this._winner = this._player2
+                            console.log(this.winner)
+                        } else {
+                            let lifeHeart: Lifeheart = this.lifehearts.pop()!
+                            lifeHeart.delete()
+                            let lifeHeart2: Lifeheart = this.lifehearts.pop()!
+                            lifeHeart2.delete()
+                        }
+                        this.specialdone2 = 1
+                        this.bezig = 0
+                    }, 3000);
+                }
 
         }
     }
@@ -183,6 +177,17 @@ class Game {
 
         for (const heart2 of this.lifehearts2) {
             heart2.lifeupdate()
+        }
+
+        if (this.lifehearts.length == 0) {
+            this._next = true
+            this._winner = this._player2
+            console.log(this.winner)
+        }
+        if (this.lifehearts2.length == 0) {
+            this._next = true
+            this._winner = this._player1
+            console.log(this.winner)
         }
 
 
