@@ -1229,7 +1229,7 @@ class Winner {
     onquitKlick(e) {
         console.log("hallo");
         e.target.style.filter = `grayscale(1)`;
-        window.location.href = 'homescreen.html';
+        window.location.href = 'index.html';
     }
 }
 //# sourceMappingURL=main.js.map
