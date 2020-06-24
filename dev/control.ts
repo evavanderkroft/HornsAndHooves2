@@ -7,14 +7,14 @@ class Control {
     public creategame!: HTMLElement
     public winner?: Winner
     public createwinner!: HTMLElement
-    public themeSong : HTMLAudioElement
+    public themeSong: HTMLAudioElement
 
     private _player1: string = ""
     public get player1(): string { return this._player1 }
     private _player2: string = ""
-    public get player2():string{return this._player2}
+    public get player2(): string { return this._player2 }
     private _background: string = ""
-    public get background():string{return this._background}
+    public get background(): string { return this._background }
 
     constructor() {
         this.createselectpage();
@@ -24,7 +24,7 @@ class Control {
         this.themeSong.addEventListener('ended', function () {
             this.currentTime = 0;
             this.play();
-        }, false);  
+        }, false);
         requestAnimationFrame(() => this.gameLoop());
     }
 
@@ -46,7 +46,7 @@ class Control {
         this.creategame = document.createElement("game")
         let control = document.getElementsByTagName("control")[0]
         control.appendChild(this.creategame)
-        
+
         this.game = new Game(this.player1, this.player2, this._background)
     }
     private createwinnerpage(winner: string) {
@@ -70,13 +70,13 @@ class Control {
             this.selectcharacter = undefined
             document.getElementsByTagName('selectcharacter')[0].remove();
         }
-        if(this.story != null &&
-            this.story.next== true){
-                this._background = this.story.background
-                this.creategamepage()
-                
-                this.story = undefined;
-                document.getElementsByTagName('story')[0].remove();
+        if (this.story != null &&
+            this.story.next == true) {
+            this._background = this.story.background
+            this.creategamepage()
+
+            this.story = undefined;
+            document.getElementsByTagName('story')[0].remove();
 
         }
         if (this.game != null &&
@@ -85,8 +85,8 @@ class Control {
             this.createwinnerpage(this.game.winner)
             let winnersound = new Audio('audio/winner.mp3')
             winnersound.play()
-           
-            
+
+
 
 
 
@@ -101,7 +101,7 @@ class Control {
             this.winner = undefined;
             document.getElementsByTagName('winner')[0].remove();
         }
-        
+
         requestAnimationFrame(() => this.gameLoop());
     }
 }

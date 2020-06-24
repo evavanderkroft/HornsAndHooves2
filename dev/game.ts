@@ -49,7 +49,7 @@ class Game {
         let game = document.getElementsByTagName("game")[0]
         game.appendChild(this.background)
 
-        this.background.style.backgroundImage = `url(../img/${background}.jpg)`
+        this.background.style.backgroundImage = `url(../docs/img/${background}.jpg)`
     }
 
     public newGame() {
