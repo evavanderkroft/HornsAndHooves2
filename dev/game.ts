@@ -151,10 +151,10 @@ class Game {
                     this._winner = this._player2
                     console.log(this.winner)
                 } else{
-                    let lifeHeart: Lifeheart = this.lifehearts.shift()!
-                    lifeHeart.delete()
-                    let lifeheart2:Lifeheart=this.lifehearts.shift()!
-                    lifeheart2.delete()}
+                    let lifeHeart3: Lifeheart = this.lifehearts.pop()!
+                    lifeHeart3.delete()
+                    let lifeheart4:Lifeheart=this.lifehearts.pop()!
+                    lifeheart4.delete()}
                     this.specialdone2 = 1
                     this.bezig=0
             }, 3000);}

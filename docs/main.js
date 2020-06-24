@@ -266,10 +266,10 @@ class Game {
                             console.log(this.winner);
                         }
                         else {
-                            let lifeHeart = this.lifehearts.shift();
-                            lifeHeart.delete();
-                            let lifeheart2 = this.lifehearts.shift();
-                            lifeheart2.delete();
+                            let lifeHeart3 = this.lifehearts.pop();
+                            lifeHeart3.delete();
+                            let lifeheart4 = this.lifehearts.pop();
+                            lifeheart4.delete();
                         }
                         this.specialdone2 = 1;
                         this.bezig = 0;
@@ -1229,7 +1229,7 @@ class Winner {
     onquitKlick(e) {
         console.log("hallo");
         e.target.style.filter = `grayscale(1)`;
-        window.location.href = 'homescreen.html';
+        window.location.href = 'index.html';
     }
 }
 //# sourceMappingURL=main.js.map
