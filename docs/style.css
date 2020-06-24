@@ -21,28 +21,28 @@ game * {
 }
 
 unicornwhite {
-    background-image: url(../img/horsewhite.png);
+    background-image: url(../docs/img/horsewhite.png);
     width:500px; height: 500px;
     top: 0%;
     left: 0%;
     background-size:contain;
 }
 unicorngreen {
-    background-image: url(../img/horsegreen.png);
+    background-image: url(../docs/img/horsegreen.png);
     width:500px; height: 500px;
     top: 0%;
     left: 0%;
     background-size:contain;
 }
 unicornpink {
-    background-image: url(../img/horsepink.png);
+    background-image: url(../docs/img/horsepink.png);
     width:500px; height: 500px;
     top: 0%;
     left: 0%;
     background-size:contain;
 }
 unicornblack {
-    background-image: url(../img/horseblack.png);
+    background-image: url(../docs/img/horseblack.png);
     width:500px; height: 500px;
     top: 0%;
     left: 0%;
@@ -50,111 +50,111 @@ unicornblack {
 }
 
 frog {
-    background-image: url(../img/froggi.png);
+    background-image: url(../docs/img/froggi.png);
     width:500px; height: 400px;
     cursor: pointer;
     margin-top:-10%;
 }
 
 .talk1 {
-    background-image: url(../img/tip1.gif);
+    background-image: url(../docs/img/tip1.gif);
     width:1500px;
     height: 500px;
     margin-left: 100px;
 
 }
 .talk2 {
-    background-image: url(../img/tip2.gif);
+    background-image: url(../docs/img/tip2.gif);
     width:1500px;
     height: 500px;
     margin-left: 100px;
 }
 .talk3 {
-    background-image: url(../img/tip3.gif);
+    background-image: url(../docs/img/tip3.gif);
     width:1500px;
     height: 500px;
     margin-left: 100px;
 
 }
 .talk4 {
-    background-image: url(../img/tip4.gif);
+    background-image: url(../docs/img/tip4.gif);
     width:1500px;
     height: 500px;
     margin-left: 100px;
 
 }
 .talk5 {
-    background-image: url(../img/tip5.gif);
+    background-image: url(../docs/img/tip5.gif);
     width:1500px;
     height: 500px;
     margin-left: 100px;
 
 }
 .talk6{
-    background-image: url(../img/tip6.gif);
+    background-image: url(../docs/img/tip6.gif);
     width:1500px;
     height: 500px;
     margin-left: 100px;
 }
 .greenrun{
-    background-image: url(../img/green.gif);
+    background-image: url(../docs/img/green.gif);
 }
 .blackrun{
-    background-image: url(../img/black.gif);
+    background-image: url(../docs/img/black.gif);
 }
 .whiterun{
-    background-image: url(../img/white.gif);
+    background-image: url(../docs/img/white.gif);
 }
 .pinkrun{
-    background-image: url(../img/pink.gif);
+    background-image: url(../docs/img/pink.gif);
 }
 .run2{
-    background-image: url(../img/green.gif);
+    background-image: url(../docs/img/green.gif);
 }
 
 .leftup{
-    background-image: url(../img/left_up.png);
+    background-image: url(../docs/img/left_up.png);
     width:180px; height: 180px;
 }
 .up{
-    background-image: url(../img/up.png);
+    background-image: url(../docs/img/up.png);
     width:180px; height: 180px;
 
 }
 .rightup{
-    background-image: url(../img/right_up.png);
+    background-image: url(../docs/img/right_up.png);
     width:180px; height: 180px;
 
 }
 .leftdown{
-    background-image: url(../img/left_down.png);
+    background-image: url(../docs/img/left_down.png);
     width:180px; height: 180px;
 
 }
 .down{
-    background-image: url(../img/down.png);
+    background-image: url(../docs/img/down.png);
     width:180px; height: 180px;
 
 }
 .rightdown{
-    background-image: url(../img/right_down.png);
+    background-image: url(../docs/img/right_down.png);
     width:180px; height: 180px;
 }
 
 .gamebg {
-    background-image: url(../img/RainbowForest.jpg);
+    background-image: url(../docs/img/RainbowForest.jpg);
     width:100%; height: 100%;
     background-size: cover;
 }
 
 lifeheart{
-    background-image: url(../img/lifeheart.png);
+    background-image: url(../docs/img/lifeheart.png);
     width: 300px;
     height: 300px;
 }
 
 .tutorial {
-    background-image: url(../img/Achtergrondschermen.jpg);
+    background-image: url(../docs/img/Achtergrondschermen.jpg);
     background-size: cover;
     display: flex;
     flex-wrap: wrap;
@@ -225,7 +225,7 @@ img.tutbutfrog{
 }
 
 .homescreen{
-    background-image: url(../img/OptieStartscherm.jpg);
+    background-image: url(../docs/img/OptieStartscherm.jpg);
     width:100vw; 
     height: 100vh;
     background-size: cover;
@@ -280,7 +280,7 @@ img.tutbutfrog{
 }
 
 .credits {
-    background-image: url(../img/SkyClouds.jpg);
+    background-image: url(../docs/img/SkyClouds.jpg);
     width:100%; height: 100%;
     background-size: cover;
 }
@@ -432,7 +432,7 @@ img{
 }
 
 bomb{
-    background-image: url("../img/explosion_2.gif");
+    background-image: url("../docs/img/explosion_2.gif");
     width: 480px;
     height: 480px;
     display: none;
@@ -456,11 +456,11 @@ fightknop {
     border-radius: 20px;
     border-width: 10px;
     border-style: outset;
-    background-image: url(../img/knop2.png);
+    background-image: url(../docs/img/knop2.png);
     background-size: 100% 100%;
 }
 background{
-    background-image: url(../img/background_select.jpg);
+    background-image: url(../docs/img/background_select.jpg);
     width:100%; height: 100%;
     background-size: cover;
 }
@@ -475,27 +475,27 @@ profile:hover {
 }
 
 .pblack{
-    background-image: url(../img/profile_black.png);
+    background-image: url(../docs/img/profile_black.png);
     background-size: cover;
     left: 6.4%;
     bottom: 15%;
 }
 .pgreen{
-    background-image: url(../img/profile_green.png);
+    background-image: url(../docs/img/profile_green.png);
     background-size:cover;
     left: 29.8%;
     bottom: 10%;
 
 }
 .ppink{
-    background-image: url(../img/profile_pink.png);
+    background-image: url(../docs/img/profile_pink.png);
     background-size: cover;
     left: 53.2%;
     bottom: 10%;
 
 }
 .pwhite{
-    background-image: url(../img/profile_white.png);
+    background-image: url(../docs/img/profile_white.png);
     background-size: cover;
     left: 76.6%;
     bottom: 15%;
@@ -521,20 +521,20 @@ plateau{
     border-radius: 50%;
 }
 .cblack{
-    background-image: url(../img/horseblack.png);
+    background-image: url(../docs/img/horseblack.png);
     background-size: contain;
 }
 .cgreen{
-    background-image: url(../img/horsegreen.png);
+    background-image: url(../docs/img/horsegreen.png);
     background-size: contain;
 
 }
 .cpink{
-    background-image: url(../img/horsepink.png);
+    background-image: url(../docs/img/horsepink.png);
     background-size: contain;
 }
 .cwhite{
-    background-image: url(../img/horsewhite.png);
+    background-image: url(../docs/img/horsewhite.png);
     background-size: contain;
 }
 
@@ -550,19 +550,19 @@ storybg{
     width:100%; height: 100%;
 }
 .bg1{
-    background-image: url(../img/bg1.jpg);
+    background-image: url(../docs/img/bg1.jpg);
     background-size: 100% 100%;
 }
 .bg2{
-    background-image: url(../img/bg2.jpg);
+    background-image: url(../docs/img/bg2.jpg);
     background-size: 100% 100%;
 }
 .bg3{
-    background-image: url(../img/bg3.jpeg);
+    background-image: url(../docs/img/bg3.jpeg);
     background-size: 100% 100%;
 }
 .bg4{
-    background-image: url(../img/bg4.jpg);
+    background-image: url(../docs/img/bg4.jpg);
     background-size: 100% 100%;
 }
 /* ---------------winner------------------------------------------ */
@@ -577,23 +577,23 @@ winnergif{
     width: 90%; height: 40%;
 }
 .greenwinner{
-    background-image: url(../img/greenwinner.gif);
+    background-image: url(../docs/img/greenwinner.gif);
     background-size: contain;
     background-position: center;
 }
 .blackwinner{
-    background-image: url(../img/blackwinner.gif);
+    background-image: url(../docs/img/blackwinner.gif);
     background-size: contain;
     background-position: center;
 }
 .whitewinner{
-    background-image: url(../img/whitewinner.gif);
+    background-image: url(../docs/img/whitewinner.gif);
     background-size: contain;
     background-position: center;
 
 }
 .pinkwinner{
-    background-image: url(../img/pinkwinner.gif);
+    background-image: url(../docs/img/pinkwinner.gif);
     background-size: contain;
     background-position: center;
 
@@ -605,7 +605,7 @@ quitknop {
     border-radius: 20px;
     border-width: 10px;
     border-style: outset;
-    background-image: url(../img/quit.jpg);
+    background-image: url(../docs/img/quit.jpg);
     background-size: 100% 100%;
     top: 78%; right: 35%;
 }
@@ -616,13 +616,13 @@ againknop {
     border-radius: 20px;
     border-width: 10px;
     border-style: outset;
-    background-image: url(../img/play_again.jpg);
+    background-image: url(../docs/img/play_again.jpg);
     background-size: 100% 100%;
     top:65%; left: 35%;
 }
 winnerplat{
     height: 40%; width: 80%;
-    background-image: url(../img/cloud.png);
+    background-image: url(../docs/img/cloud.png);
     background-size: 100% 100%;
     left: 10%; top: 27%;
 }
@@ -662,7 +662,7 @@ img{
 }
 
 bomb{
-    background-image: url("../img/explosion_2.gif");
+    background-image: url("../docs/img/explosion_2.gif");
     width: 480px;
     height: 480px;
     display: none;
