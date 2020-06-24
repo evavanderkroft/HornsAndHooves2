@@ -234,8 +234,8 @@ class Game {
                             console.log(this.winner);
                         }
                         else {
-                            let lifeHeart = this.lifehearts2.shift();
-                            lifeHeart.delete();
+                            let lifeheart = this.lifehearts2.shift();
+                            lifeheart.delete();
                             let lifeheart2 = this.lifehearts2.shift();
                             lifeheart2.delete();
                         }
@@ -266,10 +266,10 @@ class Game {
                             console.log(this.winner);
                         }
                         else {
-                            let lifeHeart = this.lifehearts.shift();
+                            let lifeHeart = this.lifehearts.pop();
                             lifeHeart.delete();
-                            let lifeheart2 = this.lifehearts.shift();
-                            lifeheart2.delete();
+                            let lifeHeart2 = this.lifehearts.pop();
+                            lifeHeart2.delete();
                         }
                         this.specialdone2 = 1;
                         this.bezig = 0;
