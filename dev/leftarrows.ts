@@ -23,7 +23,6 @@ class Leftarrows {
     public get scale(): number { return this._scale }
 
     constructor(_x_1: number, _x_2: number, _x_3: number, _x_4: number) {
-        console.log("de nummers zijn", _x_1, _x_2, _x_3, _x_4)
         this._x_1 = _x_1
         this._x_2 = _x_2
         this._x_3 = _x_3
