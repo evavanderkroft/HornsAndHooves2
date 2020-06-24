@@ -70,16 +70,6 @@ class Game {
 
             this.addArrows()
         }
-        if (this.lifehearts.length == 1){
-            this._next = true
-            this._winner = this._player2
-            console.log(this.winner)
-        }
-        if (this.lifehearts2.length == 1){
-            this._next = true
-            this._winner = this._player1
-            console.log(this.winner)
-        }
 
 
 
@@ -183,6 +173,17 @@ class Game {
 
         for (const heart2 of this.lifehearts2) {
             heart2.lifeupdate()
+        }
+
+        if (this.lifehearts.length == 0){
+            this._next = true
+            this._winner = this._player2
+            console.log(this.winner)
+        }
+        if (this.lifehearts2.length == 0){
+            this._next = true
+            this._winner = this._player1
+            console.log(this.winner)
         }
 
 

@@ -186,16 +186,6 @@ class Game {
             this.lifehearts2.push(new Lifeheart(1500));
             this.addArrows();
         }
-        if (this.lifehearts.length == 1) {
-            this._next = true;
-            this._winner = this._player2;
-            console.log(this.winner);
-        }
-        if (this.lifehearts2.length == 1) {
-            this._next = true;
-            this._winner = this._player1;
-            console.log(this.winner);
-        }
         if (this.winLeft == 1) {
             let lifeHeart = this.lifehearts2.shift();
             lifeHeart.delete();
@@ -297,6 +287,16 @@ class Game {
         for (const heart2 of this.lifehearts2) {
             heart2.lifeupdate();
         }
+        if (this.lifehearts.length == 0) {
+            this._next = true;
+            this._winner = this._player2;
+            console.log(this.winner);
+        }
+        if (this.lifehearts2.length == 0) {
+            this._next = true;
+            this._winner = this._player1;
+            console.log(this.winner);
+        }
         if ((this.leftArrows._win == 1) || (this.rightArrows._win == 1)) {
             console.log("winLeft");
             if (this.leftArrows._win == 1 && this.bezig == 0) {
@@ -335,7 +335,6 @@ class Leftarrows {
         this._x_3 = 0;
         this._x_4 = 0;
         this._scale = 0;
-        console.log("de nummers zijn", _x_1, _x_2, _x_3, _x_4);
         this._x_1 = _x_1;
         this._x_2 = _x_2;
         this._x_3 = _x_3;
@@ -645,7 +644,6 @@ class Rightarrows {
         this._x_3 = 0;
         this._x_4 = 0;
         this._scale = 0;
-        console.log("de nummers zijn", _x_1, _x_2, _x_3, _x_4);
         this._x_1 = _x_1;
         this._x_2 = _x_2;
         this._x_3 = _x_3;
@@ -1116,16 +1114,12 @@ class Unicorn {
     }
     attackMove() {
         if ((this.x <= 403) && (this.win == 1)) {
-            console.log("hij doet het update 1");
             this.unicorn.classList.add(`${this.colour}run`);
             this.x += 4;
-            console.log(this.win);
         }
         if ((this.x > 400) && (this.attackBack == false)) {
-            console.log("hij werkt nu wel");
             this.unicorn.classList.remove(`${this.colour}run`);
             this.win = 0;
-            console.log(this.win);
             this.explosion.flippedBack();
             this.attackAnimation();
         }
@@ -1140,12 +1134,10 @@ class Unicorn {
     }
     attackMove2() {
         if ((this.x >= 1000) && (this.win == 1)) {
-            console.log("hij doet het update 2");
             this.unicorn.classList.add(`${this.colour}run`);
             this.x -= 4;
         }
         if ((this.x < 1000) && (this.attackBack == false)) {
-            console.log("hij werkt nu wel 2");
             this.unicorn.classList.remove(`${this.colour}run`);
             this.win = 0;
             this.explosion.flipped();
@@ -1181,7 +1173,6 @@ class Unicorn {
         }, 3000);
     }
     attackAnimation() {
-        console.log("doe attack animation");
         let attackSound = new Audio('audio/attack.mp3');
         this.explosion.explode();
         attackSound.play();
@@ -1189,7 +1180,6 @@ class Unicorn {
             this.attackBack = true;
             this.unicorn.classList.add(`${this.colour}run`);
             this.explosion.stopExplode();
-            console.log("hoi = true");
         }, 2000);
     }
 }

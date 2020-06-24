@@ -475,7 +475,7 @@ profile:hover {
 }
 
 .pblack{
-    background-image: url("../img/profile_black.png");
+    background-image: url(../img/profile_black.png);
     background-size: cover;
     left: 6.4%;
     bottom: 15%;
