@@ -45,17 +45,13 @@ class Unicorn {
 
     attackMove() {
         if ((this.x <= 403) && (this.win == 1)) {
-            console.log("hij doet het update 1")
             this.unicorn.classList.add(`${this.colour}run`)
             this.x += 4
-            console.log(this.win)
         }
 
         if ((this.x > 400) && (this.attackBack == false)) {
-            console.log("hij werkt nu wel")
             this.unicorn.classList.remove(`${this.colour}run`)
             this.win = 0
-            console.log(this.win)
 
             this.explosion.flippedBack()
             this.attackAnimation()
@@ -73,13 +69,11 @@ class Unicorn {
 
     attackMove2() {
         if ((this.x >= 1000) && (this.win == 1)) {
-            console.log("hij doet het update 2")
             this.unicorn.classList.add(`${this.colour}run`)
             this.x -= 4
         }
 
         if ((this.x < 1000) && (this.attackBack == false)) {
-            console.log("hij werkt nu wel 2")
             this.unicorn.classList.remove(`${this.colour}run`)
 
             this.win = 0
@@ -122,7 +116,6 @@ class Unicorn {
 
     attackAnimation() {
         // doe attack move animation
-        console.log("doe attack animation")
         let attackSound = new Audio('audio/attack.mp3')
         this.explosion.explode()
         attackSound.play()
@@ -135,7 +128,6 @@ class Unicorn {
             this.attackBack = true;
             this.unicorn.classList.add(`${this.colour}run`)
             this.explosion.stopExplode()
-            console.log("hoi = true")
         }, 2000);
 
     }
